@@ -1,4 +1,8 @@
-dot-files
+My dot files
 =========
 
-my dot files
+- zsh
+- slate
+- vim
+
+More to come later...
