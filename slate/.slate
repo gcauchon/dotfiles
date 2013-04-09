@@ -1,0 +1,33 @@
+# my .slate file config
+
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Resize Bindings
+bind 1:ctrl;alt		move (screenSizeX-1024)/2;(screenSizeY-700)/2 1024;700
+bind 2:ctrl;alt		move (screenSizeX-1024)/2;(screenSizeY-768)/2 1024;768
+bind 3:ctrl;alt		move (screenSizeX-1280)/2;(screenSizeY-800)/2 1280;800
+bind 4:ctrl;alt		move (screenSizeX-1280)/2;(screenSizeY-900)/2 1280;900
+bind right:ctrl;alt	resize +50 +0
+bind left:ctrl;alt	resize -50 +0
+bind up:ctrl;alt	resize +0  -50
+bind down:ctrl;alt	resize +0  +50
+
+# Push Bindings
+bind right:ctrl;cmd	push right bar-resize:screenSizeX/2
+bind left:ctrl;cmd	push left  bar-resize:screenSizeX/2
+
+# Nudge Bindings
+bind right:cmd;alt 	nudge +50 +0
+bind left:cmd;alt  	nudge -50 +0
+bind up:cmd;alt    	nudge +0  -50
+bind down:cmd;alt  	nudge +0  +50
+
+# Throw Bindings
+bind 1:cmd;alt       	throw 0
+bind 2:cmd;alt       	throw 1
+
+# Focus Bindings
+
+# Window Hints
