@@ -22,3 +22,7 @@ compinit
 
 # load completion file after autocomplete
 source $ZSH/completion.zsh
+
+# custom PROMPT
+#
+PROMPT="%{$fg[blue]%}%n%{$reset_color%}[%{$fg[green]%}%~%{$reset_color%}]$ "
