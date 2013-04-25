@@ -25,4 +25,5 @@ source $ZSH/completion.zsh
 
 # custom PROMPT
 #
+autoload -U colors && colors
 PROMPT="%{$fg[blue]%}%n%{$reset_color%}[%{$fg[green]%}%~%{$reset_color%}]$ "
