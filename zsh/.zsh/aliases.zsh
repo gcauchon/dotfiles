@@ -1,4 +1,4 @@
-alias zreload='. ~/.zshrc'
+alias zreload='source ~/.zshrc'
 
 # navigation
 alias ls='ls -G'
