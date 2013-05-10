@@ -34,7 +34,6 @@ compinit
 # load completion file after autocomplete
 source $ZSH/completion.zsh
 
-<<<<<<< HEAD
 # colours variables
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -53,9 +52,3 @@ export PR_NO_COLOR="%{$terminfo[sgr0]%}"
 PROMPT="$PR_NO_COLOR$PR_BLUE%~$PR_NO_COLOR
 $PR_GREEN$ $PR_NO_COLOR"
 RPTOMPT=""
-=======
-# custom PROMPT
-#
-autoload -U colors && colors
-PROMPT="%{$fg[blue]%}%n%{$reset_color%}[%{$fg[green]%}%~%{$reset_color%}]$ "
->>>>>>> ed63e0bfd93efdfcd54651a5551e77cc636eeb39
