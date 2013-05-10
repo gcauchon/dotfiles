@@ -18,10 +18,6 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 Bundle 'kien/ctrlp.vim'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" vim-scripts repos
-Bundle 'l9'
-Bundle 'fuzzyfinder'
 
 filetype plugin indent on
 "
