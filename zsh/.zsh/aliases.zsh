@@ -15,4 +15,4 @@ alias mysql_start='sudo /usr/local/mysql/support-files/mysql.server start'
 alias mysql_stop='sudo /usr/local/mysql/support-files/mysql.server stop'
 
 #wakeonlan
-alias wake_nas='wakeonlan -i 192.168.1.200 2C:B0:5D:BF:07:B7'
+alias wake_nas='wakeonlan -i 192.168.1.255 2c:b0:5d:bf:07:b7'
