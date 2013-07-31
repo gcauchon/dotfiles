@@ -11,5 +11,5 @@ alias ...='cd ../.. && pwd'
 alias ....='cd ../../.. && pwd'
 
 #mysql
-alias mysql_start='sudo /usr/local/mysql/support-files/mysql.server start'
-alias mysql_stop='sudo /usr/local/mysql/support-files/mysql.server stop'
+alias mysql_start='/usr/local/mysql/support-files/mysql.server start'
+alias mysql_stop='/usr/local/mysql/support-files/mysql.server stop'
