@@ -5,8 +5,21 @@
 "---------------------------------------
 
 " Vumble
-set nocompatible
-filetype off
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle required! 
+Bundle 'gmarik/vundle'
+
+" Solarized
+Bundle 'altercation/vim-colors-solarized'
+" Command-T
+Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on
 
 " spaces/tabs indenting
 set shiftwidth=4

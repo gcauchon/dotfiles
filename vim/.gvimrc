@@ -4,10 +4,6 @@
 " @author Guillaume Cauchon
 "---------------------------------------
 
-syntax enable
-set background=dark
-colorscheme solarized
-
 " fullscreen {{{
 set fuoptions=maxvert,maxhorz
 "}}}
