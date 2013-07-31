@@ -16,8 +16,12 @@ Bundle 'gmarik/vundle'
 
 " Solarized
 Bundle 'altercation/vim-colors-solarized'
+
 " Command-T
 Bundle 'git://git.wincent.com/command-t.git'
+map <C-t> :CommandT<CR>
+let g:CommandTCancelMap='<C-x>'
+let g:CommandTMatchWindowAtTop=1
 
 filetype plugin indent on
 
