@@ -17,6 +17,8 @@ Bundle 'gmarik/vundle'
 " Solarized
 Bundle 'altercation/vim-colors-solarized'
 
+Bundle 'Valloric/YouCompleteMe'
+
 " Command-T
 Bundle 'git://git.wincent.com/command-t.git'
 map <C-t> :CommandT<CR>
