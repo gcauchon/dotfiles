@@ -7,6 +7,7 @@
 " Vumble
 set nocompatible               " be iMproved
 filetype off                   " required!
+set backspace=indent,eol,start
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -16,7 +17,11 @@ Bundle 'gmarik/vundle'
 
 " Solarized
 Bundle 'altercation/vim-colors-solarized'
+let g:solarized_termtrans = 1
+set background=dark
+colorscheme solarized
 
+Bundle 'Lokaltog/powerline'
 Bundle 'Valloric/YouCompleteMe'
 
 " Command-T
@@ -32,13 +37,10 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set autoindent
+set smartindent
 
 set number
 set ruler
-
-" status bar
-set statusline=file=%F%m%r%h%w\ format=%{&ff}\ type=%Y\ (ascii=\%03.3b/hex=\%02.2B)\ [x,y]=%l/%L,%v\ [%p%%] 
-set laststatus=2
 
 " police {{{
 set guifont=Source\ Code\ Pro:h12
@@ -46,6 +48,10 @@ set guifont=Source\ Code\ Pro:h12
 
 " syntax {{{
 syntax enable
+
+" Solarized
+Bundle 'altercation/vim-colors-solarized'
+let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
 "}}}

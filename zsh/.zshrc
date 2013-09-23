@@ -23,7 +23,7 @@ zmodload -a zsh/mapfile mapfile
 
 # load everything but the path and completion files
 for file in $ZSH/{exports,aliases,syntax,functions}.zsh; do
-	[ -r "$file" ] && source "$file"
+    [ -r "$file" ] && source "$file"
 done
 unset file
 
@@ -34,21 +34,6 @@ compinit
 # load completion file after autocomplete
 source $ZSH/completion.zsh
 
-# colours variables
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-  colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-  eval export XPR_$color='$terminfo[bold]$fg[${(L)color}]'
-  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-  eval export XPR_LIGHT_$color='$fg[${(L)color}]'
-  (( count = $count + 1 ))
-done
-export PR_NO_COLOR="%{$terminfo[sgr0]%}"
-
 # Prompt
-PROMPT="$PR_NO_COLOR$PR_BLUE%~$PR_NO_COLOR
-$PR_GREEN$ $PR_NO_COLOR"
-RPTOMPT=""
+PROMPT="$ "
+RPROMPT="%~"
