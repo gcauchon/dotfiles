@@ -34,6 +34,20 @@ compinit
 # load completion file after autocomplete
 source $ZSH/completion.zsh
 
+# colours variables
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+  colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
+  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+  eval export XPR_$color='$terminfo[bold]$fg[${(L)color}]'
+  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+  eval export XPR_LIGHT_$color='$fg[${(L)color}]'
+  (( count = $count + 1 ))
+done
+export PR_NO_COLOR="%{$terminfo[sgr0]%}"
+
 # Prompt
-PROMPT="$ "
-RPROMPT="%~"
+PROMPT="$PR_NO_COLOR$PR_RED$ $PR_NO_COLOR"
+RPROMPT="$PR_NO_COLOR$PR_LIGHT_BLUE%~$PR_NO_COLOR"
