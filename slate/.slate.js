@@ -8,16 +8,21 @@ slate.configAll({
 slate.bind("h:cmd", slate.operation("hide", {app: "all"}));
 
 // move
-var move = slate.operation("move", {
-    x: "(screenSizeX-1024)/2",
-    y: "(screenSizeY-768)/2",
-    width:  1024,
-    height: 768
-});
+var moveWindow = function (width, height) {
+    return {
+        x: "(screenSizeX-" + width + ")/2",
+        y: "(screenSizeY-" + height + ")/2",
+        "width":    width,
+        "height":   height
+    };
+};
 
 slate.bindAll({
-    "1:ctrl;alt": move
-})
+    "1:ctrl;alt": slate.operation("move", moveWindow(1024, 700)),
+    "2:ctrl;alt": slate.operation("move", moveWindow(1024, 768)),
+    "3:ctrl;alt": slate.operation("move", moveWindow(1280, 800)),
+    "4:ctrl;alt": slate.operation("move", moveWindow(1280, 900))
+});
 
 // resize
 slate.bindAll({
