@@ -8,4 +8,5 @@ ln -s $(pwd)/vim/.vimrc ../.vimrc#
 ln -s $(pwd)/vim/.gvimrc ../.gvimrc
 
 # slate
-ln -s $(pwd)/slate/.slate ../.slate
+rm ~/.slate
+ln -s $(pwd)/slate/.slate.js ../.slate.js
