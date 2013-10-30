@@ -1,11 +1,11 @@
 #zsh
-ln -s zsh/.zsh ../.zsh
-ln -s zsh/.zshrc ../.zshrc
+ln -s $(pwd)/zsh/.zsh ../.zsh
+ln -s $(pwd)/zsh/.zshrc ../.zshrc
 
 #vim
-ln -s vim/.vim ../.vim
-ln -s vim/.vimrc ../.vimrc
-ln -s vim/.gvimrc ../.gvimrc
+ln -s $(pwd)/vim/.vim ../.vim
+ln -s $(pwd)/vim/.vimrc ../.vimrc#
+ln -s $(pwd)/vim/.gvimrc ../.gvimrc
 
 # slate
-ln -s slate/.slate ../.slate
+ln -s $(pwd)/slate/.slate ../.slate
