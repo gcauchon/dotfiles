@@ -5,6 +5,7 @@ slate.configAll({
     resizePercentOf: "screenSize"
 });
 
+// hide every windows
 slate.bind("h:cmd", slate.operation("hide", {app: "all"}));
 
 // move
@@ -38,14 +39,4 @@ slate.bindAll({
     "left:cmd;alt":     slate.operation("nudge", {x: "-50", y: "+0"}),
     "up:cmd;alt":       slate.operation("nudge", {x: "+0", y: "-50"}),
     "down:cmd;alt":     slate.operation("nudge", {x: "+0", y: "+50"})
-});
-
-// throw
-slate.bindAll({
-    "1:cmd;alt": slate.operation("throw", {
-        screen: 0
-    }),
-    "2:cmd;alt": slate.operation("throw", {
-        screen: 1
-    })
 });
