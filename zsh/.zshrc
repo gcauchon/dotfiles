@@ -40,14 +40,15 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-  eval export XPR_$color='$terminfo[bold]$fg[${(L)color}]'
-  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-  eval export XPR_LIGHT_$color='$fg[${(L)color}]'
-  (( count = $count + 1 ))
+  eval PR_$color='%{$fg_no_bold[${(L)color}]%}'
+  eval PR_BOLD_$color='%{$fg_bold[${(L)color}]%}'
 done
-export PR_NO_COLOR="%{$terminfo[sgr0]%}"
+
+export PR_RESET='$reset_color'
+export PR_RED PR_GREEN PR_YELLOW PR_BLUE PR_WHITE PR_BLACK
+export PR_BOLD_RED PR_BOLD_GREEN PR_BOLD_YELLOW PR_BOLD_BLUE 
+export PR_BOLD_WHITE PR_BOLD_BLACK
 
 # Prompt
-PROMPT="$PR_BLUE%n$PR_GREEN@%m $PR_RED$ $PR_NO_COLOR"
-RPROMPT="$PR_WHITE%~$PR_NO_COLOR"
+PROMPT="$PR_BLUE%n$PR_GREEN@%m $PR_RED$ "
+RPROMPT="$PR_WHITE%~"
