@@ -52,3 +52,8 @@ export PR_BOLD_WHITE PR_BOLD_BLACK
 # Prompt
 PROMPT="$PR_BLUE%n$PR_GREEN@%m $PR_RED$ "
 RPROMPT="$PR_WHITE%~"
+
+
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
