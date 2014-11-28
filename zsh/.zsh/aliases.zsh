@@ -1,9 +1,9 @@
 alias zreload='source ~/.zshrc'
 
 # files / directories
-alias ls='ls -G --color=auto'
-alias ll='ls -lahG --color=auto'
-alias ld='ls -lG --color=auto | grep "^d"'
+alias ls='ls -G'
+alias ll='ls -lahG'
+alias ld='ls -lG | grep "^d"'
 
 # navigation
 alias ..='cd .. && pwd'
