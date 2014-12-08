@@ -14,7 +14,7 @@ brew cask install alfred
 brew cask install slate
 brew cask install dropbox 
 brew cask install onepassword
-
+brew cask install evernote
 brew cask install cleanmymac
 brew cask install macpaw-gemini
 
@@ -36,4 +36,6 @@ brew cask install sequel-pro
 brew cask install dash
 brew cask install rdio
 brew cask install sketchup
-brew cask install adode-creative-cloud
+brew cask install imageoptim
+brew cask install imagealpha
+brew cask install adobe-creative-cloud
