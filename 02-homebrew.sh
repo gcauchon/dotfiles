@@ -17,6 +17,7 @@ brew cask install onepassword
 brew cask install evernote
 brew cask install cleanmymac
 brew cask install macpaw-gemini
+brew cask install flux
 
 #
 # key bindings to update...
@@ -32,7 +33,12 @@ brew cask install iterm2
 brew cask install google-chrome
 brew cask install google-hangouts
 brew cask install sublime-text
+
+brew cask install virtualbox
+echo "install the Windows+IE virtual images using https://github.com/xdissent/ievms"
+
 brew cask install sequel-pro
+brew cask install mysqlworkbench
 brew cask install dash
 brew cask install rdio
 brew cask install sketchup
