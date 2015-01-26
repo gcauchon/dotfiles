@@ -36,22 +36,10 @@ source $ZSH/completion.zsh
 
 # colours variables
 autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-  colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-  eval PR_$color='%{$fg_no_bold[${(L)color}]%}'
-  eval PR_BOLD_$color='%{$fg_bold[${(L)color}]%}'
-done
-
-export PR_RESET='$reset_color'
-export PR_RED PR_GREEN PR_YELLOW PR_BLUE PR_WHITE PR_BLACK
-export PR_BOLD_RED PR_BOLD_GREEN PR_BOLD_YELLOW PR_BOLD_BLUE 
-export PR_BOLD_WHITE PR_BOLD_BLACK
 
 # Prompt
-PROMPT="$PR_BLUE%n$PR_GREEN@%m $PR_RED$ "
-RPROMPT="$PR_WHITE%~"
+PROMPT="%{$fg[blue]%}%n@%m %{$fg[red]%}%# %{$reset_color%}"
+RPROMPT="%{$fg[white]%}%3~%{$reset_color%}"
 
 # unalias run-help
 # autoload run-help
