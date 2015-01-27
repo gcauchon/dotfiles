@@ -35,7 +35,7 @@ compinit
 source $ZSH/completion.zsh
 
 # colours variables
-autoload colors zsh/terminfo
+autoload -U colors && colors
 
 # Prompt
 PROMPT="%{$fg[blue]%}%n@%m %{$fg[red]%}%# %{$reset_color%}"
