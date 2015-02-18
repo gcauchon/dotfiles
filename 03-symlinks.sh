@@ -4,6 +4,9 @@
 ln -s $(pwd)/zsh/.zsh ../.zsh
 ln -s $(pwd)/zsh/.zshrc ../.zshrc
 
+# add Homebrew ZSH to list of acceptable shells
+sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+# swith use shell to ZSH
 chsh -s /usr/local/bin/zsh
 
 # slate
