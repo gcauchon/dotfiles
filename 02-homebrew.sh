@@ -12,15 +12,27 @@ brew install caskroom/cask/brew-cask
 
 brew cask install alfred
 brew cask install slate
+brew cask install duet
+brew cask install flux
+
 brew cask install dropbox 
 brew cask install onepassword
 brew cask install evernote
+brew cask install sketchup
 brew cask install cleanmymac
-brew cask install macpaw-gemini
-brew cask install flux
+
+brew cask install eclipse-jee
+
+brew cask install slack
+brew cask install hipchat
+
+brew cask install rdio
+
+brew cask install google-chrome
+brew cask install google-hangouts
 
 #
-# key bindings to update...
+# iTerm2 key bindings to update...
 #
 #   	ACTION         	SEND
 # ⌘ <-  "HEX CODE"      0x01 
@@ -30,18 +42,15 @@ brew cask install flux
 # DEL	"HEX CODE"	0x04 
 
 brew cask install iterm2
-brew cask install google-chrome
-brew cask install google-hangouts
+brew cask install dash
 brew cask install sublime-text
-
-brew cask install virtualbox
-echo "install the Windows+IE virtual images using https://github.com/xdissent/ievms"
-
 brew cask install sequel-pro
 brew cask install mysqlworkbench
-brew cask install dash
-brew cask install rdio
-brew cask install sketchup
 brew cask install imageoptim
 brew cask install imagealpha
-brew cask install adobe-creative-cloud
+
+#brew cask install adobe-creative-cloud
+
+#brew cask install virtualbox
+#echo "install the Windows+IE virtual images using https://github.com/xdissent/ievms"
+

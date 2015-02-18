@@ -11,4 +11,3 @@ ln -s $(pwd)/slate/.slate.js ../.slate.js
 
 # ruby
 ln -s $(pwd)/ruby/.gemrc ../.gemrc
-ln -s $(pwd)/ruby/.pryrc ../.pryrc
