@@ -1,51 +1,54 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-let mapleader = "\\"
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+syntax on
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
-Plugin 'wincent/command-t'
+filetype on
+filetype plugin indent on
+filetype indent on
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tomasr/molokai'
+let mapleader = ","
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+set shell=zsh
+
+" Always use UTF-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 " Look & Feel
-set number
+set showcmd " Display the command as we type it
+set showmode " Display the current mode
+set ignorecase " Ignore case when searching
+set smartcase " Smart-case search mode
+set incsearch " Start to search as soon as we type
+set hlsearch " Highlight matching search result
+set gdefault " Always search/replace globally
+set mouse= " Never use the mouse
+set number " Show line numbers
+set ts=2 " A tab = 4 spaces
+set sw=2 " Shift width
+set sts=2 " Short tab stop
+set et " Use spaces instead of tabs
+set title " Display filename in window title
+set showmatch " Show matching parentheses
+set noautoindent " Code auto-indent
+set nosmartindent " Smart code auto-indent
+
+" theme
+set t_Co=256
 set background=dark
-colorscheme solarized " molokai
+colorscheme molokai
 
+" status
 set laststatus=2
-set statusline=%F%m%r%h%w\ 
-set statusline+=%{fugitive#statusline()}\    
-set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ [line\ %l\/%L]
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+set statusline=[\ %F%m%r%h%w
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=%=
+set statusline+=col:\ %c\ line:\ %l/%L\ ]
