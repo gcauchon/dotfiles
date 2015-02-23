@@ -8,6 +8,11 @@ brew install wget
 brew install rbenv
 brew install ruby-build
 
+brew install mysql
+brew install mongodb
+brew install redis
+brew isntall node
+
 brew install caskroom/cask/brew-cask
 
 brew cask install alfred
