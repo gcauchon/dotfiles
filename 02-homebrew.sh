@@ -3,6 +3,9 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install zsh
+brew install zsh-completions
+brew install zsh-syntax-highlighting
+
 brew install git
 brew install wget
 brew install rbenv

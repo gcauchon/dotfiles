@@ -22,17 +22,18 @@ zmodload -a zsh/zprof zprof
 zmodload -a zsh/mapfile mapfile
 
 # load everything but the path and completion files
-for file in $ZSH/{exports,aliases,syntax,functions}.zsh; do
+for file in $ZSH/{exports,aliases,syntax}.zsh; do
     [ -r "$file" ] && source "$file"
 done
 unset file
 
-# initialize autocomplete here, otherwise functions won't be loaded
+# completion and custom functions
 autoload -U compinit
+fpath=(/usr/local/share/zsh-completions $fpath)
 compinit
 
-# load completion file after autocomplete
-source $ZSH/completion.zsh
+# syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # colours variables
 autoload -U colors && colors
