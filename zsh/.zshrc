@@ -1,14 +1,26 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.zsh
 
-setopt APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt correct # correct the spelling of commands
-setopt extended_history # timestamps in the history file
-setopt notify # background jobs status immediately
-setopt prompt_subst # expansion in prompts
+setopt AUTO_CD # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
+setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
+setopt EXTENDED_HISTORY # save timestamp of command and duration
+setopt HIST_IGNORE_DUPS # Do not write events to history that are duplicates of previous events
+setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
+setopt HIST_REDUCE_BLANKS # Remove extra blanks from each command line being added to history
+
+# ===== Completion 
+setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word    
+setopt AUTO_MENU # Show completion menu on successive tab press. needs unsetop menu_complete to work
+setopt AUTO_NAME_DIRS # Any parameter that is set to the absolute name of a directory immediately becomes a name for that directory
+setopt COMPLETE_IN_WORD # Allow completion from within a word/phrase
+
+unsetopt MENU_COMPLETE # Do not autoselect the first completion entry
+
+# ===== Correction
+unsetopt CORRECT_ALL # Spelling correction for arguments
+setopt CORRECT # Spelling correction for commands
+
+setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 
 # history
 export HISTSIZE=1000
@@ -17,20 +29,17 @@ export HISTFILE=$ZSH/.history
 
 # zsh modules
 zmodload -a zsh/stat stat
-zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
-zmodload -a zsh/mapfile mapfile
+#zmodload -a zsh/zprof zprof
 
 # load everything but the path and completion files
-for file in $ZSH/{exports,aliases,syntax}.zsh; do
+for file in $ZSH/{exports,aliases}.zsh; do
     [ -r "$file" ] && source "$file"
 done
 unset file
 
 # completion and custom functions
-autoload -U compinit
 fpath=(/usr/local/share/zsh-completions $fpath)
-compinit
+autoload -U compinit && compinit
 
 # syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -41,7 +50,3 @@ autoload -U colors && colors
 # Prompt
 PROMPT="%{$fg[blue]%}%n@%m %{$fg[red]%}%# %{$reset_color%}"
 RPROMPT="%{$fg[white]%}%3~%{$reset_color%}"
-
-# unalias run-help
-# autoload run-help
-# HELPDIR=/usr/local/share/zsh/help

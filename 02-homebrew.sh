@@ -25,14 +25,14 @@ brew cask install flux
 
 brew cask install dropbox 
 brew cask install onepassword
-brew cask install evernote
-brew cask install sketchup
-brew cask install cleanmymac
+#brew cask install evernote
+#brew cask install sketchup
+#brew cask install cleanmymac
 
-brew cask install eclipse-jee
+#brew cask install eclipse-jee
 
 brew cask install slack
-brew cask install hipchat
+#brew cask install hipchat
 
 brew cask install rdio
 
@@ -53,7 +53,7 @@ brew cask install iterm2
 brew cask install dash
 brew cask install sublime-text
 brew cask install sequel-pro
-brew cask install mysqlworkbench
+#brew cask install mysqlworkbench
 brew cask install imageoptim
 brew cask install imagealpha
 
