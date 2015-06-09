@@ -1,7 +1,7 @@
 alias zreload='source ~/.zshrc'
 
 # files / directories
-alias ll='ls -lhgA'
+alias ll='ls -lhgAG'
 
 # navigation
 alias ..='cd .. && pwd'
