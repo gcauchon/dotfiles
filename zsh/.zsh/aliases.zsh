@@ -1,7 +1,7 @@
 alias zreload='source ~/.zshrc'
 
 # files / directories
-alias ll='ls -lhgAG'
+alias ll='ls -lhAG'
 
 # navigation
 alias ..='cd .. && pwd'
@@ -17,3 +17,4 @@ take () {
   mkdir "$1"
   cd "$1"
 }
+
