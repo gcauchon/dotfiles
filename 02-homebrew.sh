@@ -5,6 +5,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install zsh
 brew install zsh-completions
 brew install zsh-syntax-highlighting
+brew install tree
 
 brew install git
 brew install wget

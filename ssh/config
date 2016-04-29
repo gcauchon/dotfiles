@@ -1,0 +1,7 @@
+Compression=yes
+
+Host git.myca.pvt
+    IdentityFile ~/.ssh/myca_rsa
+
+Host alagarderie.ca
+    Port 8122
