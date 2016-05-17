@@ -9,8 +9,8 @@ alias cd..='cd .. && pwd'
 alias ...='cd ../.. && pwd'
 alias ....='cd ../../.. && pwd'
 
-# Myca gateway
-alias gateway='ssh gcauchon@gw.myca.pvt'
+# docker
+alias docker-machine-apps='eval $(docker-machine env apps)'
 
 # mkdir then cd in it!
 take () {
