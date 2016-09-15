@@ -34,7 +34,7 @@ asdf install elixir 1.2.5
 brew install caskroom/cask/brew-cask
 
 brew cask install alfred
-brew cask install slate
+brew cask install spectacle
 brew cask install iterm2
 #
 # iTerm2 key bindings to update...
