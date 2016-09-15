@@ -5,7 +5,6 @@ setopt AUTO_CD # If you type foo, and it isn't a command, and it is a directory 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt EXTENDED_HISTORY # save timestamp of command and duration
 setopt HIST_IGNORE_DUPS # Do not write events to history that are duplicates of previous events
-setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
 setopt HIST_REDUCE_BLANKS # Remove extra blanks from each command line being added to history
 
 # ===== Completion 
@@ -23,8 +22,8 @@ setopt CORRECT # Spelling correction for commands
 setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 
 # history
-export HISTSIZE=1000
-export SAVEHIST=500
+export HISTSIZE=1200
+export SAVEHIST=1000
 export HISTFILE=$ZSH/.history
 
 # zsh modules
@@ -50,3 +49,14 @@ autoload -U colors && colors
 # Prompt
 PROMPT="%{$fg[blue]%}%n@%m %{$fg[red]%}%# %{$reset_color%}"
 RPROMPT="%{$fg[white]%}%3~%{$reset_color%}"
+
+# GnuPG2
+export GPG_TTY=$(tty)
+
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
