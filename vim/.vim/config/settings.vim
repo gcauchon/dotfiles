@@ -40,12 +40,12 @@ set viminfo='100,f1
 " screen will not be redrawn while running macros, registers or other non-typed comments
 set lazyredraw
 
-" ---------------------- CUSTOMIZATION ----------------------
-"  The following are some extra mappings/configs to enhance my personal
-"  VIM experience
-
-" set , as mapleader
+" set leader key
 let mapleader = ","
+let g:mapleader = ","
+
+" Folds
+set foldmethod=marker
 
 " Status line {{{
 set statusline=%<%t\ %y\ %{&ff}
@@ -55,8 +55,21 @@ set laststatus=2
 " }}}
 
 " Theme {{{
-colorscheme monokai
+colorscheme solarized " monokai
 set background=dark
 "}}}
 
-
+"
+set shell=zsh
+set clipboard=unnamed " pbcopy/pbpaste on OSX
+set showcmd " Display the command as we type it
+set showmode " Display the current mode
+set ignorecase " Ignore case when searching
+set smartcase " Smart-case search mode
+set incsearch " Start to search as soon as we type
+set ts=2 " Tab = 4 spaces
+set sw=2 " Shift size
+set sts=2 " Short tab stop
+set et " Use spaces instead of tabs
+set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
+set gdefault " Always search/replace globally
