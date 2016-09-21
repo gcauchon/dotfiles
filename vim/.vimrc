@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sickill/vim-monokai'
 Plug 'remiprev/vim-colors-solarized'
+Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
+Plug 'ervandew/supertab' " vim insert mode completions with Tab
 
 " Filetype-specific plugins
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'blade'] }

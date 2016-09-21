@@ -14,6 +14,8 @@ brew install wget
 brew install curl
 brew install vim --override-system-vi
 
+brew install keybase
+
 #brew install mysql
 #brew install mongodb
 #brew install redis

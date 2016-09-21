@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/opt/homebrew-cask/Caskroom/sync'
-let g:netrw_dirhist_2='/opt/homebrew-cask/Caskroom'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/gcauchon/Documents/fbio/config/initializers'
+let g:netrw_dirhist_2='/Users/gcauchon/Documents/fbio'
+let g:netrw_dirhist_3='/Users/gcauchon/Documents/fbio/db/migrate'
+let g:netrw_dirhist_4='/Users/gcauchon/Documents/fbio/db'
+let g:netrw_dirhist_5='/Users/gcauchon/Documents/fbio/db/migrate'
+let g:netrw_dirhist_6='/Users/gcauchon/Documents/fbio'
