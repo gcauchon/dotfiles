@@ -21,8 +21,11 @@
 	st = status --untracked-files=all
 	ci = commit -v
 	br = branch -vv
+  bl = branch --list
 	co = checkout
 	df = diff
+  f = fetch
+  fp = fetch --prune
 	unstage = reset HEAD
 	rollback = reset --soft HEAD^1
   r = rebase
