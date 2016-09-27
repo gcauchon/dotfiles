@@ -1,0 +1,33 @@
+# OS X
+.DS_Store?
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Vim
+.local.vimrc
+.lvimrc
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# Ruby
+.sass-cache
+.ruby-version
+.exenv-version
+
+# Node
+node_modules
+npm-debug.log
+
+# Environment
+.env
+.env.development
+.env.test
+
+# ASDF
+.tool-versions
+.tool-versions-e
