@@ -1,8 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline' " lean & mean status/tabline
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy file, buffer, mru, tag, ... finder
-Plug 'sickill/vim-monokai'
-Plug 'remiprev/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround' " easily delete, change and add such surroundings in pairs (ie. cs'<p> to change from ' to <p>...</p>)
 Plug 'Raimondi/delimitMate' " insert mode auto-completion for quotes, parens, brackets, etc.
 Plug 'ervandew/supertab' " insert mode completions with Tab

@@ -47,17 +47,11 @@ let g:mapleader = ","
 " Folds
 set foldmethod=marker
 
-" Status line {{{
-set statusline=%<%t\ %y\ %{&ff}
-set statusline+=\ %{&modified?'\ (modified)':'\ '}
-set statusline+=%=\ col:%c%V\ line:%l\/%L\ %P
-set laststatus=2
-" }}}
-
 " Theme {{{
-colorscheme solarized " monokai
+colorscheme solarized
 set background=dark
-"}}}
+"}}
+"
 
 "
 set shell=zsh
