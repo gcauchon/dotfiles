@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline' " lean & mean status/tabline
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim' " light and configurable statusline/tabline
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy file, buffer, mru, tag, ... finder
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround' " easily delete, change and add such surroundings in pairs (ie. cs'<p> to change from ' to <p>...</p>)

@@ -47,17 +47,27 @@ let g:mapleader = ","
 " Folds
 set foldmethod=marker
 
+" Status {{{
+set laststatus=2
+set noshowmode " Mode is included in Lightline
+
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'component': { 'readonly': '%{&readonly?"X":""}' },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '|', 'right': '|' } 
+\ }
+"}}}
+
 " Theme {{{
 colorscheme solarized
 set background=dark
-"}}
-"
+"}}}
 
 "
 set shell=zsh
 set clipboard=unnamed " pbcopy/pbpaste on OSX
 set showcmd " Display the command as we type it
-set showmode " Display the current mode
 set ignorecase " Ignore case when searching
 set smartcase " Smart-case search mode
 set incsearch " Start to search as soon as we type
@@ -67,3 +77,4 @@ set sts=2 " Short tab stop
 set et " Use spaces instead of tabs
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 set gdefault " Always search/replace globally
+set ambiwidth=double
