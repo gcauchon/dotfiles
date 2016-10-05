@@ -3,8 +3,8 @@
 cd ~
 
 # zsh
-ln -s .dot-files/zsh/.zsh
-ln -s .dot-files/zsh/.zshrc
+ln -s .dotfiles/zsh/.zsh
+ln -s .dotfiles/zsh/.zshrc
 
 # add Homebrew ZSH to list of acceptable shells
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
@@ -12,15 +12,15 @@ sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 # vim
-ln -s .dot-files/vim/.vim
-ln -s .dot-files/vim/.vimrc
+ln -s .dotfiles/vim/.vim
+ln -s .dotfiles/vim/.vimrc
 
 # tmux
-ln -s .dot-files/tmux/.tmux.conf
+ln -s .dotfiles/tmux/.tmux.conf
 
 # git
-ln -s .dot-files/tmux/.gitconfig
-ln -s .dot-files/tmux/.gitignore_global
+ln -s .dotfiles/git/.gitconfig
+ln -s .dotfiles/git/.gitignore_global
 
 # ruby
-ln -s .dot-files/ruby/.gemrc
+ln -s .dotfiles/ruby/.gemrc
