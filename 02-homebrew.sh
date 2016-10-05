@@ -46,6 +46,7 @@ brew cask install alfred
 brew cask install spectacle
 brew cask install iterm2
 brew cask install dropbox
+brew cask install sync
 brew cask install onepassword
 brew cask install cleanmymac
 
@@ -58,3 +59,13 @@ brew cask install imageoptim
 
 brew cask install spotify
 
+echo "========================="
+echo " Installation completed!"
+echo "-------------------------"
+echo " Post-install notes:"
+echo ""
+echo " The profile for the following tools are saved to Dropbox:"
+echo " - iTerm2"
+echo " - Alfred"
+echo " - 1Password"
+echo "========================="

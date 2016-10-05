@@ -1,1 +1,1 @@
-/Users/gcauchon/.vimrc
+../.vimrc

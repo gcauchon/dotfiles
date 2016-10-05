@@ -1,10 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy file, buffer, mru, tag, ... finder
 Plug 'sickill/vim-monokai'
 Plug 'remiprev/vim-colors-solarized'
-Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
-Plug 'ervandew/supertab' " vim insert mode completions with Tab
+Plug 'tpope/vim-surround' " easily delete, change and add such surroundings in pairs (ie. cs'<p> to change from ' to <p>...</p>)
+Plug 'Raimondi/delimitMate' " insert mode auto-completion for quotes, parens, brackets, etc.
+Plug 'ervandew/supertab' " insert mode completions with Tab
+Plug 'jszakmeister/vim-togglecursor' " toggle the cursor shape in Insert mode
+Plug 'vim-scripts/camelcasemotion' " navigate thru CamelCase or underscore_notation (ie: ,w ,e & ,b)
 
 " Filetype-specific plugins
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'blade'] }
