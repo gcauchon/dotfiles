@@ -38,6 +38,7 @@ unset file
 
 # completion and custom functions
 fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(~/.zsh/completion $fpath)
 autoload -U compinit && compinit
 
 # syntax highlighting

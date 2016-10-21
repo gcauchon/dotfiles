@@ -40,6 +40,9 @@ set viminfo='100,f1
 " screen will not be redrawn while running macros, registers or other non-typed comments
 set lazyredraw
 
+" 
+set termguicolors
+
 " set leader key
 let mapleader = ","
 let g:mapleader = ","
