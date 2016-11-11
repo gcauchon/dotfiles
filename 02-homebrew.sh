@@ -43,7 +43,8 @@ asdf install node 6.1.0
 brew install caskroom/cask/brew-cask
 
 brew cask install alfred
-brew cask install spectacle
+brew cask install slate
+#brew cask install spectacle
 brew cask install iterm2
 brew cask install dropbox
 brew cask install sync

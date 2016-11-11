@@ -24,3 +24,6 @@ ln -s .dotfiles/git/.gitignore_global
 
 # ruby
 ln -s .dotfiles/ruby/.gemrc
+
+# slate
+ln -s .dotfiles/slate/.slate.js
