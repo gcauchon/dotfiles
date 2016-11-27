@@ -9,6 +9,9 @@ alias cd..='cd .. && pwd'
 alias ...='cd ../.. && pwd'
 alias ....='cd ../../.. && pwd'
 
+# ruby
+alias be='bundle exec'
+
 # docker
 alias docker-machine-apps='eval $(docker-machine env apps)'
 

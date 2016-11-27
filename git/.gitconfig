@@ -6,6 +6,7 @@
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
+	editor = nvim
 [commit]
   gpgsign = true
 [merge]
@@ -18,14 +19,18 @@
   a = add -A
   c = commit -m
   ca = commit --amend
-  st = status --untracked-files=all
+  s = status --untracked-files=all
   ci = commit -v
   br = branch -vv
   bl = branch --list
+  bd = branch -D
   co = checkout
+  cb = checkout -b
   df = diff
   f = fetch
   fp = fetch --prune
+  m = merge
+  fm = pull
   unstage = reset HEAD
   rollback = reset --soft HEAD^1
   r = rebase
@@ -34,4 +39,4 @@
   ra = rebase --abort
   p = push
   ph = push -u origin HEAD
-  pf = push -f origin HEAD
+  pf = push --force-with-lease
