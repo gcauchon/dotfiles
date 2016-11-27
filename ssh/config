@@ -1,7 +1,34 @@
-Compression=yes
-
-Host git.myca.pvt
-    IdentityFile ~/.ssh/myca_rsa
-
+#-------------------------------------------------------
+# À la garderie
+#-------------------------------------------------------
 Host alagarderie.ca
-    Port 8122
+  Port 8122
+  User gcauchon
+Host staging.alagarderie.ca
+  Port 8122
+  User gcauchon
+#-------------------------------------------------------
+# monANCAI
+# #-------------------------------------------------------
+Host git.monancai.com
+  Port 10022
+  IdentityFile ~/.ssh/id_gcauchon
+#-------------------------------------------------------
+# PremierTech
+#-------------------------------------------------------
+Host com-premiertech-qa-lb1
+  HostName 52.202.204.240
+  Port 22
+  User ubuntu
+Host com-premiertech-qa-appstack1
+  HostName 107.22.148.166
+  Port 22
+  User ubuntu
+Host com-premiertech-staging-appstack1
+  HostName 54.174.29.158
+  Port 22
+  User ubuntu
+Host com-premiertech-production-appstack1
+  HostName 54.243.26.204
+  Port 22
+  User ubuntu
