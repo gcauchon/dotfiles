@@ -12,8 +12,11 @@ sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 # vim
-ln -s .dotfiles/vim/.vim
-ln -s .dotfiles/vim/.vimrc
+#ln -s .dotfiles/vim/.vim
+#ln -s .dotfiles/vim/.vimrc
+# neovim
+mkdir .config
+ln -s .dotfiles/vim/.vim .config/nvim
 
 # tmux
 ln -s .dotfiles/tmux/.tmux.conf
@@ -27,3 +30,12 @@ ln -s .dotfiles/ruby/.gemrc
 
 # slate
 ln -s .dotfiles/slate/.slate.js
+
+# keybase
+keybase login
+mkdir tmp
+keybase pgp export -s > tmp/keybase-private.key
+gpg --allow-secret-key-import --import tmp/keybase-private.key
+keybase pgp export > tmp/keybase-public.key
+gpg --import tmp/keybase-public.key
+rm -rf tmp
