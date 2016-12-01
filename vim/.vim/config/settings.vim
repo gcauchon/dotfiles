@@ -43,10 +43,6 @@ set lazyredraw
 " 
 set termguicolors
 
-" set leader key
-let mapleader = ","
-let g:mapleader = ","
-
 " Folds
 set foldmethod=marker
 

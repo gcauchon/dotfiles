@@ -31,8 +31,6 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 asdf plugin-add ruby   https://github.com/asdf-vm/asdf-ruby
 asdf install ruby 2.3.3
-asdf plugin-add node   https://github.com/asdf-vm/asdf-nodejs
-asdf install node 7.2.0
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang
 #asdf install erlang 18.3
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir

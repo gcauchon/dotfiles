@@ -24,6 +24,14 @@ slate.bindAll({
     "3:cmd,alt": slate.operation("move", moveWindow(1920, 1080))
 });
 
+// resize
+slate.bindAll({
+    "h:ctrl,alt": slate.operation("resize", {width: "-50", height: "+0"}),
+    "j:ctrl,alt": slate.operation("resize", {width: "+0", height: "+50"}),
+    "k:ctrl,alt": slate.operation("resize", {width: "+0", height: "-50"}),
+    "l:ctrl,alt": slate.operation("resize", {width: "+50", height: "+0"})
+});
+
 // nudge
 slate.bindAll({
     "h:cmd,alt": slate.operation("nudge", {x: "-5%", y: "+0"}),
@@ -34,8 +42,6 @@ slate.bindAll({
 
 // push
 slate.bindAll({
-    "h:ctrl,alt": slate.operation("push", {direction: "left", style: "bar-resize:screenSizeX/2"}),
-    "j:ctrl,alt": slate.operation("push", {direction: "bottom", style: "bar-resize:screenSizeY/2"}),    
-    "k:ctrl,alt": slate.operation("push", {direction: "top", style: "bar-resize:screenSizeY/2"}),
-    "l:ctrl,alt": slate.operation("push", {direction: "right", style: "bar-resize:screenSizeX/2"})
+    "h:shift,ctrl,alt": slate.operation("push", {direction: "left", style: "bar-resize:screenSizeX/2"}),
+    "l:shift,ctrl,alt": slate.operation("push", {direction: "right", style: "bar-resize:screenSizeX/2"})
 })
