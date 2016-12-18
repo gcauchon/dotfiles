@@ -16,7 +16,7 @@ chsh -s /usr/local/bin/zsh
 #ln -s .dotfiles/vim/.vimrc
 # neovim
 mkdir .config
-ln -s .dotfiles/vim/.vim .config/nvim
+ln -s .dotfiles/vim .config/nvim
 
 # tmux
 ln -s .dotfiles/tmux/.tmux.conf

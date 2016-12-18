@@ -9,6 +9,9 @@ Plug 'Raimondi/delimitMate' " insert mode auto-completion for quotes, parens, br
 Plug 'ervandew/supertab' " insert mode completions with Tab
 Plug 'jszakmeister/vim-togglecursor' " toggle the cursor shape in Insert mode
 Plug 'vim-scripts/camelcasemotion' " navigate thru CamelCase or underscore_notation (ie: ,w ,e & ,b)
+Plug 'rizzatti/dash.vim' "search for terms using the excellent Dash.app
+Plug 'scrooloose/nerdtree' "A tree explorer plugin for vim
+Plug 'neomake/neomake' "Async :make and linting framework for Neovim
 
 " Filetype-specific plugins
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'blade'] }
@@ -27,4 +30,5 @@ call plug#end()
 source ~/.config/nvim/config/settings.vim
 source ~/.config/nvim/config/mappings.vim
 source ~/.config/nvim/config/filetype.vim
+source ~/.config/nvim/config/plugins.vim
 

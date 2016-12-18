@@ -21,6 +21,14 @@ set fileencoding=utf-8
 " enable matchit plugin enhances '%'
 runtime macros/matchit.vim
 
+" Column & row highlighting
+hi CursorLine guibg=#283937
+hi CursorColumn guibg=#283937
+au InsertEnter * set cursorline
+au InsertEnter * set cursorcolumn
+au InsertLeave * set cursorline
+au InsertLeave * set cursorcolumn
+
 " backspace won't delete over line breaks, or automatically-inserted indentation
 set backspace=indent,eol,start
 " enable forward delete
@@ -59,7 +67,7 @@ let g:lightline = {
 "}}}
 
 " Theme {{{
-colorscheme solarized
+colorscheme monokai
 set background=dark
 "}}}
 
@@ -70,10 +78,10 @@ set showcmd " Display the command as we type it
 set ignorecase " Ignore case when searching
 set smartcase " Smart-case search mode
 set incsearch " Start to search as soon as we type
+set expandtab " No more tabs, only whitespaces
 set ts=2 " Tab = 4 spaces
 set sw=2 " Shift size
 set sts=2 " Short tab stop
-set et " Use spaces instead of tabs
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 set gdefault " Always search/replace globally
 set ambiwidth=double

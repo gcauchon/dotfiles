@@ -1,5 +1,6 @@
 .DS_Store
 zsh/.zsh/.history
-vim/.vim/.netrwhist
-vim/.vim/plugged/*
+vim/.netrwhist
+vim/autoload/plug.*
+vim/plugged/*
 zsh/.zsh/zsh-syntax-highlighting
