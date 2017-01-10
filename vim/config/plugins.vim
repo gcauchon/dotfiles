@@ -1,23 +1,32 @@
 " CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = 'ra'
-nnoremap <c-p> :CtrlP<CR>
-nnoremap <c-o> :CtrlPBuffer<CR>
+map <Leader>p :CtrlP $(pwd)<CR>
+map <Leader>P :CtrlPClearCache<CR>:CtrlP $(pwd)<CR>
+map <Leader>l :CtrlP %:p:h<CR>
+map <Leader>o :CtrlPBuffer<CR>
+map <Leader>m :CtrlPMRU<CR>
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+\ 'dir':  '\v(^|\/)(deps|log|vendor|tmp|_build|node_modules|\.git|dist)$',
+\ 'file':  '\v(^|\/)(\.DS_Store|.*\.js\.map)$',
+\}
 
 " NERDtree
 let NERDTreeShowHidden=1
-map <c-t> :NERDTreeToggle<CR>
+map <Leader>f :NERDTreeFocus<CR>
+map <Leader>t :NERDTreeToggle<CR>
 
-"emmet settings
-" ----------------------------------------------------------------------------------------------------
+" Emmet
 let g:user_emmet_leader_key = ';'
 let g:user_emmet_expandabbr_key = ';;'
 let g:user_emmet_settings = {
-\  'indentation': '  '
+\  'indentation': '  ',
+\  'javascript' : {
+\    'extends' : 'jsx',
+\  }
 \}
 
-" Neomake settings
-" ----------------------------------------------------------------------------------------------------
+" Neomake
 let g:neomake_open_list=2
 let g:neomake_list_height=4
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -27,3 +36,7 @@ let g:neomake_html_enabled_makers = ['tidy']
 let g:neomake_elixir_enabled_makers = []
 let g:neomake_scss_stylelint_maker = { 'args': ['--no-color'], 'errorformat': '%+P%f,%*\s%l:%c  %t  %m,%-Q' }
 let g:neomake_html_tidy_maker = { 'args': ['-e', '-q'], 'errorformat': 'line %l column %c - %m' }
+
+augroup NeoMake
+  autocmd BufWritePost * Neomake
+augroup END
