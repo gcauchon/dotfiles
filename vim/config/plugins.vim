@@ -16,6 +16,9 @@ let NERDTreeShowHidden=1
 map <Leader>f :NERDTreeFocus<CR>
 map <Leader>t :NERDTreeToggle<CR>
 
+" Ack
+let g:ackprg = 'rg --no-heading --color=never --column --line-number'
+
 " Emmet
 let g:user_emmet_leader_key = ';'
 let g:user_emmet_expandabbr_key = ';;'

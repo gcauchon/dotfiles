@@ -11,6 +11,7 @@ Plug 'jszakmeister/vim-togglecursor' " toggle the cursor shape in Insert mode
 Plug 'vim-scripts/camelcasemotion' " navigate thru CamelCase or underscore_notation (ie: ,w ,e & ,b)
 Plug 'rizzatti/dash.vim' "search for terms using the excellent Dash.app
 Plug 'scrooloose/nerdtree' "A tree explorer plugin for vim
+Plug 'mileszs/ack.vim' "Run your favorite search tool from Vim, with an enhanced results list
 Plug 'neomake/neomake' "Async :make and linting framework for Neovim
 
 " Filetype-specific plugins

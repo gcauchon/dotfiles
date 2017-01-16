@@ -13,11 +13,12 @@ brew install git
 brew install tig
 brew install wget
 brew install curl
-#brew install vim --override-system-vi
-brew install neovim/neovim/neovim
+brew install neovim/neovim/neovim # Vim-fork focused on extensibility and agility.
+brew install ack # Search for PATTERN in each source file in the tree from the current directory on down.
+brew install ripgrep # line oriented search tool that combines the usability of 'The Silver Searcher' (an ack fork) with the raw speed of GNU 'grep'.
 
 brew install reattach-to-user-namespace
-brew install tmux
+brew install tmux 
 
 brew install gnupg2
 brew install pgp-agent
@@ -30,15 +31,17 @@ brew install keybase
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 asdf plugin-add ruby   https://github.com/asdf-vm/asdf-ruby
-asdf install ruby 2.3.3
+#asdf install ruby 2.3.3
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang
 #asdf install erlang 18.3
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir
 #asdf install elixir 1.2.5
 
-# A better npm packager!
-brew install yarn
+brew install yarn # better npm packager!
 
+#
+# Casks
+#
 brew install caskroom/cask/brew-cask
 
 brew cask install alfred
