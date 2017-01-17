@@ -39,10 +39,14 @@ unset file
 # completion and custom functions
 fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=(~/.zsh/completion $fpath)
-autoload -U compinit && compinit
 
-# syntax highlighting
+# Fish shell like syntax highlighting for Zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Fish-like fast/unobtrusive autosuggestions for zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+autoload -U compinit && compinit
 
 # colours variables
 autoload -U colors && colors

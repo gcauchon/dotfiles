@@ -1,7 +1,3 @@
-" Leader
-let mapleader = ","
-let g:mapleader = ","
-
 " ESC
 inoremap ,, <Esc>
 

@@ -1,6 +1,10 @@
 " don't make vim compatible with vi 
 set nocompatible
 
+" Leader
+let mapleader = ","
+let g:mapleader = ","
+
 " turn on syntax highlighting
 syntax on
 " and show line numbers
@@ -18,16 +22,20 @@ set autoread
 set encoding=utf-8
 set fileencoding=utf-8
 
+" disable netrw since I'm using NERDTree
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
 " enable matchit plugin enhances '%'
 runtime macros/matchit.vim
 
 " Column & row highlighting
 hi CursorLine guibg=#283937
-hi CursorColumn guibg=#283937
+"hi CursorColumn guibg=#283937
 au InsertEnter * set cursorline
-au InsertEnter * set cursorcolumn
+"au InsertEnter * set cursorcolumn
 au InsertLeave * set cursorline
-au InsertLeave * set cursorcolumn
+"au InsertLeave * set cursorcolumn
 
 " backspace won't delete over line breaks, or automatically-inserted indentation
 set backspace=indent,eol,start
@@ -79,9 +87,8 @@ set ignorecase " Ignore case when searching
 set smartcase " Smart-case search mode
 set incsearch " Start to search as soon as we type
 set expandtab " No more tabs, only whitespaces
-set ts=2 " Tab = 4 spaces
+set ts=2 " Tab = 2 spaces
 set sw=2 " Shift size
 set sts=2 " Short tab stop
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 set gdefault " Always search/replace globally
-set ambiwidth=double

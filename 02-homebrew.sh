@@ -7,6 +7,7 @@ brew update
 brew install zsh
 brew install zsh-completions
 brew install zsh-syntax-highlighting
+brew install zsh-autosuggestions
 brew install tree
 
 brew install git
