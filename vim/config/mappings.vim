@@ -7,10 +7,14 @@ vnoremap > >gv|
 vnoremap <Tab> >gv|
 vnoremap <S-Tab> <gv
 
+nmap <Leader>x "_x
+nmap <Leader>d "_d
+nmap <Leader>dd "_dd
+
 " Buffer navigation
 nmap > :bnext<CR>
 nmap < :bprevious<CR>
-nmap <Leader>d :bdelete<CR>
+nmap <Leader>c :bdelete<CR>
 
 " Remove trailing whitespace
 nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>

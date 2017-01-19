@@ -1,6 +1,8 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.zsh
 
+export TERM="xterm-256color"
+
 setopt AUTO_CD # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt EXTENDED_HISTORY # save timestamp of command and duration
