@@ -2,11 +2,10 @@
 [user]
   name = Guillaume Cauchon
   email = gcauchon@gmail.com
-  signingkey = DC13AB49F1B3C51A
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
-	editor = nvim
+  editor = nvim
 [commit]
   gpgsign = true
 [merge]
@@ -17,16 +16,14 @@
   tool = tig
 [alias]
   a = add -A
-  c = commit -m
-  ca = commit --amend
+  c = commit -S -m
+  ca = commit -S --amend
   s = status --untracked-files=all
-  ci = commit -v
   br = branch -vv
   bl = branch --list
   bd = branch -D
   co = checkout
   cb = checkout -b
-  df = diff
   f = fetch
   fp = fetch --prune
   m = merge

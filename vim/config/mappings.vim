@@ -21,3 +21,7 @@ nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 
 " Current file full path
 nmap <Leader>p :echo expand('%:p')<CR>
+
+" QuickFix
+nmap <Leader>q :copen<CR>
+nmap <Leader>Q :cclose<CR>
