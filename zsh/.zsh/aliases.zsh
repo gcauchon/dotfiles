@@ -12,9 +12,6 @@ alias ....='cd ../../.. && pwd'
 # ruby
 alias be='bundle exec'
 
-# docker
-alias docker-machine-apps='eval $(docker-machine env apps)'
-
 # mkdir then cd in it!
 take () {
   mkdir "$1"

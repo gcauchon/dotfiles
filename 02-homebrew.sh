@@ -27,18 +27,12 @@ brew install pgp-agent
 # keybase
 brew install keybase
 
-# asdf - extendable version manager
-# https://github.com/asdf-vm/asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
-asdf plugin-add ruby   https://github.com/asdf-vm/asdf-ruby
-#asdf install ruby 2.3.3
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang
-#asdf install erlang 18.3
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir
-#asdf install elixir 1.2.5
-
-brew install yarn # better npm packager!
+brew install node
+brew install yarn
+brew install rbenv
+#brew install kerl
+#brew install keix
+brew install elixir
 
 #
 # Casks
