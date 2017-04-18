@@ -15,15 +15,15 @@ Plug 'mileszs/ack.vim' "Run your favorite search tool from Vim, with an enhanced
 Plug 'neomake/neomake' "Async :make and linting framework for Neovim
 
 " Filetype-specific plugins
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'blade'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'lukaszb/vim-web-indent', { 'for': ['html', 'javascript'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['mkd'] }
 Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
-Plug 'pangloss/vim-javascript' " For some reason, we cannot use `'for': 'javascript'` here because it breaks indent
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 
 call plug#end()
 

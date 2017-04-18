@@ -16,6 +16,10 @@ nmap > :bnext<CR>
 nmap < :bprevious<CR>
 nmap <Leader>c :bdelete<CR>
 
+" Splits
+set splitbelow
+set splitright
+
 " Remove trailing whitespace
 nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 
