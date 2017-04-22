@@ -46,14 +46,12 @@ fpath=(~/.zsh/completion $fpath)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Fish-like fast/unobtrusive autosuggestions for zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=250"
 
 autoload -U compinit && compinit
 
-# colours variables
-autoload -U colors && colors
-
 # Prompt
-PROMPT="%{$fg[blue]%}%n@%m %{$fg[red]%}%# %{$reset_color%}"
-RPROMPT="%{$fg[white]%}%3~%{$reset_color%}"
+PROMPT="%F{39}%n@%m %F{160}%# %f"
+RPROMPT="%F{117}%3~%f"
 
