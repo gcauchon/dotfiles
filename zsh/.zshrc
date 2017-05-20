@@ -46,8 +46,8 @@ fpath=(~/.zsh/completion $fpath)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Fish-like fast/unobtrusive autosuggestions for zsh
-#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=250"
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=245"
 
 autoload -U compinit && compinit
 
