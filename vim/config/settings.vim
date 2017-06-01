@@ -22,6 +22,8 @@ set autoread
 set encoding=utf-8
 set fileencoding=utf-8
 
+set mouse=a
+
 " disable netrw since I'm using NERDTree
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
