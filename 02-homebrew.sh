@@ -27,12 +27,15 @@ brew install pgp-agent
 # keybase
 brew install keybase
 
-brew install node
-brew install yarn
-brew install rbenv
-#brew install kerl
-#brew install keix
-brew install elixir
+# asdf
+brew install asdf
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang 
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir
+
+zsh ~/.asdf/plugins/nodejs/bin/import-release-team-keyrin 
+
 
 #
 # Casks
@@ -44,7 +47,6 @@ brew cask install slate
 #brew cask install spectacle
 brew cask install iterm2
 brew cask install dropbox
-brew cask install sync
 brew cask install 1password
 brew cask install cleanmymac
 
