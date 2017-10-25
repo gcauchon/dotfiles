@@ -52,6 +52,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=245"
 autoload -U compinit && compinit
 
 # Prompt
-PROMPT="%F{39}%n@%m %F{160}%# %f"
+PROMPT="%F{39}%n@%m %F{160}>%f "
 RPROMPT="%F{117}%3~%f"
-
