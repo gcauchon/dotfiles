@@ -29,14 +29,10 @@ brew install keybase
 
 # asdf
 brew install asdf
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
-asdf install nodejs 8.5.0
-asdf global nodejs 8.5.0
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
-asdf install ruby 2.4.2
-asdf global ruby 2.4.2
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang 
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir
+asdf plugin-add nodejs
+asdf plugin-add ruby
+asdf plugin-add erlang
+asdf plugin-add elixir
 
 zsh /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
 
@@ -53,8 +49,10 @@ brew cask install dropbox
 brew cask install 1password
 brew cask install cleanmymac
 brew cask install istat-menus
+brew cask install intel-power-gadget
 
 brew cask install google-chrome
+brew cask install firefox
 brew cask install atom
 brew cask install slack
 brew cask install dash
