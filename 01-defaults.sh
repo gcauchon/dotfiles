@@ -9,7 +9,6 @@
 # Finder
 ##
 
-defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder AppleShowAllFiles YES
 
@@ -102,6 +101,10 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 ##
 # System
 ##
+
+# Set key repeat values to what are normally allowed in System Preferences > Keyboard 
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
