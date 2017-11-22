@@ -3,11 +3,7 @@ export ZSH=$HOME/.zsh
 
 export TERM="xterm-256color"
 
-setopt AUTO_CD # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
-setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
-setopt EXTENDED_HISTORY # save timestamp of command and duration
-setopt HIST_IGNORE_DUPS # Do not write events to history that are duplicates of previous events
-setopt HIST_REDUCE_BLANKS # Remove extra blanks from each command line being added to history
+setopt AUTO_CD # If you type foo, and it isn’t a command, and it is a directory in your cdpath, go there
 
 # ===== Completion 
 setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word    
@@ -24,9 +20,16 @@ setopt CORRECT # Spelling correction for commands
 setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 
 # history
-export HISTSIZE=1200
-export SAVEHIST=1000
-export HISTFILE=$ZSH/.history
+export HISTSIZE=15000
+export SAVEHIST=10000
+export HISTFILE=$HOME/.zsh_history
+
+setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
+setopt EXTENDED_HISTORY # Save each command’s beginning timestamp and the duration
+setopt SHARE_HISTORY
+setopt HIST_VERIFY # With history expansion, don’t execute the line directly
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_REDUCE_BLANKS # Remove extra blanks from each command line being added to history
 
 # zsh modules
 zmodload -a zsh/stat stat

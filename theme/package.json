@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "themer": "^2.2.3",
+    "themer-alfred": "^1.0.5",
+    "themer-atom-syntax": "^1.0.3",
+    "themer-atom-ui": "^1.0.1",
+    "themer-colors-default": "^1.0.5",
+    "themer-colors-one": "^1.0.4",
+    "themer-colors-solarized": "^1.0.0",
+    "themer-iterm": "^1.0.4",
+    "themer-vim": "^2.2.7"
+  },
+  "scripts": {
+    "build": "themer -c themer-colors-one -t themer-iterm -t themer-alfred -t themer-vim -t themer-atom-ui -t themer-atom-syntax -o gen"
+  }
+}

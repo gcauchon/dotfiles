@@ -31,13 +31,14 @@ let g:loaded_netrwPlugin = 1
 " enable matchit plugin enhances '%'
 runtime macros/matchit.vim
 
-" Column & row highlighting
+" Column & row highlighting {{{
 hi CursorLine guibg=#283937
 "hi CursorColumn guibg=#283937
 au InsertEnter * set cursorline
 "au InsertEnter * set cursorcolumn
 au InsertLeave * set cursorline
 "au InsertLeave * set cursorcolumn
+"}}}
 
 " backspace won't delete over line breaks, or automatically-inserted indentation
 set backspace=indent,eol,start
@@ -64,21 +65,19 @@ set termguicolors
 " Folds
 set foldmethod=marker
 
+" Theme {{{
+colorscheme ThemerVim
+set background=dark
+"}}}
+
 " Status {{{
 set laststatus=2
 set noshowmode " Mode is included in Lightline
 
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'component': { 'readonly': '%{&readonly?"X":""}' },
-  \ 'separator': { 'left': '', 'right': '' },
-  \ 'subseparator': { 'left': '|', 'right': '|' } 
-\ }
-"}}}
-
-" Theme {{{
-colorscheme monokai
-set background=dark
+  \ 'colorscheme': 'powerline',
+  \ 'component': { 'readonly': '%{&readonly?"X":""}' }
+ \ }
 "}}}
 
 "

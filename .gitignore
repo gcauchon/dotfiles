@@ -1,5 +1,6 @@
 .DS_Store
-zsh/.zsh/.history
+theme/yarn.lock
+theme/gen
 vim/.netrwhist
 vim/autoload/plug.*
 vim/plugged/*
