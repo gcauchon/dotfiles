@@ -14,7 +14,6 @@ let g:ctrlp_custom_ignore = {
 " NERDtree
 let NERDTreeShowHidden=1
 map <Leader>f :NERDTreeFind<CR>
-map <Leader>F :NERDTreeFocus<CR>
 map <Leader>t :NERDTreeToggle<CR>
 
 " Ack

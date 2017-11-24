@@ -1,12 +1,13 @@
 " ESC
-inoremap ,, <Esc>
+noremap ,, <Esc>
 
-" Tabs
+" Indentation
 vnoremap < <gv
 vnoremap > >gv|
 vnoremap <Tab> >gv|
 vnoremap <S-Tab> <gv
 
+" Destructive 'delete'
 nmap <Leader>x "_x
 nmap <Leader>d "_d
 nmap <Leader>dd "_dd
@@ -23,9 +24,6 @@ set splitright
 " Remove trailing whitespace
 nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 
-" Current file full path
-nmap <Leader>p :echo expand('%:p')<CR>
-
-" QuickFix
+" QuickFix (ie Search, Linter, etc...)
 nmap <Leader>q :copen<CR>
 nmap <Leader>Q :cclose<CR>

@@ -12,6 +12,7 @@ Plug 'rizzatti/dash.vim' "search for terms using the excellent Dash.app
 Plug 'scrooloose/nerdtree' "A tree explorer plugin for vim
 Plug 'mileszs/ack.vim' "Run your favorite search tool from Vim, with an enhanced results list
 Plug 'neomake/neomake' "Async :make and linting framework for Neovim
+Plug 'rakr/vim-one'
 
 " Filetype-specific plugins
 Plug 'mattn/emmet-vim', { 'for': ['html', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'javascript', 'javascript.jsx'] }
