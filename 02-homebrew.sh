@@ -23,9 +23,7 @@ brew install tmux
 
 brew install gnupg2
 brew install pgp-agent
-
-# keybase
-brew install keybase
+# brew install keybase
 
 # asdf
 brew install asdf
@@ -46,6 +44,7 @@ brew cask install slate
 #brew cask install spectacle
 brew cask install iterm2
 brew cask install dropbox
+brew cask install google-drive-file-stream
 brew cask install 1password
 brew cask install cleanmymac
 brew cask install istat-menus
