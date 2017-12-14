@@ -93,3 +93,5 @@ set sw=2 " Shift size
 set sts=2 " Short tab stop
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 set gdefault " Always search/replace globally
+
+set noic

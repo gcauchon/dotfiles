@@ -15,15 +15,16 @@ Plug 'neomake/neomake' "Async :make and linting framework for Neovim
 Plug 'rakr/vim-one'
 
 " Filetype-specific plugins
-Plug 'mattn/emmet-vim', { 'for': ['html', 'ruby', 'scss', 'css', 'yaml', 'haml', 'less', 'javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'lukaszb/vim-web-indent', { 'for': ['html', 'javascript'] }
-Plug 'plasticboy/vim-markdown', { 'for': ['mkd'] }
-Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['mkd'] }
 
 call plug#end()
 

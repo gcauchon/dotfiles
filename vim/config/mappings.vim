@@ -15,7 +15,7 @@ nmap <Leader>dd "_dd
 " Buffer navigation
 nmap > :bnext<CR>
 nmap < :bprevious<CR>
-nmap <Leader>c :bdelete<CR>
+nmap <Leader>v :bdelete<CR>
 
 " Splits
 set splitbelow
@@ -27,3 +27,7 @@ nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 " QuickFix (ie Search, Linter, etc...)
 nmap <Leader>q :copen<CR>
 nmap <Leader>Q :cclose<CR>
+
+" Undo/Redo
+noremap u <undo>
+noremap U :redo<CR>
