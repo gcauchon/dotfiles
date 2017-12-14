@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -34,10 +34,10 @@ brew install neovim/neovim/neovim # Vim-fork focused on extensibility and agilit
 brew install ack # Search for PATTERN in each source file in the tree from the current directory on down.
 brew install ripgrep # line oriented search tool that combines the usability of 'The Silver Searcher' (an ack fork) with the raw speed of GNU 'grep'.
 
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 mkdir ~/.config
 ln -s vim ~/.config/nvim
+
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Misc
 brew install tree
@@ -47,16 +47,20 @@ brew install tldr
 brew install jq
 
 # keybase
-# brew install gnupg2
-# brew install pgp-agent
-# brew install keybase
-# keybase login
-# mkdir tmp
-# keybase pgp export -s > tmp/keybase-private.key
-# gpg --allow-secret-key-import --import tmp/keybase-private.key
-# keybase pgp export > tmp/keybase-public.key
-# gpg --import tmp/keybase-public.key
-# rm -rf tmp
+brew install gpg
+brew install pgp-agent
+brew cask install keybase
+
+echo ""
+echo " Import PGP keys from Keybase "
+echo "-------------------------"
+echo " keybase login"
+echo " mkdir tmp"
+echo " keybase pgp export -s > tmp/keybase-private.key"
+echo " gpg --allow-secret-key-import --import tmp/keybase-private.key"
+echo " keybase pgp export > tmp/keybase-public.key"
+echo " gpg --import tmp/keybase-public.key"
+echo " rm -rf tmp"
 
 # asdf
 brew install asdf
@@ -75,7 +79,7 @@ brew tap jcouture/nv
 brew install nv
 
 # AWS
-brew install aws-cli
+brew install awscli
 brew install aws-elasticbeanstalk
 
 # Heroku
