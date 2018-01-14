@@ -49,6 +49,7 @@ brew install jq
 # keybase
 brew install gpg
 brew install pgp-agent
+brew install pinentry-mac
 brew cask install keybase
 
 echo ""

@@ -9,6 +9,10 @@ alias cd..='cd .. && pwd'
 alias ...='cd ../.. && pwd'
 alias ....='cd ../../.. && pwd'
 
+# docker
+alias dk='docker'
+alias dkc='docker-compose'
+
 # ruby
 alias be='bundle exec'
 

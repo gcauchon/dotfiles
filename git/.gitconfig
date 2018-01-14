@@ -2,6 +2,7 @@
 [user]
   name = Guillaume Cauchon
   email = gcauchon@gmail.com
+  signingkey = DC13AB49F1B3C51A
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
@@ -37,3 +38,5 @@
   p = push
   ph = push -u origin HEAD
   pf = push --force-with-lease
+[gpg]
+  program = /usr/local/bin/gpg

@@ -2,4 +2,5 @@
 export GPG_TTY=$(tty)
 
 # asdf
-source /usr/local/opt/asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash

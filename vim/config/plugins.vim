@@ -29,6 +29,9 @@ let g:user_emmet_settings = {
 \  }
 \}
 
+" vim-jsx
+let g:jsx_ext_required = 0
+
 " Neomake
 let g:neomake_open_list=2
 let g:neomake_list_height=4
