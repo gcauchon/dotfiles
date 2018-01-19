@@ -19,6 +19,7 @@ Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
+Plug 'slashmili/alchemist.vim', { 'for': ['elixir', 'eelixir'] }
 Plug 'lukaszb/vim-web-indent', { 'for': ['html', 'javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }

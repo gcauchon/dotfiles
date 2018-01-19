@@ -10,6 +10,12 @@ syntax on
 " and show line numbers
 set number
 
+set shell=zsh
+set noic
+set clipboard=unnamed " pbcopy/pbpaste on OSX
+set showcmd " Display the command as we type iti
+set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
+
 " make vim try to detect file types and load plugins for them
 filetype on
 filetype plugin on
@@ -39,6 +45,12 @@ au InsertEnter * set cursorline
 au InsertLeave * set cursorline
 " au InsertLeave * set cursorcolumn
 "}}}
+
+" fuck tabs!
+set tabstop=2 " Tab = 2 spaces
+set softtabstop=2
+set shiftwidth=2
+set expandtab " No more tabs, only whitespaces
 
 " backspace won't delete over line breaks, or automatically-inserted indentation
 set backspace=indent,eol,start
@@ -80,18 +92,8 @@ let g:lightline = {
  \ }
 "}}}
 
-"
-set shell=zsh
-set clipboard=unnamed " pbcopy/pbpaste on OSX
-set showcmd " Display the command as we type it
+" search
 set ignorecase " Ignore case when searching
 set smartcase " Smart-case search mode
 set incsearch " Start to search as soon as we type
-set expandtab " No more tabs, only whitespaces
-set ts=2 " Tab = 2 spaces
-set sw=2 " Shift size
-set sts=2 " Short tab stop
-set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 set gdefault " Always search/replace globally
-
-set noic

@@ -64,7 +64,7 @@ echo " gpg --import tmp/keybase-public.key"
 echo " rm -rf tmp"
 
 # asdf
-brew install asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
 asdf plugin-add nodejs
 asdf plugin-add ruby
 asdf plugin-add erlang
