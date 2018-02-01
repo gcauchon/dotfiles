@@ -26,6 +26,7 @@ Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['mkd'] }
+Plug 'hashivim/vim-terraform', { 'for': ['terraform'] }
 
 call plug#end()
 

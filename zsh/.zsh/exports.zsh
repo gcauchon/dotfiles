@@ -1,3 +1,6 @@
+# direnv
+eval "$(direnv hook zsh)"
+
 # GnuPG2
 export GPG_TTY=$(tty)
 

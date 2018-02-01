@@ -25,8 +25,9 @@ npm-debug.log
 
 # Environment
 .env
-.env.development
-.env.test
+.env.*
+.envrc
+tmp
 
 # ASDF
 .tool-versions

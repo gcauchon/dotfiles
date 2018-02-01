@@ -9,10 +9,6 @@ alias cd..='cd .. && pwd'
 alias ...='cd ../.. && pwd'
 alias ....='cd ../../.. && pwd'
 
-# docker
-alias dk='docker'
-alias dkc='docker-compose'
-
 # elixir
 alias exsr='nv .env mix phx.server'
 alias exdb='mix deps.get'
@@ -23,9 +19,12 @@ alias excd='mix credo'
 # ruby
 alias be='bundle exec'
 
-# docker
+# Docker
 alias dk='docker'
 alias dkc='docker-compose'
+
+# Terraform
+alias tf='terraform'
 
 # mkdir then cd in it!
 take () {

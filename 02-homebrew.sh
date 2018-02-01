@@ -45,6 +45,7 @@ brew install wget
 brew install curl
 brew install tldr
 brew install jq
+brew install direnv
 
 # keybase
 brew install gpg
@@ -74,10 +75,6 @@ zsh /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
 brew install yarn --without-node
 
 ln -s ruby/.gemrc ~/.gemrc
-
-# nv
-brew tap jcouture/nv
-brew install nv
 
 # AWS
 brew install awscli
