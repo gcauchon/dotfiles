@@ -26,3 +26,9 @@ augroup END
 augroup elixirfiletype
   autocmd BufRead,BufNewFile *.eex setfiletype html
 augroup END
+
+" Docker
+augroup dockerfiletype
+  autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
+augroup END
+
