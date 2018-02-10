@@ -1,51 +1,46 @@
 #!/bin/sh
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+mkdir ~/.config
 
+# homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
-# ZSH
-brew install zsh
-brew install zsh-completions
-brew install zsh-syntax-highlighting
-brew install zsh-autosuggestions
+# fish
+brew install fish
+sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
+ln -s $PWD/fish/config.fish ~/.config/fish/.
+chsh -s /usr/local/bin/fish
 
-# add Homebrew ZSH to list of acceptable shells
-sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
-# swith use shell to ZSH
-chsh -s /usr/local/bin/zsh
-
-ln -s zsh/.zsh ~/.zsh
-ln -s zsh/.zshrc ~/.zshrc
-
-# git
-brew install git
-brew install tig
-ln -s git/.gitconfig ~/.gitconfig
-ln -s git/.gitignore_global ~/.gitignore_global
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+ln -s $PWD/fish/fishfile ~/.config/fish/.
 
 # tmux
 brew install reattach-to-user-namespace
 brew install tmux
-ln -s tmux/.tmux.conf ~/.tmux.conf
+ln -s $PWD/tmux/.tmux.conf ~
 
 # vim
 brew install neovim/neovim/neovim # Vim-fork focused on extensibility and agility.
 brew install ack # Search for PATTERN in each source file in the tree from the current directory on down.
 brew install ripgrep # line oriented search tool that combines the usability of 'The Silver Searcher' (an ack fork) with the raw speed of GNU 'grep'.
 
-mkdir ~/.config
-ln -s vim ~/.config/nvim
-
+ln -s $PWD/vim ~/.config/nvim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# git
+brew install git
+brew install tig
+ln -s $PWD/git/.gitconfig ~
+ln -s $PWD/git/.gitignore_global ~
+
 # Misc
+brew install direnv
 brew install tree
 brew install wget
 brew install curl
 brew install tldr
 brew install jq
-brew install direnv
 
 # keybase
 brew install gpg
@@ -71,10 +66,10 @@ asdf plugin-add ruby
 asdf plugin-add erlang
 asdf plugin-add elixir
 
-zsh /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
+fish /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
 brew install yarn --without-node
 
-ln -s ruby/.gemrc ~/.gemrc
+ln -s $PWDruby/.gemrc ~
 
 # AWS
 brew install awscli
@@ -120,7 +115,7 @@ brew cask install imageoptim
 brew cask install zeplin
 
 brew cask install slate
-ln -s slate/.slate.js ~/.slate.js
+ln -s $PWD/slate/.slate.js ~
 
 brew cask install slack
 brew cask install spotify

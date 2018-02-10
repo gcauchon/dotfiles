@@ -37,15 +37,6 @@ let g:loaded_netrwPlugin = 1
 " enable matchit plugin enhances '%'
 runtime macros/matchit.vim
 
-" Column & row highlighting {{{
-hi CursorLine guibg=#283937 
-" hi CursorColumn guibg=#283937
-au InsertEnter * set cursorline
-" au InsertEnter * set cursorcolumn
-au InsertLeave * set cursorline
-" au InsertLeave * set cursorcolumn
-"}}}
-
 " fuck tabs!
 set tabstop=2 " Tab = 2 spaces
 set softtabstop=2
@@ -71,16 +62,14 @@ set viminfo='100,f1
 " screen will not be redrawn while running macros, registers or other non-typed comments
 set lazyredraw
 
-" 
-set termguicolors
-
 " Folds
 set foldmethod=marker
 
-" Theme {{{
-colorscheme one
+" Theme
+set cursorline
+set termguicolors
 set background=dark
-"}}}
+" colorscheme one
 
 " Status {{{ 
 set laststatus=2
