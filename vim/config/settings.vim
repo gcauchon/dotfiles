@@ -68,18 +68,12 @@ set foldmethod=marker
 " Theme
 set cursorline
 set termguicolors
-set background=dark
-" colorscheme one
+" set background=dark
+colorscheme monokai
 
-" Status {{{ 
+" Status
 set laststatus=2
 set noshowmode " Mode is included in Lightline
-
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'component': { 'readonly': '%{&readonly?"X":""}' }
- \ }
-"}}}
 
 " search
 set ignorecase " Ignore case when searching

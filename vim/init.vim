@@ -13,7 +13,8 @@ Plug 'scrooloose/nerdtree' "A tree explorer plugin for vim
 Plug 'mileszs/ack.vim' "Run your favorite search tool from Vim, with an enhanced results list
 Plug 'neomake/neomake' "Async :make and linting framework for Neovim
 " Plug 'rakr/vim-one' "Adaptation of one-dark colorschemes for Vim 
-
+" Plug 'remiprev/vim-colors-solarized'
+Plug 'crusoexia/vim-monokai'
 
 " Filetype-specific plugins
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
