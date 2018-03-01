@@ -1,6 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'itchyny/lightline.vim' " light and configurable statusline/tabline
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy file, buffer, mru, tag, ... finder
 Plug 'tpope/vim-surround' " easily delete, change and add such surroundings in pairs (ie. cs'<p> to change from ' to <p>...</p>)
 Plug 'tpope/vim-commentary'
@@ -12,9 +11,8 @@ Plug 'rizzatti/dash.vim' "search for terms using the excellent Dash.app
 Plug 'scrooloose/nerdtree' "A tree explorer plugin for vim
 Plug 'mileszs/ack.vim' "Run your favorite search tool from Vim, with an enhanced results list
 Plug 'neomake/neomake' "Async :make and linting framework for Neovim
-" Plug 'rakr/vim-one' "Adaptation of one-dark colorschemes for Vim 
-" Plug 'remiprev/vim-colors-solarized'
-Plug 'crusoexia/vim-monokai'
+Plug 'gcauchon/vim-one' "Adaptation of one-light and one-dark colorschemes for Vim
+Plug 'itchyny/lightline.vim' " light and configurable statusline/tabline
 
 " Filetype-specific plugins
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
@@ -26,7 +24,6 @@ Plug 'lukaszb/vim-web-indent', { 'for': ['html', 'javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'jparise/vim-graphql', { 'for': ['graphql'] }
-Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['mkd'] }
 Plug 'hashivim/vim-terraform', { 'for': ['terraform'] }
 

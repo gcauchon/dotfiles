@@ -28,6 +28,12 @@ brew install ripgrep # line oriented search tool that combines the usability of 
 ln -s $PWD/vim ~/.config/nvim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo "-------------------------"
+echo " Remap Caps Lock to ESC "
+echo "-------------------------"
+echo " System Preferences… -> Keyboard -> Keyboard Tab -> Modifier Keys"
+echo ""
+
 # git
 brew install git
 brew install tig
@@ -48,7 +54,7 @@ brew install pgp-agent
 brew install pinentry-mac
 brew cask install keybase
 
-echo ""
+echo "-------------------------"
 echo " Import PGP keys from Keybase "
 echo "-------------------------"
 echo " keybase login"
@@ -58,6 +64,7 @@ echo " gpg --allow-secret-key-import --import tmp/keybase-private.key"
 echo " keybase pgp export > tmp/keybase-public.key"
 echo " gpg --import tmp/keybase-public.key"
 echo " rm -rf tmp"
+echo ""
 
 # asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
@@ -120,10 +127,10 @@ ln -s $PWD/slate/.slate.js ~
 brew cask install slack
 brew cask install spotify
 
-echo ""
-echo " Post install notes..."
 echo "-------------------------"
-echo " Configure the profile for the following tools from Dropbox /Tools:"
+echo " Post install notes! "
+echo "-------------------------"
+echo " Configure the following apps from their sync folder in Dropbox/Tools"
 echo " - iTerm2"
 echo " - Alfred"
 echo " - Dash"

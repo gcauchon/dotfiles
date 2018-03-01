@@ -66,10 +66,10 @@ set lazyredraw
 set foldmethod=marker
 
 " Theme
-set cursorline
 set termguicolors
-" set background=dark
-colorscheme monokai
+set background=dark
+set cursorline
+colorscheme one
 
 " Status
 set laststatus=2

@@ -7,14 +7,19 @@ map <Leader>m :CtrlPMRU<CR>
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v(^|\/)(deps|log|vendor|tmp|_build|node_modules|\.git|dist)$',
-\ 'file':  '\v(^|\/)(\.DS_Store|.*\.js\.map)$',
+\  'dir':  '\v(^|\/)(deps|log|vendor|tmp|_build|node_modules|\.git|dist)$',
+\  'file':  '\v(^|\/)(\.DS_Store|.*\.js\.map)$',
 \}
 
 " NERDtree
 let NERDTreeShowHidden=1
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>t :NERDTreeToggle<CR>
+
+" lightline
+let g:lightline = {
+\  'colorscheme': 'one',
+\}
 
 " Ack
 let g:ackprg = 'rg --no-heading --color=never --column --line-number'
