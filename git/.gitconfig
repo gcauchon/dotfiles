@@ -9,6 +9,8 @@
   editor = nvim
 [commit]
   gpgsign = true
+[gpg]
+  program = /usr/local/bin/gpg
 [merge]
   verbosity = 5
   tool = diffmerge
@@ -38,5 +40,3 @@
   p = push
   ph = push -u origin HEAD
   pf = push --force-with-lease
-[gpg]
-  program = /usr/local/bin/gpg

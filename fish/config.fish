@@ -37,6 +37,9 @@ fish_vi_key_bindings
 # direnv
 eval (direnv hook fish)
 
+# GPG
+set -x GPG_TTY (tty)
+
 # Prompt
 set fish_prompt_pwd_dir_length 0
 

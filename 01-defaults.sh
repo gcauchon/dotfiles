@@ -10,7 +10,6 @@
 ##
 
 defaults write com.apple.finder ShowPathbar -bool true
-defaults write com.apple.finder AppleShowAllFiles YES
 
 # show the ~/Library folder
 chflags nohidden ~/Library
@@ -96,7 +95,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+# hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ##
 # System

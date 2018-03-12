@@ -9,11 +9,11 @@ brew update
 # fish
 brew install fish
 sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
-ln -s $PWD/fish/config.fish ~/.config/fish/.
+ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
 chsh -s /usr/local/bin/fish
 
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-ln -s $PWD/fish/fishfile ~/.config/fish/.
+fisher rstacruz/fish-asdf fisherman/upto fisherman/z
 
 # tmux
 brew install reattach-to-user-namespace
@@ -67,7 +67,7 @@ echo " rm -rf tmp"
 echo ""
 
 # asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.3
 asdf plugin-add nodejs
 asdf plugin-add ruby
 asdf plugin-add erlang
@@ -76,7 +76,7 @@ asdf plugin-add elixir
 fish /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
 brew install yarn --without-node
 
-ln -s $PWDruby/.gemrc ~
+ln -s $PWD/ruby/.gemrc ~
 
 # AWS
 brew install awscli
@@ -86,9 +86,15 @@ brew install aws-elasticbeanstalk
 brew install heroku
 
 # crypto
-brew install parity
-rm -rf ~/Library/Application\ Support/io.parity.ethereum
-ln -s ~/Documents/parity ~/Library/Application\ Support/io.parity.ethereum
+# brew install parity
+# rm -rf ~/Library/Application\ Support/io.parity.ethereum
+# ln -s ~/Documents/parity ~/Library/Application\ Support/io.parity.ethereum
+
+#
+# Fonts
+#
+brew tap caskroom/fonts
+brew cask install font-fira-code
 
 #
 # Casks
@@ -100,6 +106,7 @@ brew cask install alfred
 brew cask install dropbox
 brew cask install 1password
 brew cask install cleanmymac
+brew cask install flux
 brew cask install vanilla
 brew cask install istat-menus
 brew cask install intel-power-gadget
