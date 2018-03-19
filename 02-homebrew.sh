@@ -9,11 +9,20 @@ brew update
 # fish
 brew install fish
 sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
+
+mkdir ~/.config/fish
 ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
+
 chsh -s /usr/local/bin/fish
 
+# fisherman
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher rstacruz/fish-asdf fisherman/upto fisherman/z
+
+echo "-------------------------"
+echo " fish + fisherman        "
+echo "-------------------------"
+echo " Install plugins found in the `fishfile`"
+echo ""
 
 # tmux
 brew install reattach-to-user-namespace
