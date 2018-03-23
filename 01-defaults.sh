@@ -103,7 +103,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Set key repeat values to what are normally allowed in System Preferences > Keyboard 
 defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
+defaults write -g KeyRepeat -int 2
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
