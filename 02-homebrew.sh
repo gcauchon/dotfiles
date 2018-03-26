@@ -61,6 +61,11 @@ brew install jq
 brew install gpg
 brew install pgp-agent
 brew install pinentry-mac
+
+mkdir ~/.gnupg
+ln -s $PWD/gpg/gpg.conf ~/.gnupg/gpg.conf
+ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+
 brew cask install keybase
 
 echo "-------------------------"
