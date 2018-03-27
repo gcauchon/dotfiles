@@ -130,6 +130,7 @@ brew cask install google-chrome
 brew cask install firefox
 brew cask install atom
 brew cask install dash
+brew cask install quicklook-json
 
 brew cask install harvest
 brew cask install graphiql
