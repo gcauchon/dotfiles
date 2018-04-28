@@ -119,11 +119,10 @@ brew cask install iterm2
 brew cask install alfred
 brew cask install dropbox
 brew cask install 1password
-brew cask install cleanmymac
-brew cask install flux
-brew cask install vanilla
-brew cask install istat-menus
-brew cask install intel-power-gadget
+# brew cask install flux
+# brew cask install vanilla
+# brew cask install istat-menus
+# brew cask install intel-power-gadget
 
 brew cask install docker
 brew cask install google-chrome
@@ -147,6 +146,7 @@ brew cask install slate
 ln -s $PWD/slate/.slate.js ~
 
 brew cask install slack
+brew cask install station
 brew cask install spotify
 
 echo "-------------------------"

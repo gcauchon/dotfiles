@@ -13,8 +13,21 @@ let g:ctrlp_custom_ignore = {
 
 " NERDtree
 let NERDTreeShowHidden=1
+let NERDTreeShowGitStatus=1
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>t :NERDTreeToggle<CR>
+
+let g:NERDTreeIndicatorMapCustom = {
+\ "Modified"  : "*",
+\ "Staged"    : "$",
+\ "Untracked" : "?",
+\ "Renamed"   : "",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "!",
+\ "Clean"     : "✔︎",
+\ "Unknown"   : "?"
+\ }
 
 " lightline
 let g:lightline = {
