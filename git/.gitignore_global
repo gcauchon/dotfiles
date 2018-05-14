@@ -25,7 +25,6 @@ npm-debug.log
 
 # Environment
 .env
-.env.*
 .envrc
 tmp
 
