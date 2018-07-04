@@ -1,6 +1,5 @@
 // configuration
 slate.configAll({
-    defaultToCurrentScreen: true,
     nudgePercentOf: "screenSize",
     resizePercentOf: "screenSize"
 });
