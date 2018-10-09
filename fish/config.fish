@@ -43,9 +43,6 @@ set -x GPG_TTY (tty)
 # Erlang REPL
 set -x ERL_AFLAGS '-kernel shell_history enabled'
 
-# $PATH
-set PATH /usr/local/bin $PATH
-
 # Prompt
 set fish_prompt_pwd_dir_length 0
 

@@ -54,6 +54,7 @@ brew install direnv
 brew install tree
 brew install wget
 brew install curl
+brew install htop
 brew install tldr
 brew install jq
 
@@ -81,7 +82,7 @@ echo " rm -rf tmp"
 echo ""
 
 # asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.3
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
 asdf plugin-add nodejs
 asdf plugin-add ruby
 asdf plugin-add erlang
@@ -99,7 +100,7 @@ brew install aws-elasticbeanstalk
 # Heroku
 brew install heroku
 
-# crypto
+# ETH
 # brew install parity
 # rm -rf ~/Library/Application\ Support/io.parity.ethereum
 # ln -s ~/Documents/parity ~/Library/Application\ Support/io.parity.ethereum
@@ -119,7 +120,7 @@ brew cask install iterm2
 brew cask install alfred
 brew cask install dropbox
 brew cask install 1password
-# brew cask install flux
+brew cask install flux
 # brew cask install vanilla
 # brew cask install istat-menus
 # brew cask install intel-power-gadget
