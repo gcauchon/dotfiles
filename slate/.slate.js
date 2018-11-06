@@ -19,9 +19,9 @@ var moveWindow = function (width, height) {
 
 slate.bindAll({
     "1:cmd,alt": slate.operation("move", moveWindow(1024, 768)),
-    "2:cmd,alt": slate.operation("move", moveWindow(1280, 900)),
-    "3:cmd,alt": slate.operation("move", moveWindow(1440, 900)),
-    "4:cmd,alt": slate.operation("move", moveWindow(1920, 1080))
+    "2:cmd,alt": slate.operation("move", moveWindow(1280, 800)),
+    "3:cmd,alt": slate.operation("move", moveWindow(1440, 1080)),
+    "4:cmd,alt": slate.operation("move", moveWindow(1920, 1200))
 });
 
 // resize
