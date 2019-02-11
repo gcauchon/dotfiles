@@ -1,0 +1,4 @@
+set line-graphics = utf-8
+set tab-size = 2
+
+set main-view = id:true date:relative-compact author:email-user commit-title:graph=v2,refs=true 

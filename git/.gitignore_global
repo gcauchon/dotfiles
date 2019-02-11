@@ -14,6 +14,9 @@ Icon
 Session.vim
 .netrwhist
 
+# Elixir
+.elixir_ls
+
 # Ruby
 .sass-cache
 .ruby-version

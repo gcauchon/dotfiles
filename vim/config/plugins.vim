@@ -7,7 +7,7 @@ map <Leader>m :CtrlPMRU<CR>
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-\  'dir':  '\v(^|\/)(deps|log|vendor|tmp|_build|node_modules|\.git|dist)$',
+\  'dir':  '\v(^|\/)(\.git|\.elixir_ls|deps|node_modules|vendor|_build|dist)$',
 \  'file':  '\v(^|\/)(\.DS_Store|.*\.js\.map)$',
 \}
 
@@ -50,18 +50,28 @@ let g:user_emmet_settings = {
 " vim-jsx
 let g:jsx_ext_required = 0
 
-" Neomake
-let g:neomake_open_list=2
-let g:neomake_list_height=4
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_html_enabled_makers = ['tidy']
-let g:neomake_html_tidy_maker = { 'args': ['-e', '-q'], 'errorformat': 'line %l column %c - %m' }
-let g:neomake_scss_enabled_makers = ['stylelint']
-let g:neomake_scss_stylelint_maker = { 'args': ['--no-color'], 'errorformat': '%+P%f,%*\s%l:%c  %t  %m,%-Q' }
-let g:neomake_ruby_enabled_makers = ['rubocop']
-let g:neomake_elixir_enabled_makers = ['credo']
-let g:neomake_elixir_credo_maker = { 'exe': 'mix', 'args': ['credo', '%:p', '--format=oneline', '--strict'], 'errorformat': '[%t] %. %f:%l %m' }
+" ALE settings
+" ----------------------------------------------------------------------------------------------------
+let g:ale_sign_error = 'XX'
+let g:ale_sign_warning = '!!'
+let g:ale_echo_msg_format = '[%severity%] %s'
+"let g:ale_set_quickfix = 1
+"let g:ale_open_list = 1
+let g:ale_list_window_size = 5
+let g:ale_linters = {
+\   'elixir': ['credo', 'elixir-ls'],
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\   'scss': ['stylelint'],
+\   'typescript': ['tslint']
+\}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'elixir': ['mix_format']
+\}
+let g:ale_elixir_elixir_ls_release = '/Users/gcauchon/Projects/elixir-ls/rel'
 
-augroup NeoMake
-  autocmd BufWritePost * Neomake
-augroup END
+nmap <Leader>ad :ALEGoToDefinition<CR>
+nmap <Leader>ah :ALEHover<CR>
+nmap <Leader>ar :ALEFindReferences<CR>
