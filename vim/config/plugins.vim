@@ -61,14 +61,19 @@ let g:ale_list_window_size = 5
 let g:ale_linters = {
 \   'elixir': ['credo', 'elixir-ls'],
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint', 'tsserver'],
 \   'ruby': ['rubocop'],
-\   'scss': ['stylelint'],
-\   'typescript': ['tslint']
+\   'css': ['stylelint'],
+\   'scss': ['stylelint']
 \}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'elixir': ['mix_format']
+\   'elixir': ['mix_format'],
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier']
 \}
 let g:ale_elixir_elixir_ls_release = '/Users/gcauchon/Projects/elixir-ls/rel'
 
