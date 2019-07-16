@@ -51,7 +51,6 @@ let g:user_emmet_settings = {
 let g:jsx_ext_required = 0
 
 " ALE settings
-" ----------------------------------------------------------------------------------------------------
 let g:ale_sign_error = 'XX'
 let g:ale_sign_warning = '!!'
 let g:ale_echo_msg_format = '[%severity%] %s'
@@ -75,7 +74,7 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'scss': ['prettier']
 \}
-let g:ale_elixir_elixir_ls_release = '/Users/gcauchon/Projects/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_release = '/Users/gcauchon/Projects/elixir-ls/release'
 
 nmap <Leader>ad :ALEGoToDefinition<CR>
 nmap <Leader>ah :ALEHover<CR>

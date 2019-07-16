@@ -21,6 +21,11 @@ nmap <Leader>v :bdelete<CR>
 set splitbelow
 set splitright
 
+nnoremap <Leader>< <C-W><C-H>
+nnoremap <Leader>j <C-W><C-J>
+nnoremap <Leader>k <C-W><C-K>
+nnoremap <Leader>> <C-W><C-L>
+
 " Remove trailing whitespace
 nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 
