@@ -24,6 +24,9 @@ set __fish_git_prompt_char_invalidstate '!'
 # Greeting screen
 set fish_greeting ''
 
+# Homebrew
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+
 # Alias
 alias ll='ls -lhAG'
 alias be='bundle exec'
@@ -55,7 +58,7 @@ function fish_prompt
     (prompt_pwd) \
     (set_color normal) \
     (__fish_git_prompt)
-  
+
   # prompt
   printf '\n%s> %s' \
     (set_color red) \
