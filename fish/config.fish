@@ -37,6 +37,9 @@ alias tf='terraform'
 # vi-mode
 fish_vi_key_bindings
 
+# asdf
+source ~/.asdf/asdf.fish
+
 # direnv
 eval (direnv hook fish)
 

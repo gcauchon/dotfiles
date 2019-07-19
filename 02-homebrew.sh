@@ -3,7 +3,7 @@
 mkdir ~/.config
 
 # homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
 # fish
@@ -18,11 +18,8 @@ chsh -s /usr/local/bin/fish
 # fisherman
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-echo "-------------------------"
-echo " fish + fisherman        "
-echo "-------------------------"
-echo " Install plugins found in the `fishfile`"
-echo ""
+ln -s $PWD/fish/fishfile ~/.config/fish/fishfile
+fisher
 
 # tmux
 brew install reattach-to-user-namespace
@@ -52,10 +49,10 @@ ln -s $PWD/git/.gitignore_global ~
 # Misc
 brew install direnv
 brew install tree
+brew install autoconf
 brew install wget
 brew install curl
 brew install htop
-brew install tldr
 brew install jq
 
 # keybase
@@ -82,23 +79,19 @@ echo " rm -rf tmp"
 echo ""
 
 # asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.3
 asdf plugin-add nodejs
 asdf plugin-add ruby
 asdf plugin-add erlang
 asdf plugin-add elixir
 
-fish /usr/local/opt/asdf/plugins/nodejs/bin/import-release-team-keyring
-brew install yarn --without-node
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
 ln -s $PWD/ruby/.gemrc ~
 
 # AWS
 brew install awscli
 brew install aws-elasticbeanstalk
-
-# Heroku
-brew install heroku
 
 # ETH
 # brew install parity
@@ -114,26 +107,19 @@ brew cask install font-fira-code
 #
 # Casks
 #
-brew install caskroom/cask/brew-cask
-
 brew cask install iterm2
 brew cask install alfred
 brew cask install dropbox
 brew cask install 1password
 brew cask install flux
-# brew cask install vanilla
-# brew cask install istat-menus
-# brew cask install intel-power-gadget
 
 brew cask install docker
 brew cask install google-chrome
 brew cask install firefox
-brew cask install atom
 brew cask install dash
 brew cask install quicklook-json
 
 brew cask install harvest
-brew cask install graphiql
 brew cask install sketch
 brew cask install tableplus
 brew cask install transmit
@@ -147,7 +133,6 @@ brew cask install slate
 ln -s $PWD/slate/.slate.js ~
 
 brew cask install slack
-brew cask install station
 brew cask install spotify
 
 echo "-------------------------"
