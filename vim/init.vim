@@ -1,7 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'mhinz/vim-startify'       " The fancy start screen for Vim
-
 Plug 'gcauchon/vim-one'         " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'itchyny/lightline.vim'    " Light and configurable statusline/tabline
 
