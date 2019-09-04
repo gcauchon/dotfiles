@@ -45,6 +45,7 @@ brew install git
 brew install tig
 ln -s $PWD/git/.gitconfig ~
 ln -s $PWD/git/.gitignore_global ~
+ln -s $PWD/git/.tigrc ~
 
 # Misc
 brew install direnv
@@ -54,6 +55,7 @@ brew install wget
 brew install curl
 brew install htop
 brew install jq
+brew install postgres
 
 # keybase
 brew install gpg
@@ -87,6 +89,7 @@ asdf plugin-add elixir
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
+# Ruby
 ln -s $PWD/ruby/.gemrc ~
 
 # AWS
@@ -118,6 +121,7 @@ brew cask install google-chrome
 brew cask install firefox
 brew cask install dash
 brew cask install quicklook-json
+brew cask install gifox
 
 brew cask install harvest
 brew cask install sketch

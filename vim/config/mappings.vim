@@ -27,6 +27,10 @@ nnoremap <Leader>k <C-W><C-K>
 nnoremap <Leader>> <C-W><C-L>
 
 " Remove trailing whitespace
+function! g:RemoveTrailingWhitespace()
+  %s/\s\+$//e
+endfunction
+
 nmap <C-L> :call g:RemoveTrailingWhitespace()<CR>
 
 " QuickFix (ie Search, Linter, etc...)
