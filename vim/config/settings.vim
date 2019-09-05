@@ -1,6 +1,3 @@
-" don't make vim compatible with vi 
-set nocompatible
-
 " Leader
 let mapleader = ","
 let g:mapleader = ","
@@ -8,13 +5,10 @@ let g:mapleader = ","
 set shell=fish
 set mouse=a             " Allow mouse in all modes
 set clipboard=unnamed   " pbcopy/pbpaste on OSX
-set autoread            " Reload files changed outside vim
-set showcmd             " Display the command as we type iti
+set showcmd             " Display command as I type
 set number              " Show line numbers
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 syntax on               " Syntax highlighting
-set fileformat=unix     " Use Unix line endings
-set fileformats=unix,dos
 
 " Detect file types and load plugins
 filetype on
