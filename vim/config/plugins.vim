@@ -8,12 +8,11 @@ map <silent>b <plug>CamelCaseMotion_b
 map <silent>e <plug>CamelCaseMotion_e
 
 " fzf 
-map <leader>p :Files<CR>
+map <leader>p :GFiles<CR>
 map <leader>o :Buffers<CR>
+map <leader>l :Files<CR>
 map <leader>m :MRU<CR>
 map <leader>f :Rg<CR>
-map <leader>g :GFiles<CR>
-map <leader>l :Lines<CR>
 
 " lightline
 let g:lightline = {
@@ -23,6 +22,8 @@ let g:lightline = {
 " Grepper
 let g:grepper = {}
 let g:grepper.tools = ['rg', 'ack', 'grep', 'git']
+
+map <leader>g :Grepper<CR>
 
 " COC
 set hidden          " If hidden is not set, TextEdit might fail.
