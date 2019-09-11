@@ -1,7 +1,3 @@
-" Vinegar
-let g:netrw_fastbrowse = 0
-let g:netrw_liststyle = 3
-
 " CamelCaseMotion
 map <silent>w <plug>CamelCaseMotion_w
 map <silent>b <plug>CamelCaseMotion_b

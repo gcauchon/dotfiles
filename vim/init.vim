@@ -6,7 +6,6 @@ Plug 'itchyny/lightline.vim'    " Light and configurable statusline/tabline
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " A command-line fuzzy finder
 Plug 'junegunn/fzf.vim'         " fzf <3 vim
 Plug 'yegappan/mru'             " Most Recently Used (MRU) plugin
-Plug 'tpope/vim-vinegar'        " Combine with netrw to create a delicious salad dressing
 Plug 'vim-scripts/camelcasemotion' " Navigate thru CamelCase or snake_case (ie: w, e, b)
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim

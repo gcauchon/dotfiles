@@ -7,6 +7,7 @@ set mouse=a             " Allow mouse in all modes
 set clipboard=unnamed   " pbcopy/pbpaste on OSX
 set showcmd             " Display command as I type
 set number              " Show line numbers
+set showmatch           " Highlight matching brace
 set whichwrap=h,l,~,[,],<,> " Which caracters to wrap
 syntax on               " Syntax highlighting
 
@@ -20,10 +21,15 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " No tabs!
-set tabstop=2           " 1 tab -> 2 spaces
-set softtabstop=2       " 1 tab -> 2 spaces
-set expandtab           " No more tabs, only whitespaces
+set expandtab           " Use spaces instead of tabs
+set shiftwidth=2        " Number of auto-indent spaces
+set softtabstop=2       " Number of spaces per Tab
+set tabstop=2
 set backspace=indent,eol,start " backspace delete over line breaks and indentation
+
+" netrw (ie split explorer)
+let g:netrw_fastbrowse = 0
+let g:netrw_liststyle = 3
 
 " Theme
 set termguicolors
@@ -39,4 +45,3 @@ set noshowmode          " Mode is included in Lightline
 set ignorecase          " Ignore case when searching
 set smartcase           " Smart-case search mode
 set incsearch           " Start to search as soon as we type
-set gdefault            " Always search/replace globally
