@@ -47,18 +47,15 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" CocExplorer
+nmap <leader>t :CocCommand explorer<CR>
+nmap <leader>f :CocCommand explorer --no-toggle<CR>
+
 " Remap keys for gotos
 nmap <silent>gd <plug>(coc-definition)
 nmap <silent>gt <plug>(coc-type-definition)
 nmap <silent>gi <plug>(coc-implementation)
 nmap <silent>gr <plug>(coc-references)
-
-" Remap for rename current word
-nmap <leader>rn <plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f <plug>(coc-format-selected)
-nmap <leader>f <plug>(coc-format-selected)
 
 augroup cocgroup
   autocmd!

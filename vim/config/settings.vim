@@ -27,10 +27,6 @@ set softtabstop=2       " Number of spaces per Tab
 set tabstop=2
 set backspace=indent,eol,start " backspace delete over line breaks and indentation
 
-" netrw (ie split explorer)
-let g:netrw_fastbrowse = 0
-let g:netrw_liststyle = 3
-
 " Theme
 set termguicolors
 set background=dark

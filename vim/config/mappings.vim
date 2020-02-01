@@ -12,10 +12,6 @@ nmap <Leader>x "_x
 nmap <Leader>d "_d
 nmap <Leader>dd "_dd
 
-" netrw file explorer
-nmap <Leader>t :edit .<CR>
-nmap <Leader>f :Explore<CR>
-
 " Buffer navigation
 nmap > :bnext<CR>
 nmap < :bprevious<CR>

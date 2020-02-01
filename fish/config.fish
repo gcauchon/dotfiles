@@ -32,6 +32,7 @@ alias ll='ls -lhAG'
 alias be='bundle exec'
 alias dk='docker'
 alias dkc='docker-compose'
+alias k8s='kubectl'
 alias tf='terraform'
 
 # vi-mode

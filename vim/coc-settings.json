@@ -1,0 +1,12 @@
+{  
+  "explorer.file.showHiddenFiles": true,
+  "explorer.file.column.git.showIgnored": true,
+  "explorer.icon.hidden": "+hidden",
+  "languageserver": {
+    "terraform": {
+      "command": "/Users/gcauchon/Projects/terraform-lsp/terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+    }
+  }
+}

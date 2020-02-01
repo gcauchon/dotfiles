@@ -42,6 +42,7 @@ echo ""
 
 # git
 brew install git
+brew install diff-so-fancy
 brew install tig
 ln -s $PWD/git/.gitconfig ~
 ln -s $PWD/git/.gitignore_global ~

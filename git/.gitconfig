@@ -1,22 +1,26 @@
-# This is Git's per-user configuration file.
+# My git configuration file.
 [user]
-  name = Guillaume Cauchon
   email = gcauchon@gmail.com
+  name = Guillaume Cauchon
   signingkey = DC13AB49F1B3C51A
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
   editor = nvim
-[commit]
-  gpgsign = true
+[pager]
+  diff = diff-so-fancy | less --tabs=4 -RFX 
+  show = diff-so-fancy | less --tabs=4 -RFX 
 [gpg]
   program = /usr/local/bin/gpg
-[merge]
-  verbosity = 5
-  tool = diffmerge
 [diff]
-  verbosity = 5
+  noprefix = true
   tool = tig
+  verbosity = 5
+[commit]
+  gpgsign = true
+[merge]
+  tool = diffmerge
+  verbosity = 5
 [alias]
   a = add -A
   c = commit -S -m
