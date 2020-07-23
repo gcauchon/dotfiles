@@ -1,19 +1,31 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'gcauchon/vim-one'         " Adaptation of one-light and one-dark colorschemes for Vim
-Plug 'itchyny/lightline.vim'    " Light and configurable statusline/tabline
+" A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme
+Plug 'joshdick/onedark.vim'
+" Light and configurable statusline/tabline
+Plug 'itchyny/lightline.vim'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " A command-line fuzzy finder
-Plug 'junegunn/fzf.vim'         " fzf <3 vim
-Plug 'yegappan/mru'             " Most Recently Used (MRU) plugin
-Plug 'vim-scripts/camelcasemotion' " Navigate thru CamelCase or snake_case (ie: w, e, b)
+" A general-purpose command-line fuzzy finder.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Navigate thru CamelCase or snake_case (ie: w, e, b)
+Plug 'vim-scripts/camelcasemotion'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim
-Plug 'sheerun/vim-polyglot'     " A solid language pack for Vim.
-Plug 'mhinz/vim-grepper'        " Helps you win at grep
-Plug 'tpope/vim-surround'       " Quoting/Parenthesizing made simple
-Plug 'tpope/vim-fugitive'       " A Git wrapper so awesome, it should be illegal
-Plug 'airblade/vim-gitgutter'   " Shows git diff in the gutter and stages/undoes hunks
+" Intellisense engine for vim8 & neovim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}          
+" Helps you win at grep
+Plug 'mhinz/vim-grepper'            
+" Find/Replace from the Quickfix window
+Plug 'stefandtw/quickfix-reflector.vim' 
+
+" A solid language pack for Vim.
+Plug 'sheerun/vim-polyglot'
+" Quoting/Parenthesizing made simple
+Plug 'tpope/vim-surround'           
+" A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'           
+" Shows git diff in the gutter and stages/undoes hunks
+Plug 'airblade/vim-gitgutter'       
 
 call plug#end()
 

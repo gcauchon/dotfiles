@@ -28,10 +28,9 @@ set tabstop=2
 set backspace=indent,eol,start " backspace delete over line breaks and indentation
 
 " Theme
-set termguicolors
 set background=dark
 set cursorline
-colorscheme one
+colorscheme onedark
 
 " Status
 set laststatus=2

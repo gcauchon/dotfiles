@@ -2,3 +2,4 @@ fisherman/upto
 fisherman/z
 rstacruz/fish-asdf
 /Applications/Docker.app/Contents/Resources/etc/docker.fish-completion
+evanlucas/fish-kubectl-completions

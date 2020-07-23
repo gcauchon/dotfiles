@@ -45,3 +45,5 @@
   ph = push -u origin HEAD
   pf = push --force-with-lease
   po = push origin
+[pull]
+	rebase = true

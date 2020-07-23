@@ -1,27 +1,38 @@
-" CamelCaseMotion
+" --------------- "
+" CamelCaseMotion "
+" --------------- "
 map <silent>w <plug>CamelCaseMotion_w
 map <silent>b <plug>CamelCaseMotion_b
 map <silent>e <plug>CamelCaseMotion_e
 
-" fzf 
+" --- "
+" fzf "
+" --- "
+let g:fzf_layout = {'window': {'width': 0.8, 'height': 0.6, 'xoffset': 1}}
+
 map <leader>p :GFiles<CR>
 map <leader>o :Buffers<CR>
 map <leader>l :Files<CR>
-map <leader>m :MRU<CR>
-map <leader>f :Rg<CR>
 
-" lightline
-let g:lightline = {
-\  'colorscheme': 'one',
-\}
+" Always enable preview window on the right with 60% width
+let g:fzf_preview_window = 'right:60%'
 
-" Grepper
+" --------- "
+" lightline "
+" --------- "
+let g:lightline = {'colorscheme': 'one'}
+
+" ------- "
+" Grepper "
+" ------- "
 let g:grepper = {}
 let g:grepper.tools = ['rg', 'ack', 'grep', 'git']
 
 map <leader>g :Grepper<CR>
 
-" COC
+" --- "
+" coc "
+" --- "
 set hidden          " If hidden is not set, TextEdit might fail.
 set nobackup        " Some servers have issues with backup files, see #649
 set nowritebackup
@@ -29,44 +40,54 @@ set updatetime=300  " Bad experience for diagnostic messages with default (ie 40
 set shortmess+=c    " Don’t give |ins-completion-menu| messages
 set signcolumn=yes  " Always show signcolumns
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+" use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" use <c-space> for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" use <Tab> and <S-Tab> to navigate the completion list
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" CocExplorer
+" close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Explorer
 nmap <leader>t :CocCommand explorer<CR>
 nmap <leader>f :CocCommand explorer --no-toggle<CR>
 
-" Remap keys for gotos
+" Format
+nmap <leader>F :call CocAction('format')<CR>
+
+" Gotos
 nmap <silent>gd <plug>(coc-definition)
 nmap <silent>gt <plug>(coc-type-definition)
 nmap <silent>gi <plug>(coc-implementation)
 nmap <silent>gr <plug>(coc-references)
 
-augroup cocgroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" Outline
+nmap <leader>O :CocList outline<CR>
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
+" Documentation
+nnoremap <silent>K :call <SID>show_documentation()<CR>
 
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction

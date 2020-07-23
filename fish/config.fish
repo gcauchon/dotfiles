@@ -29,10 +29,9 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Alias
 alias ll='ls -lhAG'
-alias be='bundle exec'
-alias dk='docker'
-alias dkc='docker-compose'
-alias k8s='kubectl'
+alias d='docker'
+alias dc='docker-compose'
+alias k='kubectl'
 alias tf='terraform'
 
 # vi-mode
