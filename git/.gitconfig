@@ -2,7 +2,7 @@
 [user]
   email = gcauchon@gmail.com
   name = Guillaume Cauchon
-  signingkey = DC13AB49F1B3C51A
+  signingkey = 1D667DEA56F2CAA2
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global

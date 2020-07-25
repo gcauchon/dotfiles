@@ -3,7 +3,7 @@
 mkdir ~/.config
 
 # homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew update
 
 # fish
@@ -27,9 +27,8 @@ brew install tmux
 ln -s $PWD/tmux/.tmux.conf ~
 
 # vim
-brew install neovim/neovim/neovim # Vim-fork focused on extensibility and agility.
-brew install ack # Search for PATTERN in each source file in the tree from the current directory on down.
-brew install ripgrep # line oriented search tool that combines the usability of 'The Silver Searcher' (an ack fork) with the raw speed of GNU 'grep'.
+brew install neovim
+brew install ripgrep 
 
 ln -s $PWD/vim ~/.config/nvim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -59,8 +58,7 @@ brew install jq
 brew install postgres
 
 # keybase
-brew install gpg
-brew install pgp-agent
+brew install gnupg
 brew install pinentry-mac
 
 mkdir ~/.gnupg
@@ -105,8 +103,9 @@ brew install aws-elasticbeanstalk
 #
 # Fonts
 #
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 brew cask install font-fira-code
+brew cask install font-jetbrains-mono
 
 #
 # Casks
@@ -124,18 +123,13 @@ brew cask install dash
 brew cask install quicklook-json
 brew cask install gifox
 
-brew cask install harvest
 brew cask install sketch
 brew cask install tableplus
 brew cask install transmit
 
 brew cask install couleurs
 brew cask install imageoptim
-#brew cask install imagealpha
 brew cask install zeplin
-
-brew cask install slate
-ln -s $PWD/slate/.slate.js ~
 
 brew cask install slack
 brew cask install spotify
