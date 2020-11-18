@@ -28,7 +28,7 @@ set fish_greeting ''
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Alias
-alias ll='ls -lhAG'
+alias ll='ls -lhag'
 alias d='docker'
 alias dc='docker-compose'
 alias k='kubectl'
@@ -50,20 +50,22 @@ set -x GPG_TTY (tty)
 set -x ERL_AFLAGS '-kernel shell_history enabled'
 
 # Prompt
-set fish_prompt_pwd_dir_length 0
+# set fish_prompt_pwd_dir_length 0
+#
+# function fish_mode_prompt
+# end
+# 
+# function fish_prompt
+#   printf '%s%s%s%s' \
+#     (set_color blue) \
+#     (prompt_pwd) \
+#     (set_color normal) \
+#     (__fish_git_prompt)
+# 
+#   # prompt
+#   printf '\n%s> %s' \
+#     (set_color red) \
+#     (set_color normal)
+# end
 
-function fish_mode_prompt
-end
-
-function fish_prompt
-  printf '%s%s%s%s' \
-    (set_color blue) \
-    (prompt_pwd) \
-    (set_color normal) \
-    (__fish_git_prompt)
-
-  # prompt
-  printf '\n%s> %s' \
-    (set_color red) \
-    (set_color normal)
-end
+starship init fish | source

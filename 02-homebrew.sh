@@ -21,6 +21,10 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fishe
 ln -s $PWD/fish/fishfile ~/.config/fish/fishfile
 fisher
 
+# starship
+brew install starship
+ln -s $PWD/fish/starship.toml ~/.config/starship.toml
+
 # tmux
 brew install reattach-to-user-namespace
 brew install tmux

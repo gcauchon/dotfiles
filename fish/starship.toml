@@ -1,0 +1,32 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$elixir\
+$ruby\
+$nodejs
+$character
+"""
+
+[directory]
+truncation_symbol = "…/"
+truncate_to_repo = true
+style = "white"
+
+[git_branch]
+format = "[ $branch](cyan) "
+
+[git_status]
+style = "yellow"
+
+[elixir]
+format = '[ $version\(OTP $otp_version\)](purple) '
+
+[ruby]
+format = "[ $version](red) "
+
+[nodejs]
+format = "[ $version](green) "
