@@ -1,13 +1,9 @@
+add_newline = false
 format = """
-$username\
-$hostname\
 $directory\
-$git_branch\
-$git_state\
-$git_status\
-$elixir\
-$ruby\
-$nodejs
+$git_branch$git_state$git_status\
+$elixir$ruby$nodejs\
+$cmd_duration
 $character
 """
 
@@ -30,3 +26,7 @@ format = "[ $version](red) "
 
 [nodejs]
 format = "[ $version](green) "
+
+[cmd_duration]
+show_milliseconds = true
+format = "[ $duration](yellow) "

@@ -27,10 +27,5 @@ node_modules
 npm-debug.log
 
 # Environment
-.env*
-.envrc
+.env.local
 tmp
-
-# ASDF
-.tool-versions
-.tool-versions-e
