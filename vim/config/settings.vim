@@ -28,9 +28,10 @@ set tabstop=2
 set backspace=indent,eol,start " backspace delete over line breaks and indentation
 
 " Theme
+" colorscheme onedark
+colorscheme molokai
 set background=dark
 set cursorline
-colorscheme onedark
 
 " Status
 set laststatus=2
