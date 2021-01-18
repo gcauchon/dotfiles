@@ -1,4 +1,16 @@
 {  
   "explorer.file.showHiddenFiles": true,
-  "explorer.icon.hidden": "+hidden"
+  "explorer.icon.hidden": "+hidden",
+  "languageserver": {
+		"terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+			"settings": {}
+		}
+	}
 }

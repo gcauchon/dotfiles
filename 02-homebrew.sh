@@ -60,8 +60,9 @@ brew install curl
 brew install htop
 brew install jq
 brew install postgres
+brew install mysql
 
-# keybase
+# PGP
 brew install gnupg
 brew install pinentry-mac
 
@@ -69,26 +70,13 @@ mkdir ~/.gnupg
 ln -s $PWD/gpg/gpg.conf ~/.gnupg/gpg.conf
 ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
-brew cask install keybase
-
-echo "-------------------------"
-echo " Import PGP keys from Keybase "
-echo "-------------------------"
-echo " keybase login"
-echo " mkdir tmp"
-echo " keybase pgp export -s > tmp/keybase-private.key"
-echo " gpg --allow-secret-key-import --import tmp/keybase-private.key"
-echo " keybase pgp export > tmp/keybase-public.key"
-echo " gpg --import tmp/keybase-public.key"
-echo " rm -rf tmp"
-echo ""
-
 # asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.3
-asdf plugin-add nodejs
-asdf plugin-add ruby
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 asdf plugin-add erlang
 asdf plugin-add elixir
+asdf plugin-add nodejs
+asdf plugin-add ruby
+asdf plugin-add python
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
@@ -99,16 +87,12 @@ ln -s $PWD/ruby/.gemrc ~
 brew install awscli
 brew install aws-elasticbeanstalk
 
-# ETH
-# brew install parity
-# rm -rf ~/Library/Application\ Support/io.parity.ethereum
-# ln -s ~/Documents/parity ~/Library/Application\ Support/io.parity.ethereum
-
 #
 # Fonts
 #
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code
+brew cask install font-fira-code-nerd-font
 brew cask install font-jetbrains-mono
 brew cask install font-jetbrains-mono-nerd-font
 
@@ -125,16 +109,13 @@ brew cask install docker
 brew cask install google-chrome
 brew cask install firefox
 brew cask install dash
-brew cask install quicklook-json
 brew cask install gifox
 
 brew cask install sketch
 brew cask install tableplus
-brew cask install transmit
 
-brew cask install couleurs
+brew cask install pika # https://superhighfives.com/pika
 brew cask install imageoptim
-brew cask install zeplin
 
 brew cask install slack
 brew cask install spotify
