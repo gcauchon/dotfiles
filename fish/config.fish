@@ -21,9 +21,6 @@ set __fish_git_prompt_char_untrackedfiles '?'
 set __fish_git_prompt_char_stashstate '#'
 set __fish_git_prompt_char_invalidstate '!'
 
-# Greeting screen
-set fish_greeting ''
-
 # Homebrew
 set -g fish_user_paths '/usr/local/sbin' $fish_user_paths
 
