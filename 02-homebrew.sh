@@ -26,7 +26,6 @@ brew install starship
 ln -s $PWD/fish/starship.toml ~/.config/starship.toml
 
 # tmux
-brew install reattach-to-user-namespace
 brew install tmux
 ln -s $PWD/tmux/.tmux.conf ~
 
