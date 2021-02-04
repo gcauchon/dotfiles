@@ -15,20 +15,23 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/camelcasemotion'
 
 " Intellisense engine for vim8 & neovim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}          
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Helps you win at grep
-Plug 'mhinz/vim-grepper'            
+Plug 'mhinz/vim-grepper'
 " Find/Replace from the Quickfix window
-Plug 'stefandtw/quickfix-reflector.vim' 
+Plug 'stefandtw/quickfix-reflector.vim'
 
 " A solid language pack for Vim.
 Plug 'sheerun/vim-polyglot'
 " Quoting/Parenthesizing made simple
-Plug 'tpope/vim-surround'           
+Plug 'tpope/vim-surround'
+" Place, toggle and display marks
+Plug 'kshenoy/vim-signature'
+
 " A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'           
+Plug 'tpope/vim-fugitive'
 " Shows git diff in the gutter and stages/undoes hunks
-Plug 'airblade/vim-gitgutter'       
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
