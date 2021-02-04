@@ -1,7 +1,5 @@
 #!/bin/sh
 
-mkdir ~/.config
-
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew update
@@ -10,7 +8,7 @@ brew update
 brew install fish
 sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
 
-mkdir ~/.config/fish
+mkdir -p ~/.config/fish
 ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
 
 chsh -s /usr/local/bin/fish
@@ -44,20 +42,19 @@ echo ""
 
 # git
 brew install git
-brew install diff-so-fancy
 brew install tig
+brew install diff-so-fancy
 ln -s $PWD/git/.gitconfig ~
 ln -s $PWD/git/.gitignore_global ~
 ln -s $PWD/git/.tigrc ~
 
 # Misc
 brew install direnv
-brew install tree
 brew install autoconf
 brew install wget
 brew install curl
-brew install htop
 brew install jq
+brew install ngrok
 brew install postgres
 brew install mysql
 
@@ -70,7 +67,10 @@ ln -s $PWD/gpg/gpg.conf ~/.gnupg/gpg.conf
 ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+brew install coreutils
+git clone git@github.com:asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+
 asdf plugin-add erlang
 asdf plugin-add elixir
 asdf plugin-add nodejs
@@ -90,34 +90,38 @@ brew install aws-elasticbeanstalk
 # Fonts
 #
 brew tap homebrew/cask-fonts
-brew cask install font-fira-code
-brew cask install font-fira-code-nerd-font
-brew cask install font-jetbrains-mono
-brew cask install font-jetbrains-mono-nerd-font
+brew install font-fira-code
+brew install font-fira-code-nerd-font
+brew install font-jetbrains-mono
+brew install font-jetbrains-mono-nerd-font
 
 #
 # Casks
 #
-brew cask install iterm2
-brew cask install alfred
-brew cask install dropbox
-brew cask install 1password
-brew cask install flux
+brew install --cask alfred
+brew install --cask 1password
+brew install --cask dash
+brew install --cask dropbox
+brew install --cask harvest
+brew install --cask google-chrome
+brew install --cask firefox
 
-brew cask install docker
-brew cask install google-chrome
-brew cask install firefox
-brew cask install dash
-brew cask install gifox
+brew install --cask iterm2
+brew install --cask visual-studio-code
+brew install --cask docker
+brew install --cask tableplus
+brew install --cask postman
 
-brew cask install sketch
-brew cask install tableplus
+brew install --cask slack
+brew install --cask signal
+brew install --cask microsoft-teams
 
-brew cask install pika # https://superhighfives.com/pika
-brew cask install imageoptim
+brew install --cask gifox
+brew install --cask sketch
+brew install --cask pika # https://superhighfives.com/pika
+brew install --cask imageoptim
 
-brew cask install slack
-brew cask install spotify
+brew install --cask spotify
 
 echo "-------------------------"
 echo " Post install notes! "
