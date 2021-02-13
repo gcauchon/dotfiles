@@ -17,7 +17,7 @@ chsh -s /usr/local/bin/fish
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 ln -s $PWD/fish/fishfile ~/.config/fish/fishfile
-fisher
+#fisher
 
 # starship
 brew install starship
@@ -33,12 +33,6 @@ brew install ripgrep
 
 ln -s $PWD/vim ~/.config/nvim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-echo "-------------------------"
-echo " Remap Caps Lock to ESC "
-echo "-------------------------"
-echo " System Preferences… -> Keyboard -> Keyboard Tab -> Modifier Keys"
-echo ""
 
 # git
 brew install git
@@ -57,6 +51,7 @@ brew install jq
 brew install ngrok
 brew install postgres
 brew install mysql
+brew install terraform
 
 # PGP
 brew install gnupg
@@ -68,16 +63,10 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # asdf
 brew install coreutils
-git clone git@github.com:asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-
-asdf plugin-add erlang
-asdf plugin-add elixir
-asdf plugin-add nodejs
-asdf plugin-add ruby
-asdf plugin-add python
-
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+brew install wxmac
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+mkdir -p ~/.config/fish/completions
+cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 
 # Ruby
 ln -s $PWD/ruby/.gemrc ~
@@ -102,7 +91,8 @@ brew install --cask alfred
 brew install --cask 1password
 brew install --cask dash
 brew install --cask dropbox
-brew install --cask harvest
+#brew install --cask harvest
+brew install --cask clockify
 brew install --cask google-chrome
 brew install --cask firefox
 
@@ -115,6 +105,7 @@ brew install --cask postman
 brew install --cask slack
 brew install --cask signal
 brew install --cask microsoft-teams
+brew install --cask screen
 
 brew install --cask gifox
 brew install --cask sketch
@@ -123,11 +114,32 @@ brew install --cask imageoptim
 
 brew install --cask spotify
 
-echo "-------------------------"
+echo "====================="
 echo " Post install notes! "
-echo "-------------------------"
-echo " Configure the following apps from their sync folder in Dropbox/Tools"
+echo "====================="
+echo ""
+echo " Remap Caps Lock to ESC:"
+echo "------------------------"
+echo " System Preferences -> Keyboard -> Keyboard Tab -> Modifier Keys"
+echo ""
+echo " Disable 'Shake mouse pointer to locate':"
+echo "-----------------------------------------"
+echo " System Preferences -> Accessibility -> Display -> Cursor"
+echo ""
+
+echo " Configure sync in Dropbox/Tools:"
+echo "---------------------------------"
 echo " - iTerm2"
 echo " - Alfred"
 echo " - Dash"
+echo ""
+
+echo " asdf-vm:"
+echo "---------"
+echo "> asdf plugin-add erlang"
+echo "> asdf plugin-add elixir"
+echo "> asdf plugin-add nodejs"
+echo "> bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+echo "> asdf plugin-add ruby"
+echo "> asdf plugin-add python"
 echo ""
