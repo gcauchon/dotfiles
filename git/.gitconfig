@@ -47,3 +47,5 @@
   po = push origin
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main

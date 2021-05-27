@@ -1,4 +1,5 @@
 add_newline = false
+command_timeout = 750
 format = """
 $directory\
 $git_branch$git_state$git_status\
@@ -19,7 +20,7 @@ format = "[ $branch](cyan) "
 style = "yellow"
 
 [elixir]
-format = '[ $version\(OTP $otp_version\)](purple) '
+format = '[ $otp_version](red) [ $version](purple) '
 
 [ruby]
 format = "[ $version](red) "
