@@ -11,27 +11,33 @@ Plug 'itchyny/lightline.vim'
 " A general-purpose command-line fuzzy finder.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Navigate thru CamelCase or snake_case (ie: w, e, b)
-Plug 'vim-scripts/camelcasemotion'
 
-" Intellisense engine for vim8 & neovim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Helps you win at grep
 Plug 'mhinz/vim-grepper'
+
 " Find/Replace from the Quickfix window
 Plug 'stefandtw/quickfix-reflector.vim'
 
-" A solid language pack for Vim.
-Plug 'sheerun/vim-polyglot'
+" Language packs
+Plug 'gcauchon/vim-elixir', {'branch': 'feature/heex-support'}
+
+" Navigate thru CamelCase or snake_case (ie: w, e, b)
+Plug 'vim-scripts/camelcasemotion'
+
 " Quoting/Parenthesizing made simple
 Plug 'tpope/vim-surround'
+
 " Place, toggle and display marks
 Plug 'kshenoy/vim-signature'
 
 " A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+
 " Shows git diff in the gutter and stages/undoes hunks
 Plug 'airblade/vim-gitgutter'
+
+" Intellisense engine for vim8 & neovim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
