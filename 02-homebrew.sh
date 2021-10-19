@@ -90,7 +90,6 @@ brew install font-jetbrains-mono-nerd-font
 brew install --cask alfred
 brew install --cask 1password
 brew install --cask dash
-brew install --cask dropbox
 #brew install --cask harvest
 brew install --cask clockify
 brew install --cask google-chrome
@@ -98,9 +97,12 @@ brew install --cask firefox
 
 brew install --cask iterm2
 brew install --cask visual-studio-code
-brew install --cask docker
 brew install --cask tableplus
 brew install --cask postman
+
+brew install --cask docker
+ln -shi /Applications/Docker.app/Contents/Resources/etc/docker.fish-completion ~/.config/fish/completions/docker.fish
+ln -shi /Applications/Docker.app/Contents/Resources/etc/docker-compose.fish-completion ~/.config/fish/completions/docker-compose.fish
 
 brew install --cask slack
 brew install --cask signal

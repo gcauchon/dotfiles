@@ -22,19 +22,19 @@
   tool = diffmerge
   verbosity = 5
 [alias]
-  a = add -A
-  c = commit -S -m
-  ca = commit -S --amend
+  a = add --all
+  c = commit --gpg-sign --message
+  ca = commit --gpg-sign --amend
   s = status --untracked-files=all
-  br = branch -vv
+  br = branch --verbose
   bl = branch --list
-  bd = branch -D
+  bd = branch --delete --force
   co = checkout
   cb = checkout -b
   f = fetch
+  fm = !git fetch --verbose && git merge --ff-only
   fp = fetch --prune
-  m = merge
-  fm = pull
+  m = merge --ff-only
   unstage = reset HEAD
   rollback = reset --soft HEAD^1
   r = rebase
@@ -42,7 +42,7 @@
   rs = rebase --skip
   ra = rebase --abort
   p = push
-  ph = push -u origin HEAD
+  ph = push --set-upstream origin HEAD
   pf = push --force-with-lease
   po = push origin
 [pull]
