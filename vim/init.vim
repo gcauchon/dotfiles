@@ -19,7 +19,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'stefandtw/quickfix-reflector.vim'
 
 " Language packs
-Plug 'gcauchon/vim-elixir', {'branch': 'feature/heex-support'}
+Plug 'elixir-editors/vim-elixir'
 
 " Navigate thru CamelCase or snake_case (ie: w, e, b)
 Plug 'vim-scripts/camelcasemotion'

@@ -28,4 +28,5 @@ npm-debug.log
 
 # Environment
 .env.local
+.envrc
 tmp
