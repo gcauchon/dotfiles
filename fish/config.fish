@@ -22,7 +22,7 @@ set __fish_git_prompt_char_stashstate '#'
 set __fish_git_prompt_char_invalidstate '!'
 
 # Homebrew
-set -g fish_user_paths '/usr/local/sbin' $fish_user_paths
+set -g fish_user_paths '/opt/homebrew/bin' $fish_user_paths
 
 # Alias
 alias ll='ls -lhag'
