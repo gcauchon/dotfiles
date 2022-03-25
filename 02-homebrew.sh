@@ -29,12 +29,14 @@ ln -s $PWD/fish/starship.toml ~/.config/starship.toml
 brew install tmux
 ln -s $PWD/tmux/.tmux.conf ~
 
-# vim
+# neovim
 brew install neovim
-brew install ripgrep 
+brew install ripgrep
 
-ln -s $PWD/vim ~/.config/nvim
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln -s $PWD/neovim ~/.config/neovim
+
+# ⮑ lua package management
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # git
 brew install git
