@@ -25,6 +25,9 @@ return require('packer').startup(function()
     },
   }
 
+  -- Super powerful autopair plugin for Neovim
+  use 'windwp/nvim-autopairs'
+
   -- fzf, written in lua for Neovim 0.5+
   use { 'ibhagwan/fzf-lua',
     requires = { 'kyazdani42/nvim-web-devicons' }
