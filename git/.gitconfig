@@ -1,26 +1,34 @@
-# My git configuration file.
 [user]
   email = gcauchon@gmail.com
   name = Guillaume Cauchon
-  signingkey = 1D667DEA56F2CAA2
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP9favq0reHLciP/MoCKFArXd54xC7sEMgSZejkUFfds
+
 [core]
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
   editor = nvim
+
 [pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX 
-  show = diff-so-fancy | less --tabs=4 -RFX 
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
+
 [gpg]
-  program = /opt/homebrew/bin/gpg
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
 [diff]
   noprefix = true
   tool = tig
   verbosity = 5
+
 [commit]
   gpgsign = true
+
 [merge]
   tool = diffmerge
   verbosity = 5
+
 [alias]
   a = add --all
   c = commit --gpg-sign --message
@@ -45,7 +53,9 @@
   ph = push --set-upstream origin HEAD
   pf = push --force-with-lease
   po = push origin
+
 [pull]
 	rebase = true
+
 [init]
 	defaultBranch = main
