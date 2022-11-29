@@ -7,6 +7,16 @@ require('nvim-autopairs').setup{}
 require('nvim-tree').setup {
   view = {
     width = 40
+  },
+  filters = {
+    dotfiles = true,
+  },
+  git = {
+    enable = true,
+    ignore = false
+  },
+  diagnostics = {
+    enable = true
   }
 }
 

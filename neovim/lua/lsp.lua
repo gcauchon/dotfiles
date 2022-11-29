@@ -33,7 +33,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Language server client
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require('lspconfig').elixirls.setup {
   cmd = { "/Users/gcauchon/Projects/opensource/elixir-ls/release/language_server.sh" },
