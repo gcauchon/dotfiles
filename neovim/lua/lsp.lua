@@ -25,10 +25,9 @@ end
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   sync_install = false,
-  ignore_install = {"phpdoc"},
+  ignore_install = {"php", "phpdoc"},
   highlight = {
-    enable = true,
-    disable = {}
+    enable = true
   }
 }
 
@@ -37,6 +36,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 require('lspconfig').elixirls.setup {
   cmd = { "/Users/gcauchon/Projects/opensource/elixir-ls/release/language_server.sh" },
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+require('lspconfig').tailwindcss.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }

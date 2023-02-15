@@ -28,10 +28,6 @@ return require('packer').startup(function()
   -- Super powerful autopair plugin for Neovim
   use 'windwp/nvim-autopairs'
 
-  -- fzf, written in lua for Neovim 0.5+
-  use { 'ibhagwan/fzf-lua',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
 
   -- Helps you win at grep
   use 'mhinz/vim-grepper'
@@ -41,9 +37,26 @@ return require('packer').startup(function()
 
   -- File explorer for Neovim
   use {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons'
+    }
+  }
+
+  -- Highly extendable fuzzy finder over lists
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons'
+    }
+  }
+
+  -- File browser extension for telescope.nvim.
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = {
+      'nvim-tree/nvim-web-devicons'
     }
   }
 
