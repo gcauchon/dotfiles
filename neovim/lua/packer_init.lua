@@ -4,7 +4,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
   -- Shows git diff in the gutter and stages/undoes hunks
-  use 'airblade/vim-gitgutter'
+  use {'airblade/vim-gitgutter', branch = 'main'}
 
   -- Treesitter configurations and abstraction layer for Neovim
   use 'nvim-treesitter/nvim-treesitter'

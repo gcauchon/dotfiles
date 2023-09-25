@@ -20,13 +20,13 @@ format = "[ $branch](cyan) "
 style = "yellow"
 
 [elixir]
-format = '[ $otp_version](red) [ $version](purple) '
+format = "[ $otp_version](red) [ $version](purple) "
 
 [ruby]
 format = "[ $version](red) "
 
 [nodejs]
-format = "[ $version](green) "
+format = "[󰎙 $version](green) "
 
 [cmd_duration]
 show_milliseconds = true
