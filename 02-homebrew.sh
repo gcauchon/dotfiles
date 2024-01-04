@@ -53,9 +53,9 @@ brew install wget
 brew install curl
 brew install jq
 brew install ngrok
-brew install postgres
+#brew install postgres
 #brew install mysql
-brew install terraform
+#brew install terraform
 
 # PGP
 brew install gnupg
@@ -90,31 +90,32 @@ brew install font-jetbrains-mono-nerd-font
 #
 # Casks
 #
-brew install --cask alfred
-brew install --cask 1password
-brew install --cask dash
-#brew install --cask harvest
-brew install --cask google-chrome
-brew install --cask firefox
+brew install alfred
+brew install 1password
+brew install dash
+#brew install harvest
+brew install google-chrome
+brew install firefox
 
-brew install --cask iterm2
-brew install --cask visual-studio-code
-brew install --cask tableplus
-#brew install --cask postman
+# Native tools for Google Mail and Calendar
+brew install mimestream
+brew install fantastical
 
-brew install --cask docker
-ln -shi /Applications/Docker.app/Contents/Resources/etc/docker.fish-completion ~/.config/fish/completions/docker.fish
-ln -shi /Applications/Docker.app/Contents/Resources/etc/docker-compose.fish-completion ~/.config/fish/completions/docker-compose.fish
+brew install iterm2
+brew install visual-studio-code
+brew install tableplus
+#brew install postman
 
-brew install --cask slack
-brew install --cask signal
 
-brew install --cask gifox
-#brew install --cask sketch
-brew install --cask pika # https://superhighfives.com/pika
-brew install --cask imageoptim
+brew install slack
+brew install signal
 
-brew install --cask spotify
+brew install gifox
+#brew install sketch
+brew install pika # https://superhighfives.com/pika
+brew install imageoptim
+
+brew install spotify
 
 echo "====================="
 echo " Post install notes! "
