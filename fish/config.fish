@@ -27,16 +27,12 @@ fish_add_path /opt/homebrew/sbin
 
 # Alias
 alias ll='ls -lhag'
-alias tf='terraform'
 
 # vi-mode
 fish_vi_key_bindings
 
-# asdf
-source ~/.asdf/asdf.fish
-
-# direnv
-eval (direnv hook fish)
+# mise
+mise activate fish | source
 
 # GPG
 set -x GPG_TTY (tty)
@@ -44,4 +40,5 @@ set -x GPG_TTY (tty)
 # Erlang REPL
 set -x ERL_AFLAGS '-kernel shell_history enabled'
 
+# Starship
 starship init fish | source
