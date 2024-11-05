@@ -31,14 +31,17 @@ alias ll='ls -lhag'
 # vi-mode
 fish_vi_key_bindings
 
-# mise
-mise activate fish | source
-
 # GPG
 set -x GPG_TTY (tty)
 
-# Erlang REPL
-set -x ERL_AFLAGS '-kernel shell_history enabled'
-
 # Starship
 starship init fish | source
+
+# mise
+mise activate fish | source
+
+# colima
+colima completion fish | source
+
+# Erlang REPL
+set -x ERL_AFLAGS '-kernel shell_history enabled'

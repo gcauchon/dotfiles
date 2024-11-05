@@ -29,8 +29,7 @@ Here are the main tools that are included:
 - `gnupg` - https://gnupg.org
 - `tmux` - https://github.com/tmux/tmux/wiki
 - `neovim` - https://neovim.io
-- `asdf` - https://asdf-vm.com, with plugins for `erlang`, `elixir`, `node` and `ruby`
-- `direnv` - https://direnv.net
+- `mise` - https://mise.jdx.dev/getting-started.html
 - `fonts` - `Fira Code`, `JetBrains Mono`; with `Nerd Font` patched glyphs
 - configurations files
 
@@ -39,7 +38,7 @@ Plus many apps I am using every day:
 - iTerm2 - https://iterm2.com
 - Alfred - https://www.alfredapp.com
 - 1Password - https://1password.com
-- Docker - https://www.docker.com/products/docker-desktop
+- Colima - https://github.com/abiosoft/colima
 - Dash - https://kapeli.com/dash
 - TablePlus - https://tableplus.com
 - Spotify - https://www.spotify.com

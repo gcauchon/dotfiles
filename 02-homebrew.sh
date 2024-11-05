@@ -63,7 +63,15 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # mise
 brew install mise
-echo 'mise activate fish | source' >> ~/.config/fish/config.fish
+# vvv Already in fish config file vvv
+# echo 'mise activate fish | source' >> ~/.config/fish/config.fish
+
+# Bun, Erlang, Go, Java, NodeJS, Python & Ruby are core built-in plugins
+mise plugins add elixir
+
+# docker
+brew install docker
+brew install colima
 
 #
 # Fonts
@@ -75,10 +83,10 @@ brew install font-monaspace font-monaspace-nerd-font
 #
 # Casks
 #
-brew install arc
 brew install alfred
 brew install 1password
 brew install dash
+brew install arc
 brew install firefox
 
 brew install iterm2
@@ -87,7 +95,6 @@ brew install tableplus
 #brew install postman
 
 brew install slack
-#brew install signal
 
 brew install gifox
 brew install pika # https://superhighfives.com/pika
@@ -115,9 +122,4 @@ echo "-------------------------------------------"
 echo " - iTerm2"
 echo " - Alfred"
 echo " - Dash"
-echo ""
-
-echo " mise:"
-echo "-------"
-echo "> mise plugins add elixir"
 echo ""
