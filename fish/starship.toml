@@ -3,7 +3,7 @@ command_timeout = 750
 format = """
 $directory\
 $git_branch$git_state$git_status\
-$elixir$ruby$nodejs\
+$elixir$ruby$nodejs$python\
 $cmd_duration
 $character
 """
@@ -27,6 +27,9 @@ format = "[ $version](red) "
 
 [nodejs]
 format = "[󰎙 $version](green) "
+
+[python]
+format = "[ $version](yellow) "
 
 [cmd_duration]
 show_milliseconds = true

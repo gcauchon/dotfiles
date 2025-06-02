@@ -65,13 +65,12 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 brew install mise
 # vvv Already in fish config file vvv
 # echo 'mise activate fish | source' >> ~/.config/fish/config.fish
-
-# Bun, Erlang, Go, Java, NodeJS, Python & Ruby are core built-in plugins
-mise plugins add elixir
+ln -s $PWD/mist/config.toml ~
 
 # docker
 brew install docker
 brew install colima
+colima completion fish > ~/.config/fish/completions/colima.fish
 
 #
 # Fonts
@@ -86,10 +85,10 @@ brew install font-monaspace font-monaspace-nerd-font
 brew install alfred
 brew install 1password
 brew install dash
-brew install arc
 brew install firefox
 
 brew install iterm2
+brew install ghostthy
 brew install visual-studio-code
 brew install tableplus
 #brew install postman
@@ -119,7 +118,6 @@ echo ""
 
 echo " Configure sync in iCloud/Documents/Tools:"
 echo "-------------------------------------------"
-echo " - iTerm2"
 echo " - Alfred"
 echo " - Dash"
 echo ""
