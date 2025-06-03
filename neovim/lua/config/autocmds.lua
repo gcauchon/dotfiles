@@ -51,8 +51,20 @@ autocmd({ "BufRead", "BufNewFile" }, {
 -- Elixir files
 autocmd({ "BufRead", "BufNewFile" }, {
   group = filetypes,
-  pattern = "*.eex",
-  callback = function() vim.opt.filetype = "html" end,
+  pattern = { "*.ex", "*.exs" },
+  callback = function() vim.opt.filetype = "elixir" end,
+})
+
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetypes,
+  pattern = { "*.eex", "*.heex", "*.leex" },
+  callback = function() vim.opt.filetype = "eelixir" end,
+})
+
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetypes,
+  pattern = "mix.lock",
+  callback = function() vim.opt.filetype = "elixir" end,
 })
 
 -- Docker files

@@ -1,5 +1,5 @@
 return {
-  -- Treesitter
+  -- Core Treesitter configuration
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -7,13 +7,13 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
-          "bash", "lua", "fish", "regex",
-          "elixir", "ruby", "python", "javascript", "typescript", "html", "css", "sql",
-          "json", "xml", "dockerfile", "markdown", "yaml", "toml",
-          "git_config", "git_rebase", "gitignore"
+          "fish", "lua", "bash", "vim", "vimdoc", "query", "regex",
+          "python", "rust", "elixir", "heex", "eex", "ruby", "sql",
+          "html", "css", "javascript", "typescript",
+          "xml", "json", "markdown", "yaml", "toml", "dockerfile",
+          "git_config", "git_rebase", "gitignore",
         },
-        sync_install = false,
-        auto_install = true, -- Auto install missing parsers when entering buffer
+        auto_install = true,
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
@@ -32,6 +32,85 @@ return {
         },
       }
     end
+  },
+
+  -- Extended Treesitter features
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true, -- Automatically jump forward to textobj
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]m"] = "@function.outer",
+              ["]]"] = "@class.outer",
+            },
+            goto_next_end = {
+              ["]M"] = "@function.outer",
+              ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+              ["[m"] = "@function.outer",
+              ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+              ["[M"] = "@function.outer",
+              ["[]"] = "@class.outer",
+            },
+          },
+        },
+      }
+    end
+  },
+  
+  -- LSP UI improvements
+  {
+    'nvimdev/lspsaga.nvim',
+    event = 'LspAttach',
+    config = function()
+      require('lspsaga').setup({
+        ui = {
+          border = 'rounded',
+        },
+        lightbulb = {
+          enable = false,
+        },
+      })
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons'
+    }
+  },
+
+  -- Show diagnostics in virtual text
+  {
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    event = 'LspAttach',
+    config = function()
+      require('lsp_lines').setup()
+      -- Disable virtual_text since it's redundant due to lsp_lines
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
+    end,
   },
 }
 
