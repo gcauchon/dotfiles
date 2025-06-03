@@ -4,3 +4,9 @@ experimental = true
 [settings.status]
 show_tools = true
 show_env = true
+
+[tools]
+node = "22.16.0"
+ruby = "3.4.4"
+python = "3.11.12"
+uv = "0.7.9"

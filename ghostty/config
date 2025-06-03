@@ -1,0 +1,42 @@
+# Theme
+# theme = Darkside
+
+# Font
+font-family = FiraCode Nerd Font
+font-size = 14
+font-feature = +liga +calt
+window-inherit-font-size = true
+
+# macOS-specific optimizations
+macos-non-native-fullscreen = false
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+# Performance
+resize-overlay = never
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# Window management
+window-padding-x = 4
+window-padding-y = 4
+window-decoration = true
+confirm-close-surface = false
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+
+# Mouse
+mouse-shift-capture = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Colors and visual
+background-opacity = 1.0
+unfocused-split-opacity = 0.7

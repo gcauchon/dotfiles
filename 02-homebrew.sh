@@ -68,7 +68,7 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 brew install mise
 # vvv Already in fish config file vvv
 # echo 'mise activate fish | source' >> ~/.config/fish/config.fish
-ln -s $PWD/mist/config.toml ~
+ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 
 # docker
 brew install docker
@@ -90,6 +90,8 @@ brew install firefox
 brew install google-chrome
 
 brew install ghostthy
+ln -s $PWD/ghostty/config ~/.config/ghostty/config
+
 brew install visual-studio-code
 brew install dash
 brew install tableplus
