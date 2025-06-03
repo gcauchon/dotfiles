@@ -20,6 +20,8 @@ vim.opt.smartcase = true                   -- Ignore lowercase for the whole pat
 vim.opt.whichwrap = "h,l,~,[,],<,>"        -- Which caracters to wrap
 vim.opt.linebreak = true                   -- Wrap on word boundary
 vim.opt.termguicolors = true               -- Enable 24-bit RGB colors
+vim.opt.syntax = "on"                      -- Enable syntax highlighting
+vim.opt.signcolumn = "yes"                 -- Always show sign column
 
 -- Tabs, indent
 vim.opt.expandtab = true                   -- Use spaces instead of tabs
@@ -48,3 +50,7 @@ vim.g.did_load_filetypes = 0                -- Don't use filetype.vim
 vim.opt.ignorecase = true                  -- Ignore case when searching
 vim.opt.smartcase = true                   -- Smart-case search mode
 vim.opt.incsearch  = true                  -- Start to search as soon as we type
+
+-- Enhanced syntax highlighting related settings
+vim.opt.conceallevel = 0                   -- Don't hide quotes in markdown, etc.
+vim.g.vim_json_conceal = 0                 -- Don't hide quotes in JSON
