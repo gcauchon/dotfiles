@@ -1,18 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- Auto close nvim-tree when it's the last window
-autocmd("BufEnter", {
-  group = augroup("NvimTreeAutoclose", { clear = true }),
-  callback = function()
-    local winnr = vim.fn.winnr("$")
-    if winnr == 1 and vim.fn.bufname() == "NvimTree_" .. vim.fn.tabpagenr() then
-      vim.cmd "quit"
-    end
-  end,
-  nested = true,
-})
-
 -- Remove whitespace on save
 autocmd("BufWritePre", {
   pattern = "*",
