@@ -33,6 +33,8 @@ ln -s $PWD/tmux/.tmux.conf ~
 brew install neovim
 brew install lua
 brew install luarocks
+brew install fd
+brew install fzf
 brew install ripgrep
 
 ln -s $PWD/neovim ~/.config/neovim
