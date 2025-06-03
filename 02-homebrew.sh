@@ -31,6 +31,8 @@ ln -s $PWD/tmux/.tmux.conf ~
 
 # neovim
 brew install neovim
+brew install lua
+brew install luarocks
 brew install ripgrep
 
 ln -s $PWD/neovim ~/.config/neovim
@@ -48,7 +50,6 @@ ln -s $PWD/git/.tigrc ~
 
 # Misc
 brew install autoconf
-brew install wget
 brew install curl
 brew install jq
 brew install ngrok
@@ -76,29 +77,29 @@ colima completion fish > ~/.config/fish/completions/colima.fish
 # Fonts
 #
 brew install font-fira-code font-fira-code-nerd-font
-brew install font-jetbrains-mono font-jetbrains-mono-nerd-font
-brew install font-monaspace font-monaspace-nerd-font
 
 #
 # Casks
 #
 brew install alfred
 brew install 1password
-brew install dash
+brew install 1password-cli
 brew install firefox
+brew install google-chrome
 
-brew install iterm2
 brew install ghostthy
 brew install visual-studio-code
+brew install dash
 brew install tableplus
 #brew install postman
 
-brew install slack
-
-brew install gifox
-brew install pika # https://superhighfives.com/pika
+brew install caffeine
 brew install imageoptim
-
+brew install gifox
+brew install languagetool
+brew install lunar
+brew install pika # https://superhighfives.com/pika
+brew install slack
 brew install spotify
 
 echo "====================="

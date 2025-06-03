@@ -5,7 +5,7 @@ local function map(mode, lhs, rhs, opts)
     options = vim.tbl_extend('force', options, opts)
   end
 
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Fast saving with <leader> and s
@@ -33,24 +33,7 @@ map('', '<leader>q', ':copen<CR>')
 map('', '<leader>Q', ':cclose<CR>')
 
 -- " Undo/Redo
-map('n', 'u', '<undo>')
-map('n', 'U', ':redo<CR>')
+map('n', 'U', '<cmd>redo<CR>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':nohl<CR>')
-
--- File explorer
-map('n', '<leader>t', ':NvimTreeToggle<CR>')
-map('n', '<leader>f', ':NvimTreeFindFile<CR>')
-map('n', '<leader>r', ':NvimTreeRefresh<CR>')
-
--- Telescope
-map('n', '<leader>p', ':Telescope find_files hidden=true<CR>')
-map('n', '<leader>ff', ':Telescope find_files hidden=true<CR>')
-map('n', '<leader>fb', ':Telescope buffers<CR>')
-map('n', '<leader>fh', ':Telescope help_tags<CR>')
-map('n', '<leader>fg', ':Telescope live_grep hidden=true<CR>')
-
--- Grepper
-map('', '<leader>g', ':Grepper<CR>')
-

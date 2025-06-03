@@ -1,7 +1,4 @@
-require('packer_init')
+require('config.lazy')
 
-require('settings')
-require('plugins')
 require('mappings')
 -- require('filetype')
-require('lsp')
