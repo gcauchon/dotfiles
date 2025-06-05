@@ -5,7 +5,7 @@ return {
     event = "VeryLazy",
     config = function()
       vim.g.lightline = {
-        colorscheme = 'powerline',
+        colorscheme = 'solarized',
         active = {
           left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
           right = { { 'lineinfo' }, { 'percent' }, { 'filetype', 'fileformat', 'encoding' } }
@@ -18,15 +18,15 @@ return {
   },
   
   -- Theme
-  -- { 
-  --   'tanvirtin/monokai.nvim', 
-  --   lazy = false,
-  --   config = function()
-  --     require('monokai').setup {
-  --       palette = require('monokai').pro
-  --     }
-  --   end
-  -- },
+  { 
+    'altercation/vim-colors-solarized', 
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.opt.background = 'dark'
+      vim.cmd.colorscheme('solarized')
+    end
+  },
   
   -- Git indicators
   { 
