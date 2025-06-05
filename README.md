@@ -25,7 +25,7 @@ Resolving deltas: 100% (462/462), done.
 Here are the main tools that are included:
 
 - `homebrew` - https://brew.sh
-- `fish` - https://fishshell.com
+- `zsh` - Built-in macOS zsh shell
 - `gnupg` - https://gnupg.org
 - `tmux` - https://github.com/tmux/tmux/wiki
 - `neovim` - https://neovim.io

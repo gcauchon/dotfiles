@@ -3,8 +3,13 @@ command_timeout = 750
 format = """
 $directory\
 $git_branch$git_state$git_status\
-$elixir$ruby$nodejs$python\
-$cmd_duration
+$elixir\
+$ruby\
+$nodejs\
+$python\
+$cmd_duration\
+$jobs\
+$status\
 $character
 """
 
@@ -14,10 +19,7 @@ truncate_to_repo = true
 style = "white"
 
 [git_branch]
-format = "[ $branch](cyan) "
-
-[git_status]
-style = "yellow"
+format = "[ $branch]($style) "
 
 [elixir]
 format = "[ $otp_version](red) [ $version](purple) "
@@ -32,5 +34,17 @@ format = "[󰎙 $version](green) "
 format = "[ $version](yellow) "
 
 [cmd_duration]
+min_time = 1000
 show_milliseconds = true
-format = "[ $duration](yellow) "
+format = "[ $duration]($style) "
+
+[jobs]
+format = "[ $number]($style) "
+style = "bold blue"
+
+[status]
+symbol = "✖"
+map_symbol = true
+format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+style = "red"
+disabled = false
