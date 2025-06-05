@@ -25,29 +25,34 @@ Resolving deltas: 100% (462/462), done.
 Here are the main tools that are included:
 
 - `homebrew` - https://brew.sh
-- `zsh` - Built-in macOS zsh shell
-- `gnupg` - https://gnupg.org
+- `zsh` - Built-in macOS zsh shell with plugins (`sheldon`, `fzf`, `zoxide`)
+- `starship` - https://starship.rs - Cross-shell prompt
 - `tmux` - https://github.com/tmux/tmux/wiki
-- `neovim` - https://neovim.io
+- `neovim` - https://neovim.io (with `lua`, `luarocks`, `fd`, `ripgrep`)
+- `git` - with `tig`, `diff-so-fancy`
+- `gnupg` - https://gnupg.org (with `pinentry-mac`)
 - `mise` - https://mise.jdx.dev/getting-started.html
-- `fonts` - `Fira Code`, `JetBrains Mono`; with `Nerd Font` patched glyphs
-- configurations files
+- `docker` & `colima` - https://github.com/abiosoft/colima
+- Additional CLI tools: `autoconf`, `curl`, `jq`, `ngrok`
+- `fonts` - `Fira Code` with `Nerd Font` patched glyphs
 
 Plus many apps I am using every day:
 
-- iTerm2 - https://iterm2.com
+- Ghostty - https://ghostty.org - Modern terminal emulator
 - Alfred - https://www.alfredapp.com
-- 1Password - https://1password.com
-- Colima - https://github.com/abiosoft/colima
+- 1Password - https://1password.com (with CLI)
+- Firefox & Google Chrome browsers
+- Visual Studio Code - https://code.visualstudio.com
 - Dash - https://kapeli.com/dash
 - TablePlus - https://tableplus.com
+- Slack - https://slack.com
 - Spotify - https://www.spotify.com
-- and many more…
+- Utility apps: Caffeine, ImageOptim, Gifox, LanguageTool, Lunar, Pika
 
 4. Run each `.sh` scripts sequentially.
 
 ```shell
-> ./01-default.sh
+> ./01-defaults.sh
 …
 > ./02-homebrew.sh
 …

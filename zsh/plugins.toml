@@ -14,6 +14,10 @@ shell = "zsh"
 
 [plugins]
 
+
+[plugins.fzf]
+github = "junegunn/fzf"
+
 [plugins.zoxide]
 github = "ajeetdsouza/zoxide"
 

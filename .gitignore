@@ -1,7 +1,1 @@
 .DS_Store
-theme/yarn.lock
-theme/gen
-vim/.netrwhist
-vim/autoload/plug.*
-vim/plugged/*
-zsh/.zsh/zsh-syntax-highlighting

@@ -12,6 +12,7 @@ ln -s $PWD/zsh/.zshenv ~
 
 # zsh plugins
 brew install sheldon
+brew install fzf
 brew install zoxide
 mkdir --parents ~/.config/sheldon
 ln -s $PWD/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
@@ -29,7 +30,6 @@ brew install neovim
 brew install lua
 brew install luarocks
 brew install fd
-brew install fzf
 brew install ripgrep
 
 ln -s $PWD/neovim ~/.config/neovim
