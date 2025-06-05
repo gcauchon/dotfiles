@@ -2,28 +2,23 @@
 
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/gcauchon/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
-# fish
-brew install fish
-sudo sh -c "echo '/opt/homebrew/bin/fish' >> /etc/shells"
+# zsh configuration
+ln -s $PWD/zsh/.zshrc ~
+ln -s $PWD/zsh/.zshenv ~
 
-mkdir -p ~/.config/fish
-ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
-
-chsh -s /opt/homebrew/bin/fish
-
-# fisherman
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-
-ln -s $PWD/fish/fishfile ~/.config/fish/fishfile
-fisher
+# zsh plugins
+brew install sheldon
+brew install zoxide
+mkdir --parents ~/.config/sheldon
+ln -s $PWD/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 
 # starship
 brew install starship
-ln -s $PWD/fish/starship.toml ~/.config/starship.toml
+ln -s $PWD/zsh/starship.toml ~/.config/starship.toml
 
 # tmux
 brew install tmux
@@ -66,14 +61,13 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # mise
 brew install mise
-# vvv Already in fish config file vvv
-# echo 'mise activate fish | source' >> ~/.config/fish/config.fish
+# vvv Already in zsh config file vvv
+# echo 'mise activate zsh | source' >> ~/.zshrc
 ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 
 # docker
 brew install docker
 brew install colima
-colima completion fish > ~/.config/fish/completions/colima.fish
 
 #
 # Fonts
