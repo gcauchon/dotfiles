@@ -11,15 +11,24 @@ alias zreload='. ~/.zshrc'
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
 
 # Completion
 autoload -Uz compinit
 compinit
+
+# Homebrew
+eval "$(brew shellenv)"
 
 # Sheldon, ZSH plugin manager
 eval "$(sheldon source)"
@@ -29,3 +38,6 @@ eval "$(starship init zsh)"
 
 # mise (version manager)
 eval "$(mise activate zsh)"
+
+# fzf
+source <(fzf --zsh)
