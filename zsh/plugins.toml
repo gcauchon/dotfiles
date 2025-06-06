@@ -14,7 +14,6 @@ shell = "zsh"
 
 [plugins]
 
-
 [plugins.fzf]
 github = "junegunn/fzf"
 

@@ -38,6 +38,3 @@ eval "$(starship init zsh)"
 
 # mise (version manager)
 eval "$(mise activate zsh)"
-
-# fzf
-source <(fzf --zsh)
