@@ -14,8 +14,8 @@ ln -s $PWD/zsh/.zshenv ~
 brew install sheldon
 brew install fzf
 brew install zoxide
-mkdir --parents ~/.config/sheldon
-ln -s $PWD/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+mkdir -p ~/.config/sheldon
+ln -s $PWD/sheldon ~/.config/sheldon
 
 # starship
 brew install starship
@@ -32,10 +32,7 @@ brew install luarocks
 brew install fd
 brew install ripgrep
 
-ln -s $PWD/neovim ~/.config/neovim
-
-# ⮑ lua package management
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ln -s $PWD/neovim ~/.config/nvim
 
 # git
 brew install git
@@ -83,7 +80,7 @@ brew install 1password-cli
 brew install firefox
 brew install google-chrome
 
-brew install ghostthy
+brew install ghostty
 ln -s $PWD/ghostty/config ~/.config/ghostty/config
 
 brew install visual-studio-code
@@ -91,24 +88,18 @@ brew install dash
 brew install tableplus
 #brew install postman
 
-brew install caffeine
-brew install imageoptim
-brew install gifox
+#brew install caffeine
+#brew install imageoptim
+#brew install gifox
 brew install languagetool
 brew install lunar
 brew install pika # https://superhighfives.com/pika
-brew install slack
+#brew install slack
 brew install spotify
 
 echo "====================="
 echo " Post install notes! "
 echo "====================="
-
-echo ""
-echo " Remap Caps Lock to ESC:"
-echo "-------------------------"
-echo " System Preferences -> Keyboard -> Keyboard Tab -> Modifier Keys"
-echo ""
 
 echo " Disable 'Shake mouse pointer to locate':"
 echo "------------------------------------------"
