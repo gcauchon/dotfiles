@@ -1,0 +1,10 @@
+shell = "zsh"
+
+[plugins.zoxide]
+github = "ajeetdsouza/zoxide"
+hooks.post = "eval \"$(zoxide init zsh)\""
+
+[plugins.fzf]
+github = "junegunn/fzf"
+use = ["shell/completion.zsh", "shell/key-bindings.zsh"]
+apply = ["source"]

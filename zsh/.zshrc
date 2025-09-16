@@ -23,10 +23,6 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
-# Completion
-autoload -Uz compinit
-compinit
-
 # Homebrew
 eval "$(brew shellenv)"
 
@@ -38,3 +34,7 @@ eval "$(starship init zsh)"
 
 # mise (version manager)
 eval "$(mise activate zsh)"
+
+# Completion
+autoload -Uz compinit
+compinit
