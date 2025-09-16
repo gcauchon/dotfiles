@@ -10,12 +10,14 @@ brew update
 ln -s $PWD/zsh/.zshrc ~
 ln -s $PWD/zsh/.zshenv ~
 
+mkdir -p ~/.config
+
 # zsh plugins
 brew install sheldon
 brew install fzf
 brew install zoxide
 mkdir -p ~/.config/sheldon
-ln -s $PWD/sheldon ~/.config/sheldon
+ln -s $PWD/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
 
 # starship
 brew install starship
@@ -23,7 +25,8 @@ ln -s $PWD/zsh/starship.toml ~/.config/starship.toml
 
 # tmux
 brew install tmux
-ln -s $PWD/tmux/.tmux.conf ~
+mkdir -p ~/.config/tmux
+ln -s $PWD/zsh/tmux.conf ~/.config/tmux/tmux.conf
 
 # neovim
 brew install neovim
@@ -47,6 +50,7 @@ brew install autoconf
 brew install curl
 brew install jq
 brew install ngrok
+brew install libyaml # For Ruby installation with mise
 
 # PGP
 brew install gnupg
@@ -60,6 +64,7 @@ ln -s $PWD/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 brew install mise
 # vvv Already in zsh config file vvv
 # echo 'mise activate zsh | source' >> ~/.zshrc
+mkdir -p ~/.config/mise
 ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 
 # docker
@@ -81,10 +86,11 @@ brew install firefox
 brew install google-chrome
 
 brew install ghostty
+mkdir -p ~/.config/ghostty
 ln -s $PWD/ghostty/config ~/.config/ghostty/config
 
 brew install visual-studio-code
-brew install dash
+brew install --cask dash
 brew install tableplus
 #brew install postman
 
