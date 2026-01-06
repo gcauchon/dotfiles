@@ -1,7 +1,7 @@
 [user]
-  email = gcauchon@gmail.com
   name = Guillaume Cauchon
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP9favq0reHLciP/MoCKFArXd54xC7sEMgSZejkUFfds
+  email = gcauchon@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKjm6Owvzgxez9bBPxpS+uujtoYBsQ5sSWftIV+co37i
 
 [core]
   autocrlf = input
@@ -12,22 +12,26 @@
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
 
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
 [diff]
   noprefix = true
   tool = tig
   verbosity = 5
 
-[commit]
-  gpgsign = true
+[init]
+	defaultBranch = main
 
 [merge]
   tool = diffmerge
   verbosity = 5
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [alias]
   a = add --all
@@ -56,6 +60,3 @@
 
 [pull]
 	rebase = true
-
-[init]
-	defaultBranch = main
