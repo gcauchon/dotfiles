@@ -1,26 +1,26 @@
-# Theme - Solarized Dark
-background = 002b36
-foreground = 839496
-selection-background = 073642
-selection-foreground = 839496
+# Theme - OneDark
+background = 282c34
+foreground = abb2bf
+selection-background = 3e4451
+selection-foreground = abb2bf
 
-# ANSI Colors - Solarized Dark
-palette = 0=#073642
-palette = 1=#dc322f
-palette = 2=#859900
-palette = 3=#b58900
-palette = 4=#268bd2
-palette = 5=#d33682
-palette = 6=#2aa198
-palette = 7=#eee8d5
-palette = 8=#002b36
-palette = 9=#cb4b16
-palette = 10=#586e75
-palette = 11=#657b83
-palette = 12=#839496
-palette = 13=#6c71c4
-palette = 14=#93a1a1
-palette = 15=#fdf6e3
+# ANSI Colors - OneDark
+palette = 0=#282c34
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#abb2bf
+palette = 8=#5c6370
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#ffffff
 
 # Font
 font-family = FiraCode Nerd Font
@@ -45,4 +45,4 @@ copy-on-select = false
 
 # Cursor
 cursor-style-blink = false
-cursor-color = #6c71c4
+cursor-color = #528bff

@@ -5,7 +5,7 @@ return {
     event = "VeryLazy",
     config = function()
       vim.g.lightline = {
-        colorscheme = 'solarized',
+        colorscheme = 'one',
         active = {
           left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
           right = { { 'lineinfo' }, { 'percent' }, { 'filetype', 'fileformat', 'encoding' } }
@@ -19,13 +19,17 @@ return {
   
   -- Theme
   {
-    'maxmx03/solarized.nvim',
+    'olimorris/onedarkpro.nvim',
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      options = {
+        transparency = false,
+      }
+    },
     config = function(_, opts)
-      require('solarized').setup(opts)
-      vim.cmd.colorscheme('solarized')
+      require('onedarkpro').setup(opts)
+      vim.cmd.colorscheme('onedark')
     end,
   },
   
