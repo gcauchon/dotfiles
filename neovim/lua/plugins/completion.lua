@@ -47,63 +47,85 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'williamboman/mason-lspconfig.nvim' },
     config = function()
-      local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      -- Common on_attach function
-      local on_attach = function(client, bufnr)
-        local opts = { buffer = bufnr, silent = true }
-        
-        -- Key mappings
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<leader>f', function()
-          vim.lsp.buf.format { async = true }
-        end, opts)
-      end
+      -- LSP keymaps on attach
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local opts = { buffer = args.buf, silent = true }
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+          vim.keymap.set('n', '<leader>f', function()
+            vim.lsp.buf.format { async = true }
+          end, opts)
+        end,
+      })
 
-      -- Configure each LSP server
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              runtime = { version = 'LuaJIT' },
-              diagnostics = { globals = {'vim'} },
-              workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-              telemetry = { enable = false },
-            },
+      -- Configure LSP servers using vim.lsp.config (Neovim 0.11+)
+      vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = {'vim'} },
+            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+            telemetry = { enable = false },
           },
         },
-        elixirls = {
-          settings = {
-            elixirLS = {
-              dialyzerEnabled = false,
-              fetchDeps = false,
-            },
+      })
+
+      vim.lsp.config('elixirls', {
+        capabilities = capabilities,
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = false,
+            fetchDeps = false,
           },
         },
-        ruby_lsp = {},
-        pyright = {},
-        ts_ls = {},
-        html = {},
-        cssls = {},
-        jsonls = {},
-        yamlls = {},
-        bashls = {},
-        dockerls = {},
-        marksman = {},
+      })
+
+      -- Servers with default config
+      local simple_servers = {
+        'ruby_lsp', 'pyright', 'ts_ls', 'html', 'cssls',
+        'jsonls', 'yamlls', 'bashls', 'dockerls', 'marksman',
       }
-
-      for server, config in pairs(servers) do
-        config.on_attach = on_attach
-        config.capabilities = capabilities
-        lspconfig[server].setup(config)
+      for _, server in ipairs(simple_servers) do
+        vim.lsp.config(server, { capabilities = capabilities })
       end
+
+      -- Enable all configured servers
+      vim.lsp.enable({
+        'lua_ls', 'elixirls', 'ruby_lsp', 'pyright', 'ts_ls',
+        'html', 'cssls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'marksman',
+      })
+    end
+  },
+
+  -- Snippet engine
+  {
+    'L3MON4D3/LuaSnip',
+    version = 'v2.*',
+    build = 'make install_jsregexp',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
+    config = function()
+      local luasnip = require('luasnip')
+      
+      -- Load VSCode-style snippets from friendly-snippets
+      require('luasnip.loaders.from_vscode').lazy_load()
+      
+      -- Configure snippet behavior
+      luasnip.config.set_config({
+        history = true,
+        updateevents = 'TextChanged,TextChangedI',
+        enable_autosnippets = true,
+      })
     end
   },
 
@@ -116,22 +138,47 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
     },
     config = function()
       local cmp = require('cmp')
+      local luasnip = require('luasnip')
 
       cmp.setup({
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
           { name = 'path' },
         }, {
           { name = 'buffer' },
@@ -140,6 +187,7 @@ return {
           format = function(entry, vim_item)
             vim_item.menu = ({
               nvim_lsp = "[LSP]",
+              luasnip = "[Snippet]",
               buffer = "[Buffer]",
               path = "[Path]",
             })[entry.source.name]

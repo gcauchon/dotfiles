@@ -11,65 +11,26 @@ autocmd("BufWritePre", {
   end,
 })
 
--- File type detection
+-- File type detection (only for types not detected by Neovim)
 local filetypes = augroup("FileTypeDetection", { clear = true })
 
 -- ENV files
 autocmd({ "BufRead", "BufNewFile" }, {
   group = filetypes,
   pattern = { ".env", ".env.*", ".envrc" },
-  callback = function() vim.opt.filetype = "sh" end,
+  callback = function() vim.bo.filetype = "sh" end,
 })
 
--- Ruby files
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = { "*.ru", "Gemfile" },
-  callback = function() vim.opt.filetype = "ruby" end,
-})
-
+-- Procfile as yaml
 autocmd({ "BufRead", "BufNewFile" }, {
   group = filetypes,
   pattern = "Procfile",
-  callback = function() vim.opt.filetype = "yaml" end,
+  callback = function() vim.bo.filetype = "yaml" end,
 })
 
--- tmux files
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = ".tmux.conf",
-  callback = function() vim.opt.filetype = "tmux" end,
-})
-
--- SASS files
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = "*.scss",
-  callback = function() vim.opt.filetype = "scss" end,
-})
-
--- Elixir files
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = { "*.ex", "*.exs" },
-  callback = function() vim.opt.filetype = "elixir" end,
-})
-
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = { "*.eex", "*.heex", "*.leex" },
-  callback = function() vim.opt.filetype = "eelixir" end,
-})
-
+-- mix.lock as elixir
 autocmd({ "BufRead", "BufNewFile" }, {
   group = filetypes,
   pattern = "mix.lock",
-  callback = function() vim.opt.filetype = "elixir" end,
-})
-
--- Docker files
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = filetypes,
-  pattern = "Dockerfile*",
-  callback = function() vim.opt.filetype = "dockerfile" end,
+  callback = function() vim.bo.filetype = "elixir" end,
 })

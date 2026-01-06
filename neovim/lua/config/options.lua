@@ -8,7 +8,7 @@ vim.opt.completeopt = 'menuone,noselect'   -- Autocomplete options
 -- Memory, CPU
 vim.opt.hidden = true                      -- Enable background buffers
 vim.opt.history = 100                      -- Remember N lines in history
-vim.opt.lazyredraw = true                  -- Faster scrolling
+vim.opt.lazyredraw = false                 -- Avoid display issues with async plugins
 vim.opt.synmaxcol = 240                    -- Max column for syntax highlight
 vim.opt.updatetime = 400                   -- ms to wait for trigger 'document_highlight'
 
@@ -20,7 +20,6 @@ vim.opt.smartcase = true                   -- Ignore lowercase for the whole pat
 vim.opt.whichwrap = "h,l,~,[,],<,>"        -- Which caracters to wrap
 vim.opt.linebreak = true                   -- Wrap on word boundary
 vim.opt.termguicolors = true               -- Enable 24-bit RGB colors
-vim.opt.syntax = "on"                      -- Enable syntax highlighting
 vim.opt.signcolumn = "yes"                 -- Always show sign column
 
 -- Tabs, indent
@@ -40,16 +39,10 @@ vim.opt.cursorline = true
 
 -- Splits
 vim.opt.splitright = true                  -- Vertical split to the right
-vim.opt.splitbelow = true                  -- Orizontal split to the bottom
-
--- Filetype settings
-vim.g.do_filetype_lua = 1                   -- Use filetype.lua
-vim.g.did_load_filetypes = 0                -- Don't use filetype.vim
+vim.opt.splitbelow = true                  -- Horizontal split to the bottom
 
 -- Search
-vim.opt.ignorecase = true                  -- Ignore case when searching
-vim.opt.smartcase = true                   -- Smart-case search mode
-vim.opt.incsearch  = true                  -- Start to search as soon as we type
+vim.opt.incsearch = true                   -- Start searching as we type
 
 -- Enhanced syntax highlighting related settings
 vim.opt.conceallevel = 0                   -- Don't hide quotes in markdown, etc.

@@ -1,9 +1,10 @@
 return {
-  -- Core Treesitter configuration
+  -- Treesitter configuration
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { "BufReadPost", "BufNewFile" },
+    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
@@ -30,23 +31,11 @@ return {
             node_decremental = "grm",
           },
         },
-      }
-    end
-  },
-
-  -- Extended Treesitter features
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require('nvim-treesitter.configs').setup {
         textobjects = {
           select = {
             enable = true,
-            lookahead = true, -- Automatically jump forward to textobj
+            lookahead = true,
             keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
               ["ac"] = "@class.outer",
@@ -57,7 +46,7 @@ return {
           },
           move = {
             enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
+            set_jumps = true,
             goto_next_start = {
               ["]m"] = "@function.outer",
               ["]]"] = "@class.outer",
@@ -113,4 +102,3 @@ return {
     end,
   },
 }
-

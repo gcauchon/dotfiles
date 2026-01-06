@@ -6,21 +6,42 @@ return {
     config = function()
       -- Configure mini.pick
       require('mini.pick').setup({
-        options = {
-          -- Use ripgrep as the file finder
-          use_default_opts = true,
-        },
         mappings = {
-          choose_in_tabpage = '<C-t>',  -- Built-in action for opening in new tab
-          choose_in_split = '<C-s>',    -- Built-in action for horizontal split
-          choose_in_vsplit = '<C-v>',   -- Built-in action for vertical split
+          choose_in_tabpage = '<C-t>',
+          choose_in_split = '<C-s>',
+          choose_in_vsplit = '<C-v>',
         },
       })
+
+      -- Extra pickers (oldfiles, etc.)
+      require('mini.extra').setup({})
 
       -- Setup other useful mini modules
       require('mini.pairs').setup({})  -- Replaces nvim-autopairs
       require('mini.comment').setup({}) -- Commenting functionality
       require('mini.surround').setup({}) -- Surround text objects
+      
+      -- Enhanced text objects (quotes, brackets, function calls, etc.)
+      require('mini.ai').setup({
+        n_lines = 500, -- Search up to 500 lines for text objects
+        custom_textobjects = {
+          -- Additional custom text objects
+          o = require('mini.ai').gen_spec.treesitter({
+            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+          }, {}),
+          f = require('mini.ai').gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+          c = require('mini.ai').gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- HTML tags
+        },
+      })
+      
+      -- Smart split/join (split function arguments, array elements, etc.)
+      require('mini.splitjoin').setup({
+        mappings = {
+          toggle = 'gS', -- Toggle between split and join
+        },
+      })
       
       -- File explorer (alternative to nvim-tree)
       require('mini.files').setup({
@@ -32,7 +53,7 @@ return {
     keys = {
       -- File navigation
       { "<leader>ff",  function() require('mini.pick').builtin.files() end, desc = "Find files" },
-      { "<leader>fr", function() require('mini.pick').builtin.files({include_hidden = true}) end, desc = "Recent files" },
+      { "<leader>fr", function() require('mini.extra').pickers.oldfiles() end, desc = "Recent files" },
       
       -- Search
       { "<leader>fg", function() require('mini.pick').builtin.grep_live() end, desc = "Live grep" },
