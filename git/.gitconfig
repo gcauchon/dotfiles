@@ -1,7 +1,7 @@
 [user]
   name = Guillaume Cauchon
-  email = gcauchon@gmail.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKjm6Owvzgxez9bBPxpS+uujtoYBsQ5sSWftIV+co37i
+  email = guillaume.cauchon@umanomedical.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEgsqTBRlUD+aCKyA8G4KS9tI9R5RvLygV0C0Y9hptcb
 
 [core]
   autocrlf = input
@@ -18,7 +18,10 @@
   verbosity = 5
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[pull]
+  rebase = true
 
 [merge]
   tool = diffmerge
@@ -30,13 +33,10 @@
 [gpg]
   format = ssh
 
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
 [alias]
   a = add --all
-  c = commit --gpg-sign --message
-  ca = commit --gpg-sign --amend
+  c = commit --message
+  ca = commit  --amend
   s = status --untracked-files=all
   br = branch --verbose
   bl = branch --list
@@ -58,5 +58,3 @@
   pf = push --force-with-lease
   po = push origin
 
-[pull]
-	rebase = true

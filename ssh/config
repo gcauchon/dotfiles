@@ -1,4 +1,13 @@
-Include /Users/gcauchon/.colima/ssh_config
+# GitHub - ED25519 key
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
 
-Host *
-  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+# Azure DevOps - RSA key
+Host ssh.dev.azure.com
+    HostName ssh.dev.azure.com
+    User git
+    IdentityFile ~/.ssh/id_rsa-4096
+    IdentitiesOnly yes

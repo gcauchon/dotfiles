@@ -6,7 +6,10 @@ show_tools = true
 show_env = true
 
 [tools]
-node = "22.19.0"
-ruby = "3.4.6"
-python = "3.13.7"
-uv = "0.8.17"
+elixir = "1.19.5-otp-28"
+erlang = "28.3"
+node = "lts"
+# ruby = "3.4.6"
+# python = "3.13.7"
+# uv = "0.8.17"
+rust = "stable"
