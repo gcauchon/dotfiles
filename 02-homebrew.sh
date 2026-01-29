@@ -82,6 +82,11 @@ brew install font-fira-code font-fira-code-nerd-font
 brew install alfred
 brew install 1password
 brew install 1password-cli
+
+# 1Password SSH agent
+mkdir -p ~/.config/1Password/ssh
+ln -s $PWD/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
+
 brew install firefox
 brew install google-chrome
 
