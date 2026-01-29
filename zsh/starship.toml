@@ -1,5 +1,6 @@
 add_newline = false
 command_timeout = 750
+scan_timeout = 250
 format = """
 $directory\
 $git_branch$git_state$git_status\
@@ -7,6 +8,7 @@ $elixir\
 $ruby\
 $nodejs\
 $python\
+$dotnet\
 $cmd_duration\
 $jobs\
 $status\
@@ -32,6 +34,9 @@ format = "[󰎙 $version](green) "
 
 [python]
 format = "[ $version](yellow) "
+
+[dotnet]
+format = "[ $version](blue)"
 
 [cmd_duration]
 min_time = 1000

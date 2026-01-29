@@ -22,16 +22,19 @@ setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
 # Homebrew
-eval "$(brew shellenv)"
-
-# Sheldon, ZSH plugin manager
-eval "$(sheldon source)"
-
-# Starship prompt
-eval "$(starship init zsh)"
+# eval "$(brew shellenv)" MacOS
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # mise (version manager)
 eval "$(mise activate zsh)"
+
+# Sheldon (plugin manager)
+# Add to PATH since the simplet Sheldon install was using Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+eval "$(sheldon source)"
+
+# Starship (prompt SDKs versions)
+eval "$(starship init zsh)"
 
 # Completion
 autoload -Uz compinit
