@@ -18,44 +18,60 @@ Resolving deltas: 100% (462/462), done.
 > cd .dotfiles
 ```
 
-2. Customize `01-defaults.sh` with MacOS tweaks to include; or not.
+2. Review and customize the setup scripts as needed.
 
-3. Customize `02-homebrew.sh` with the tools and application needed.
+3. Run each script sequentially:
 
-Here are the main tools that are included:
+```shell
+> ./01-defaults.sh    # macOS system preferences
+> ./02-homebrew.sh    # Homebrew + zsh symlinks + shell plugins
+> ./03-install.sh     # Terminal/dev tools installation
+> ./04-symlinks.sh    # Create config symlinks for all tools
+> ./05-cleanup.sh     # Post-install manual reminders
+```
+
+# What's Included?
+
+## Core Tools (02-homebrew.sh)
 
 - `homebrew` - https://brew.sh
-- `zsh` - Built-in macOS zsh shell with plugins (`sheldon`, `fzf`, `zoxide`)
+- `zsh` - Built-in macOS zsh shell with symlinked config
+- `sheldon` - ZSH plugin manager
+- `fzf` - Fuzzy finder
+- `zoxide` - Smarter cd command
 - `starship` - https://starship.rs - Cross-shell prompt
+
+## Development Tools (03-install.sh)
+
+- `ghostty` - https://ghostty.org - Modern terminal emulator
 - `tmux` - https://github.com/tmux/tmux/wiki
 - `neovim` - https://neovim.io (with `lua`, `luarocks`, `fd`, `ripgrep`)
 - `git` - with `tig`, `diff-so-fancy`
-- `gnupg` - https://gnupg.org (with `pinentry-mac`)
-- `mise` - https://mise.jdx.dev/getting-started.html
+- `mise` - https://mise.jdx.dev - Runtime version manager
 - `docker` & `colima` - https://github.com/abiosoft/colima
 - Additional CLI tools: `autoconf`, `curl`, `jq`, `ngrok`
 - `fonts` - `Fira Code` with `Nerd Font` patched glyphs
 
-Plus many apps I am using every day:
+## Applications (03-install.sh)
 
-- Ghostty - https://ghostty.org - Modern terminal emulator
 - Alfred - https://www.alfredapp.com
-- 1Password - https://1password.com (with CLI)
+- 1Password - https://1password.com (with CLI for SSH agent & commit signing)
 - Firefox & Google Chrome browsers
 - Visual Studio Code - https://code.visualstudio.com
 - Dash - https://kapeli.com/dash
 - TablePlus - https://tableplus.com
-- Slack - https://slack.com
-- Spotify - https://www.spotify.com
-- Utility apps: Caffeine, ImageOptim, Gifox, LanguageTool, Lunar, Pika
+- Utility apps: LanguageTool, Lunar, Pika
 
-4. Run each `.sh` scripts sequentially.
+## Config Symlinks (04-symlinks.sh)
 
-```shell
-> ./01-defaults.sh
-…
-> ./02-homebrew.sh
-…
-```
+All configuration files are symlinked from this repo:
+
+- ZSH: sheldon plugins, starship prompt
+- Terminal: ghostty, tmux
+- Editor: neovim (full lua config)
+- Git: gitconfig, gitignore, tigrc
+- 1Password SSH agent config (for commit signing)
+- mise runtime versions
+- Claude Code settings
 
 ### You are in business! 🚀
