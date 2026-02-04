@@ -1,12 +1,3 @@
 [default]
 region = ca-central-1
 output = json
-
-[profile mirego]
-region = us-east-1
-output = json
-
-[profile omerlo]
-region = us-east-1
-role_arn = arn:aws:iam::751617020003:role/OmerloDevelopers
-source_profile = mirego
