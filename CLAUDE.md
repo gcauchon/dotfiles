@@ -40,30 +40,52 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `git/1password-agent.toml` → `~/.config/1Password/ssh/agent.toml`
 - `ghostty/config` → `~/.config/ghostty/config`
 - `mise/config.toml` → `~/.config/mise/config.toml`
+- `ssh/config` → `~/.ssh/config`
 - `llms/claude/settings.json` → `~/.claude/settings.json`
-- `llms/claude/settings/statusline.sh` → `~/.claude/settings/statusline.sh`
+- `llms/claude/statusline.sh` → `~/.claude/statusline.sh`
 
 ### Neovim Configuration
 
 - Uses lazy.nvim for plugin management
-- Leader key: `,` (comma)
+- Leader key: `,` (comma), local leader: `\`
 - Config structure: `neovim/lua/config/` (options, keymaps, autocmds) and `neovim/lua/plugins/` (plugin specs)
 - Plugin lock file: `neovim/lazy-lock.json`
+- LSP uses Neovim 0.11+ API (`vim.lsp.config()` / `vim.lsp.enable()`) — not the older `lspconfig[server].setup()` pattern
+- 12 LSP servers: lua_ls, elixirls, ruby_lsp, pyright, ts_ls, html, cssls, jsonls, yamlls, bashls, dockerls, marksman
+- Fuzzy finder: mini.pick (not telescope). File explorer: mini.files. Surround/pairs/comment: mini.nvim suite
+- 2-space indentation, no swapfiles, system clipboard
 
 ### ZSH Configuration
 
 - Plugin manager: sheldon (`zsh/sheldon.toml`)
 - Prompt: starship (`zsh/starship.toml`)
-- Version manager: mise (`mise/config.toml`) - Node.js 22, Ruby 3.4, Python 3.13
+- Version manager: mise (`mise/config.toml`) — Node.js 22.19.0, Ruby 3.4.6, Python 3.13.7, uv 0.8.17
 - Plugins: fzf, zoxide, zsh-syntax-highlighting, zsh-completions, zsh-autosuggestions
+- `.zshenv` sets `ERL_AFLAGS` for Erlang REPL shell history
 
 ### Terminal & Tmux
 
-- Terminal: Ghostty with OneDark theme, FiraCode Nerd Font
+- Terminal: Ghostty with OneDark theme, FiraCode Nerd Font, size 14
 - Tmux prefix: `Ctrl-Q` (remapped from default Ctrl-B)
+- Vi mode keys in tmux; pane split: `=`/`-`, nav: `h/j/k/l`
 
 ### Git Configuration
 
-- Commit signing via 1Password SSH agent
-- Default editor: nvim
-- Diff pager: diff-so-fancy
+- User: Guillaume Cauchon (`gcauchon@gmail.com`)
+- Commit signing via 1Password SSH agent (`gpg.format = ssh` → `op-ssh-sign`)
+- Default editor: nvim, diff pager: diff-so-fancy
+- Default branch: `main`, pull with rebase
+- Key aliases: `a` (add all), `c` (signed commit), `s` (status), `ph` (push HEAD), `pf` (force-with-lease)
+
+### Agent Skills
+
+- `neovim-lua-config` — `.github/skills/neovim-lua-config/` — Teaches AI agents Neovim Lua configuration conventions (plugin specs, LSP, keymaps, autocommands, anti-patterns). Includes `references/patterns.md` with concrete code examples.
+
+## Conventions
+
+- **OneDark theme everywhere**: Ghostty, tmux, neovim, lightline — consistent dark theme
+- **FiraCode Nerd Font** across terminal and editor
+- **Scripts must run from repo root** — symlinks use `$PWD`-relative paths
+- **Primary languages**: Elixir (with OTP), Ruby, Python, Node.js — all have LSP, treesitter, mise versions, and starship prompt sections
+- **Docker via Colima** — not Docker Desktop
+- **Pure shell + Homebrew** for provisioning — no Nix/Ansible
