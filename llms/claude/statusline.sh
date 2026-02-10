@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Claude Code statusline - shows model, context usage, and token counts
 
 input=$(cat)
@@ -12,7 +12,7 @@ total_out=$(echo "$input" | jq -r '.context_window.total_output_tokens // empty'
 
 # Format token counts (1234 -> 1.2k, 1234567 -> 1.2M)
 fmt_tokens() {
-  local n=$1
+  n=$1
   if [ -z "$n" ] || [ "$n" = "0" ]; then echo "0"
   elif [ "$n" -ge 1000000 ]; then echo "$n" | awk '{printf "%.1fM", $1/1000000}'
   elif [ "$n" -ge 1000 ]; then echo "$n" | awk '{printf "%.1fk", $1/1000}'
@@ -22,7 +22,7 @@ fmt_tokens() {
 
 # Format context size (200000 -> 200k)
 fmt_ctx() {
-  local n=$1
+  n=$1
   if [ -z "$n" ]; then echo "?"
   elif [ "$n" -ge 1000 ]; then echo "$((n/1000))k"
   else echo "$n"
@@ -30,11 +30,11 @@ fmt_ctx() {
 }
 
 # Color based on usage: green (<40), yellow (40-70), red (>70)
-ctx_color=$'\033[32m'  # green
+ctx_color=$(printf '\033[32m')  # green
 if [ -n "$used_pct" ]; then
   used_int=${used_pct%.*}  # truncate decimals
-  if [ "$used_int" -ge 70 ]; then ctx_color=$'\033[31m'    # red
-  elif [ "$used_int" -ge 40 ]; then ctx_color=$'\033[33m'  # yellow
+  if [ "$used_int" -ge 70 ]; then ctx_color=$(printf '\033[31m')    # red
+  elif [ "$used_int" -ge 40 ]; then ctx_color=$(printf '\033[33m')  # yellow
   fi
 fi
 
