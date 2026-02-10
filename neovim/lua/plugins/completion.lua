@@ -51,18 +51,21 @@ return {
 
       -- LSP keymaps on attach
       vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('LspKeymaps', { clear = true }),
         callback = function(args)
-          local opts = { buffer = args.buf, silent = true }
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<leader>f', function()
+          local function lsp_map(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, silent = true, desc = desc })
+          end
+          lsp_map('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
+          lsp_map('n', 'K', vim.lsp.buf.hover, 'Hover documentation')
+          lsp_map('n', 'gi', vim.lsp.buf.implementation, 'Go to implementation')
+          lsp_map('n', '<C-k>', vim.lsp.buf.signature_help, 'Signature help')
+          lsp_map('n', '<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
+          lsp_map('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
+          lsp_map('n', 'gr', vim.lsp.buf.references, 'Find references')
+          lsp_map('n', '<leader>f', function()
             vim.lsp.buf.format { async = true }
-          end, opts)
+          end, 'Format buffer')
         end,
       })
 

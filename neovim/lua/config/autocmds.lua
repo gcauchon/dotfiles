@@ -3,10 +3,17 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Remove whitespace on save
 autocmd("BufWritePre", {
+  group = augroup("StripTrailingWhitespace", { clear = true }),
   pattern = "*",
   callback = function()
     local save_cursor = vim.fn.getpos(".")
-    vim.cmd([[%s/\s\+$//e]])
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    for i, line in ipairs(lines) do
+      local trimmed = line:gsub("%s+$", "")
+      if trimmed ~= line then
+        vim.api.nvim_buf_set_lines(0, i - 1, i, false, { trimmed })
+      end
+    end
     vim.fn.setpos(".", save_cursor)
   end,
 })

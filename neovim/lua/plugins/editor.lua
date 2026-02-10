@@ -4,7 +4,7 @@ return {
     'mhinz/vim-grepper',
     cmd = "Grepper",
     keys = {
-      { "<leader>g", ":Grepper<CR>", desc = "Open Grepper" },
+      { "<leader>g", "<cmd>Grepper<CR>", desc = "Open Grepper" },
     },
   },
   
