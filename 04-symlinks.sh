@@ -6,6 +6,14 @@ mkdir -p ~/.config
 mkdir -p ~/.config/sheldon
 ln -s $PWD/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
 
+# SSH
+mkdir -p ~/.ssh
+ln -s $PWD/ssh/config ~/.ssh/config
+
+# 1Password SSH agent
+mkdir -p ~/.config/1Password/ssh
+ln -s $PWD/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
+
 # Starship prompt status line
 ln -s $PWD/zsh/starship.toml ~/.config/starship.toml
 
@@ -28,10 +36,6 @@ ln -s $PWD/git/.tigrc ~
 # Mise-en-place
 mkdir -p ~/.config/mise
 ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
-
-# 1Password SSH agent
-mkdir -p ~/.config/1Password/ssh
-ln -s $PWD/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
 
 # Claude
 mkdir -p ~/.claude/settings
