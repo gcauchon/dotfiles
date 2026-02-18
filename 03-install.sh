@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Terminal 
+# Terminal
 brew install ghostty
 brew install tmux
 
@@ -25,8 +25,8 @@ brew install autoconf
 brew install curl
 brew install mise
 brew install visual-studio-code
-brew install dash
-brew install tableplus
+#brew install dash
+#brew install tableplus
 #brew install postman
 brew install docker
 brew install colima
@@ -37,12 +37,10 @@ brew install ngrok
 brew install alfred
 brew install 1password
 brew install 1password-cli
-#brew install caffeine
 #brew install imageoptim
 #brew install gifox
-brew install languagetool
 brew install lunar
-brew install pika # https://superhighfives.com/pika
+brew install pika
 #brew install slack
 #brew install spotify
 
