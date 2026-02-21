@@ -1,8 +1,3 @@
----
-name: neovim-lua-config
-description: Guide for configuring and optimizing Neovim using Lua. Use when working on neovim configuration, adding or modifying plugins, keymaps, autocommands, LSP setup, completion, treesitter, or any nvim config file. Triggers include mentions of neovim, nvim, lazy.nvim, plugin spec, keymap, autocmd, LSP server, treesitter, mini.nvim, or any file under neovim/. Ensures pure Lua idioms are used — never Vimscript.
----
-
 # Neovim Configuration & Optimization (Lua)
 
 Pure Lua configuration targeting Neovim 0.11+. No Vimscript.

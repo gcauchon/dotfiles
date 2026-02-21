@@ -72,6 +72,14 @@ All configuration files are symlinked from this repo:
 - Git: gitconfig, gitignore, tigrc
 - 1Password SSH agent config (for commit signing)
 - mise runtime versions
-- Claude Code settings
+- Claude Code settings & statusline
+
+## AI Agent Configuration
+
+This repo uses [Claude Code](https://claude.ai/code) as its AI coding assistant. All configuration lives in `.claude/`:
+
+- `CLAUDE.md` — Project instructions and codebase conventions
+- `skills/` — Agent skills (e.g., `neovim-lua-config` for Neovim Lua patterns)
+- `settings.json` — Symlinked from `llms/claude/settings.json` to `~/.claude/settings.json`
 
 ### You are in business! 🚀

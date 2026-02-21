@@ -38,6 +38,7 @@ mkdir -p ~/.config/mise
 ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 
 # Claude
-mkdir -p ~/.claude/settings
+mkdir -p ~/.claude
 ln -s $PWD/llms/claude/settings.json ~/.claude/settings.json
 ln -s $PWD/llms/claude/statusline.sh ~/.claude/statusline.sh
+ln -s $PWD/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md

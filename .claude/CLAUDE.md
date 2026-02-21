@@ -79,7 +79,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 
 ### Agent Skills
 
-- `neovim-lua-config` — `.github/skills/neovim-lua-config/` — Teaches AI agents Neovim Lua configuration conventions (plugin specs, LSP, keymaps, autocommands, anti-patterns). Includes `references/patterns.md` with concrete code examples.
+- `neovim-lua-config` — `.claude/skills/neovim-lua-config/` — Teaches AI agents Neovim Lua configuration conventions (plugin specs, LSP, keymaps, autocommands, anti-patterns). Includes `lua-patterns.md` with concrete code examples.
 
 ## Conventions
 

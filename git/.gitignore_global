@@ -30,3 +30,6 @@ npm-debug.log
 .env.local
 .envrc
 tmp
+
+# Claude Code
+.claude/plans

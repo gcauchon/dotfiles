@@ -1,6 +1,13 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "noBanner": true,
   "statusLine": {
     "type": "command",
     "command": "bash /Users/gcauchon/.claude/statusline.sh"
-  }
+  },
+  "autoUpdateChannel": "stable",
+  "model": "opusplan",
+  "plansDirectory": ".claude/plans",
+  "showTurnDuration": true,
+  "cleanupPeriodDays": 30
 }
