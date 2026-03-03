@@ -37,7 +37,12 @@ ln -s $PWD/git/.tigrc ~
 mkdir -p ~/.config/mise
 ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 
+# Docker
+mkdir -p ~/.docker
+ln -s $PWD/docker/config.json ~/.docker/config.json
+
 # Claude
 mkdir -p ~/.claude/settings
 ln -s $PWD/llms/claude/settings.json ~/.claude/settings.json
 ln -s $PWD/llms/claude/statusline.sh ~/.claude/statusline.sh
+ln -s $PWD/llms/claude/fetch-usage.sh ~/.claude/fetch-usage.sh

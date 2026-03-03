@@ -1,0 +1,5 @@
+{
+  "detachKeys": "ctrl-q,q",
+  "psFormat": "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}",
+  "imagesFormat": "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"
+}

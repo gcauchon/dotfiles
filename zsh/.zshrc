@@ -36,6 +36,11 @@ eval "$(sheldon source)"
 # Starship (prompt SDKs versions)
 eval "$(starship init zsh)"
 
+# SSH agent (keychain) for WSL2 shells
+if [[ -n "${WSL_INTEROP:-}" ]] && command -v keychain >/dev/null 2>&1; then
+	eval "$(keychain --quiet --eval ~/.ssh/id_ed25519 ~/.ssh/id_rsa-4096)"
+fi
+
 # Completion
 autoload -Uz compinit
 compinit
