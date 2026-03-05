@@ -1,4 +1,18 @@
 set line-graphics = utf-8
 set tab-size = 2
+set ignore-case = smart-case
+set mouse = true
+set diff-context = 6
+set wrap-lines = yes
+set editor-line-number = true
 
-set main-view = id:true date:relative-compact author:email-user commit-title:graph=v2,refs=true 
+set main-view = id:true date:relative author:email-user commit-title:graph=v2,refs=true
+
+# Cherry-pick selected commit
+bind main C ?git cherry-pick %(commit)
+
+# Interactive rebase from selected commit
+bind main R ?git rebase -i %(commit)
+
+# Copy commit hash to clipboard
+bind generic Y @sh -c "echo -n %(commit) | wl-copy 2>/dev/null || echo -n %(commit) | xclip -selection clipboard"
