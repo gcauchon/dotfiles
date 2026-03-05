@@ -1,37 +1,37 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "noBanner": true,
-  "autoUpdateChannel": "stable",
-  "model": "opusplan",
-  "plansDirectory": ".claude/plans",
-  "showTurnDuration": true,
   "cleanupPeriodDays": 30,
+  "model": "opusplan",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
   },
-  "hooks": {
-      "PreToolUse": [
-         {
-            "matcher": "",
-            "hooks": [
-               {
-                  "type": "command",
-                  "command": "bash ~/.claude/fetch-usage.sh > /dev/null 2>&1 &"
-               }
-            ]
-         }
-      ],
-      "Stop": [
-         {
-            "matcher": "",
-            "hooks": [
-               {
-                  "type": "command",
-                  "command": "bash ~/.claude/fetch-usage.sh > /dev/null 2>&1 &"
-               }
-            ]
-         }
-      ]
-   }
+  "plansDirectory": ".claude/plans",
+  "noBanner": true,
+  "autoUpdateChannel": "stable",
+  "showTurnDuration": true
 }

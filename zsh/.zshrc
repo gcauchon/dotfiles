@@ -9,6 +9,8 @@ alias mkp='mkdir --parents'
 alias rmd='rmdir'
 alias zreload='. ~/.zshrc'
 
+alias code="/mnt/c/Users/guillaume.cauchon/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
