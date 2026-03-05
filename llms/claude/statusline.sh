@@ -8,10 +8,21 @@ model=$(echo "$input" | jq -r '.model.display_name // ""')
 dir=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // ""')
 dir_name=$(basename "$dir")
 
-# --- git branch ---
+# --- git branch (cached, 5s TTL) ---
+GIT_CACHE="/tmp/.claude_statusline_git_cache"
 branch=""
-if [ -d "${dir}/.git" ] || git -C "$dir" rev-parse --git-dir > /dev/null 2>&1; then
-  branch=$(git -C "$dir" symbolic-ref --short HEAD 2>/dev/null || git -C "$dir" rev-parse --short HEAD 2>/dev/null)
+use_cache=0
+if [ -f "$GIT_CACHE" ]; then
+  cache_age=$(( $(date -u +%s) - $(stat -c %Y "$GIT_CACHE" 2>/dev/null || echo 0) ))
+  [ "$cache_age" -lt 5 ] && use_cache=1
+fi
+if [ "$use_cache" = "1" ]; then
+  branch=$(cat "$GIT_CACHE")
+else
+  if git -C "$dir" rev-parse --git-dir > /dev/null 2>&1; then
+    branch=$(git -C "$dir" symbolic-ref --short HEAD 2>/dev/null || git -C "$dir" rev-parse --short HEAD 2>/dev/null)
+  fi
+  printf '%s' "$branch" > "$GIT_CACHE"
 fi
 
 # --- usage stats (5h / 7d) from cache ---
@@ -20,7 +31,6 @@ five_h=""
 seven_d=""
 five_h_reset=""
 seven_d_reset=""
-
 if [ -f "$CACHE_FILE" ]; then
   five_h=$(sed -n '1p' "$CACHE_FILE")
   seven_d=$(sed -n '2p' "$CACHE_FILE")
@@ -54,55 +64,61 @@ compute_delta() {
   fi
 }
 
-# --- context window ---
+# --- context window (use pre-calculated used_percentage per docs best practice) ---
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 ctx_str=""
 ctx_tokens_str=""
 if [ -n "$used" ]; then
   used_int=$(printf "%.0f" "$used")
   ctx_str="${used_int}%"
-  ctx_used=$(echo "$input" | jq -r '(.context_window.current_usage.cache_read_input_tokens + .context_window.current_usage.cache_creation_input_tokens + .context_window.current_usage.input_tokens + .context_window.current_usage.output_tokens) // empty' 2>/dev/null)
-  ctx_total=$(echo "$input" | jq -r '.context_window.context_window_size // empty' 2>/dev/null)
-  if [ -n "$ctx_used" ] && [ -n "$ctx_total" ]; then
-    ctx_used_k=$(( ctx_used / 1000 ))
+  ctx_total=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
+  ctx_used_tokens=$(echo "$input" | jq -r '
+    if .context_window.current_usage != null then
+      (.context_window.current_usage.input_tokens // 0)
+      + (.context_window.current_usage.output_tokens // 0)
+      + (.context_window.current_usage.cache_creation_input_tokens // 0)
+      + (.context_window.current_usage.cache_read_input_tokens // 0)
+    else empty end' 2>/dev/null)
+  if [ -n "$ctx_used_tokens" ] && [ -n "$ctx_total" ]; then
+    ctx_used_k=$(( ctx_used_tokens / 1000 ))
     ctx_total_k=$(( ctx_total / 1000 ))
     ctx_tokens_str="${ctx_used_k}k/${ctx_total_k}k"
   fi
 fi
 
 # --- assemble output ---
+# Each printf '%b\n' produces a separate row per Claude Code docs best practice
+SEP='\033[90m • \033[0m'
+
 # line 1: model | folder • branch
-# line 2: usage | ctx
-SEP="\033[90m • \033[0m"
-
-# line 1
-printf "\033[38;5;208m\033[1m%s\033[22m\033[0m" "$model"
-printf "\033[90m | \033[0m"
-printf "\033[1m\033[38;2;76;208;222m%s\033[22m\033[0m" "$dir_name"
+line1='\033[38;5;208m\033[1m'"$model"'\033[22m\033[0m'
+line1="${line1}${SEP}"
+line1="${line1}"'\033[1m\033[38;2;76;208;222m'"$dir_name"'\033[22m\033[0m'
 if [ -n "$branch" ]; then
-  printf "%b" "$SEP"
-  printf "\033[1m\033[38;2;192;103;222m%s\033[22m\033[0m" "$branch"
+  line1="${line1}${SEP}"'\033[1m\033[38;2;192;103;222m'"$branch"'\033[22m\033[0m'
 fi
+printf '%b\n' "$line1"
 
-# line 2
-printf "\n"
+# line 2: usage | ctx
+line2=""
 if [ -n "$five_h" ]; then
-  printf "\033[38;2;156;162;175m5h %s%%\033[0m" "$five_h"
+  line2='\033[38;2;156;162;175m5h '"$five_h"'%\033[0m'
   if [ -n "$five_h_reset" ]; then
     delta=$(compute_delta "$five_h_reset")
-    [ -n "$delta" ] && printf " \033[2m\033[38;2;156;162;175m(%s)\033[0m" "$delta"
+    [ -n "$delta" ] && line2="${line2}"' \033[2m\033[38;2;156;162;175m('"$delta"')\033[0m'
   fi
 fi
 if [ -n "$seven_d" ]; then
-  [ -n "$five_h" ] && printf "%b" "$SEP"
-  printf "\033[38;2;156;162;175m7d %s%%\033[0m" "$seven_d"
+  [ -n "$line2" ] && line2="${line2}${SEP}"
+  line2="${line2}"'\033[38;2;156;162;175m7d '"$seven_d"'%\033[0m'
   if [ -n "$seven_d_reset" ]; then
     delta=$(compute_delta "$seven_d_reset")
-    [ -n "$delta" ] && printf " \033[2m\033[38;2;156;162;175m(%s)\033[0m" "$delta"
+    [ -n "$delta" ] && line2="${line2}"' \033[2m\033[38;2;156;162;175m('"$delta"')\033[0m'
   fi
 fi
 if [ -n "$ctx_str" ]; then
-  printf "\033[90m | \033[0m"
-  printf "\033[38;2;156;162;175mctx %s\033[0m" "$ctx_str"
-  [ -n "$ctx_tokens_str" ] && printf " \033[2m\033[38;2;156;162;175m(%s)\033[0m" "$ctx_tokens_str"
+  [ -n "$line2" ] && line2="${line2}"'\033[90m | \033[0m'
+  line2="${line2}"'\033[38;2;156;162;175mctx '"$ctx_str"'\033[0m'
+  [ -n "$ctx_tokens_str" ] && line2="${line2}"' \033[2m\033[38;2;156;162;175m('"$ctx_tokens_str"')\033[0m'
 fi
+[ -n "$line2" ] && printf '%b' "$line2"
