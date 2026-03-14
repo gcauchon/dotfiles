@@ -27,6 +27,24 @@
             "command": "bash $HOME/.claude/fetch-usage.sh > /dev/null 2>&1 &"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // \"\"'); [[ $cmd =~ \\bpip3?\\b ]] && { echo 'This environment uses uv, not pip. Use \"uv pip install\" or \"uv add\" instead.' >&2; exit 2; }"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); [[ $fp =~ (^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$ ]] && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; }"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -35,7 +53,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file_path=$(echo \"$TOOL_INPUT\" | jq -r '.file_path // empty'); if [ -n \"$file_path\" ] && echo \"$file_path\" | grep -qE '\\.(sh|bash|zsh)$'; then shellcheck \"$file_path\" 2>&1 || true; fi"
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); [[ -n $fp && $fp =~ \\.(sh|bash|zsh)$ ]] && { shellcheck \"$fp\" 2>&1 || true; }"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log"
           }
         ]
       }
@@ -47,6 +74,11 @@
           {
             "type": "command",
             "command": "bash $HOME/.claude/fetch-usage.sh > /dev/null 2>&1 &"
+          },
+          {
+            "type": "prompt",
+            "model": "haiku",
+            "prompt": "Review the assistant's final response. Reject if the assistant is rationalizing incomplete work. Patterns to catch: claiming issues are 'pre-existing' or 'out of scope' to avoid fixing them, deferring work to a 'follow-up' that was not requested, listing problems without fixing them and calling that done, skipping test or lint failures with excuses. If any pattern matches, respond {\"decision\": \"block\", \"reason\": \"You are rationalizing incomplete work. [specific issue]. Go back and finish.\"}. If work is genuinely complete, respond {\"decision\": \"allow\"}."
           }
         ]
       }
@@ -75,20 +107,18 @@
       "Bash(find *)",
       "Bash(which *)",
       "Bash(brew *)",
-      "Bash(npm *)",
       "Bash(uv *)",
       "Bash(mise *)",
-      "Bash(docker *)",
-      "Bash(docker compose *)"
+      "Bash(docker compose *)",
+      "Bash(make *)"
     ],
     "deny": [
-      "Read(**/.env)",
-      "Read(**/*.key)",
-      "Read(**/*.pem)",
-      "Read(**/*credentials*)",
       "Bash(git push --force*)",
       "Bash(git reset --hard*)",
-      "Bash(sudo *)"
+      "Bash(sudo *)",
+      "Read(**/.env)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)"
     ]
   },
   "statusLine": {
