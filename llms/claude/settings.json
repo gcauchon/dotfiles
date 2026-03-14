@@ -1,13 +1,102 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "noBanner": true,
+  "cleanupPeriodDays": 30,
+  "model": "opusplan",
+  "env": {
+    "SHELL": "/bin/zsh",
+    "BASH_DEFAULT_TIMEOUT_MS": "120000"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file_path=$(echo \"$TOOL_INPUT\" | jq -r '.file_path // empty'); if [ -n \"$file_path\" ] && echo \"$file_path\" | grep -qE '\\.(sh|bash|zsh)$'; then shellcheck \"$file_path\" 2>&1 || true; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git stash*)",
+      "Bash(git checkout*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(find *)",
+      "Bash(which *)",
+      "Bash(brew *)",
+      "Bash(npm *)",
+      "Bash(uv *)",
+      "Bash(mise *)",
+      "Bash(docker *)",
+      "Bash(docker compose *)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/*credentials*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(sudo *)"
+    ]
+  },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/gcauchon/.claude/statusline.sh"
+    "command": "bash $HOME/.claude/statusline.sh"
   },
-  "autoUpdateChannel": "stable",
-  "model": "opusplan",
   "plansDirectory": ".claude/plans",
-  "showTurnDuration": true,
-  "cleanupPeriodDays": 30
+  "noBanner": true,
+  "autoUpdateChannel": "stable",
+  "showTurnDuration": true
 }

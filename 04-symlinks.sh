@@ -41,4 +41,5 @@ ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
 mkdir -p ~/.claude
 ln -s $PWD/llms/claude/settings.json ~/.claude/settings.json
 ln -s $PWD/llms/claude/statusline.sh ~/.claude/statusline.sh
+ln -s $PWD/llms/claude/fetch-usage.sh ~/.claude/fetch-usage.sh
 ln -s $PWD/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md

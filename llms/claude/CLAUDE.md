@@ -15,17 +15,16 @@
 
 ## Languages & Stack
 
-- Primary: `Elixir` (with `OTP`), `Java`, `Ruby`, `Python`, `Node.js`
-- Secondary: `.Net Core`, `Javascript`/`Typescript` (frontend development and _Single Page Application_)
+- Primary: `Elixir` (with `OTP`), `Ruby`, `Python`, `Node.js`
+- Secondary: `Java`, `.Net Core`, `Javascript`/`Typescript` (frontend / _Single Page Application_)
 - DevOps: _Infrastructure as Code_ using `OpenTofu`
 - Version manager: `mise`
-- Shell: `zsh` (always test shell commands in zsh, not bash)
+- Shell: `zsh` — **always test shell commands in zsh, not bash**
 - Editor: Neovim (`lua` configuration)
 - Terminal: Ghostty with `tmux`
 
 ## Git
 
-- NEVER commit unless I explicitly ask — always ask first
 - Signed commits via 1Password SSH agent
 - Prefer rebase over merge for local branches
 - Descriptive commit messages focused on "why" not "what"
