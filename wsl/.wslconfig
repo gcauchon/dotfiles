@@ -1,0 +1,27 @@
+[wsl2]
+
+# Use 12 of 14 logical processors, leaving 2 for Windows (Ultra 7 155U)
+processors=12
+
+# 20GB of 32GB to WSL, leaves ~12GB for Windows
+memory=20GB
+
+# Safety net for memory spikes without over-committing physical RAM
+swap=8GB
+
+# Share Windows network interfaces instead of NAT — better container access and VPN compatibility
+networkingMode=mirrored
+
+# Route DNS through Windows resolver — fixes DNS breakage with mirrored networking and VPNs
+dnsTunneling=true
+
+# Apply Windows firewall rules to WSL — useful if you're on a corporate network
+firewall=true
+
+[experimental]
+
+# Gradually release unused memory back to Windows instead of holding it forever
+autoMemoryReclaim=gradual
+
+# Allow the virtual disk to shrink when files are deleted inside WSL
+sparseVhd=true
