@@ -2,9 +2,7 @@
 
 ## Communication
 
-- Match the language I write in (English or French)
 - Explain your reasoning briefly — include rationale for decisions and trade-offs
-- Be concise, no filler
 
 ## Code Style
 

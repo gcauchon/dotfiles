@@ -4,42 +4,42 @@ mkdir -p ~/.config
 
 # Sheldon ZSH plugin manager
 mkdir -p ~/.config/sheldon
-ln -s $PWD/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
+ln -s "$PWD"/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
 
 # SSH
 mkdir -p ~/.ssh
-ln -s $PWD/ssh/config ~/.ssh/config
+ln -s "$PWD"/ssh/config ~/.ssh/config
 
 # 1Password SSH agent
 mkdir -p ~/.config/1Password/ssh
-ln -s $PWD/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
+ln -s "$PWD"/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
 
 # Starship prompt status line
-ln -s $PWD/zsh/starship.toml ~/.config/starship.toml
+ln -s "$PWD"/zsh/starship.toml ~/.config/starship.toml
 
 # Ghostty
 mkdir -p ~/.config/ghostty
-ln -s $PWD/ghostty/config ~/.config/ghostty/config
+ln -s "$PWD"/ghostty/config ~/.config/ghostty/config
 
 # Tmux
 mkdir -p ~/.config/tmux
-ln -s $PWD/zsh/tmux.conf ~/.config/tmux/tmux.conf
+ln -s "$PWD"/zsh/tmux.conf ~/.config/tmux/tmux.conf
 
 # Neovim
-ln -s $PWD/neovim ~/.config/nvim
+ln -s "$PWD"/neovim ~/.config/nvim
 
 # git
-ln -s $PWD/git/.gitconfig ~
-ln -s $PWD/git/.gitignore_global ~
-ln -s $PWD/git/.tigrc ~
+ln -s "$PWD"/git/.gitconfig ~
+ln -s "$PWD"/git/.gitignore_global ~
+ln -s "$PWD"/git/.tigrc ~
 
 # Mise-en-place
 mkdir -p ~/.config/mise
-ln -s $PWD/mise/config.toml ~/.config/mise/config.toml
+ln -s "$PWD"/mise/config.toml ~/.config/mise/config.toml
 
 # Claude
-mkdir -p ~/.claude
-ln -s $PWD/llms/claude/settings.json ~/.claude/settings.json
-ln -s $PWD/llms/claude/statusline.sh ~/.claude/statusline.sh
-ln -s $PWD/llms/claude/fetch-usage.sh ~/.claude/fetch-usage.sh
-ln -s $PWD/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md
+mkdir -p ~/.claude/rules
+ln -s "$PWD"/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -s "$PWD"/llms/claude/settings.json ~/.claude/settings.json
+ln -s "$PWD"/llms/claude/rules ~/.claude/rules
+ln -s "$PWD"/llms/claude/scripts ~/.claude/scripts

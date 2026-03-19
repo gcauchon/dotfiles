@@ -42,9 +42,10 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `mise/config.toml` → `~/.config/mise/config.toml`
 - `ssh/config` → `~/.ssh/config`
 - `llms/claude/settings.json` → `~/.claude/settings.json`
-- `llms/claude/statusline.sh` → `~/.claude/statusline.sh`
-- `llms/claude/fetch-usage.sh` → `~/.claude/fetch-usage.sh`
+- `llms/claude/scripts/statusline.sh` → `~/.claude/scripts/statusline.sh`
+- `llms/claude/scripts/fetch-usage.sh` → `~/.claude/scripts/fetch-usage.sh`
 - `llms/claude/CLAUDE.md` → `~/.claude/CLAUDE.md` (user-level preferences)
+- `llms/claude/rules/conversation-style.md` → `~/.claude/rules/conversation-style.md`
 
 ### Neovim Configuration
 
