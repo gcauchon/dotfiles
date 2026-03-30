@@ -38,7 +38,7 @@ mkdir -p ~/.config/mise
 ln -s "$PWD"/mise/config.toml ~/.config/mise/config.toml
 
 # Claude
-mkdir -p ~/.claude/rules
+mkdir -p ~/.claude
 ln -s "$PWD"/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -s "$PWD"/llms/claude/settings.json ~/.claude/settings.json
 ln -s "$PWD"/llms/claude/rules ~/.claude/rules
