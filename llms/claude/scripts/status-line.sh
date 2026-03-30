@@ -1,11 +1,21 @@
 #!/bin/sh
 input=$(cat)
 
-# --- model ---
-model=$(echo "$input" | jq -r '.model.display_name // ""')
+# --- parse all fields in a single jq pass ---
+eval "$(printf '%s' "$input" | jq -r '
+  @sh "model=\(.model.display_name // "")",
+  @sh "dir=\(.workspace.current_dir // .cwd // "")",
+  @sh "used=\(.context_window.used_percentage // "")",
+  @sh "ctx_total=\(.context_window.context_window_size // "")",
+  @sh "ctx_used_tokens=\(
+    if .context_window.current_usage != null then
+      ((.context_window.current_usage.input_tokens // 0)
+       + (.context_window.current_usage.cache_creation_input_tokens // 0)
+       + (.context_window.current_usage.cache_read_input_tokens // 0))
+    else "" end
+  )"
+' 2>/dev/null)"
 
-# --- folder ---
-dir=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // ""')
 dir_name=$(basename "$dir")
 
 # --- git branch (cached, 5s TTL) ---
@@ -32,17 +42,14 @@ seven_d=""
 five_h_reset=""
 seven_d_reset=""
 if [ -f "$CACHE_FILE" ]; then
-  five_h=$(sed -n '1p' "$CACHE_FILE")
-  seven_d=$(sed -n '2p' "$CACHE_FILE")
-  five_h_reset=$(sed -n '3p' "$CACHE_FILE")
-  seven_d_reset=$(sed -n '4p' "$CACHE_FILE")
+  { read -r five_h; read -r seven_d; read -r five_h_reset; read -r seven_d_reset; } < "$CACHE_FILE"
 else
-  bash ~/.claude/fetch-usage.sh > /dev/null 2>&1 &
+  sh ~/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &
 fi
 
 # --- compute_delta: given a raw ISO timestamp, returns human-readable time until reset ---
 compute_delta() {
-  clean=$(echo "$1" | sed 's/\.[0-9]*//' | sed 's/[+-][0-9][0-9]:[0-9][0-9]$//' | sed 's/Z$//')
+  clean=$(echo "$1" | sed 's/\.[0-9]*//;s/[+-][0-9][0-9]:[0-9][0-9]$//;s/Z$//')
   if [ "$(uname)" = "Darwin" ]; then
     reset_epoch=$(TZ=UTC date -j -f "%Y-%m-%dT%H:%M:%S" "$clean" "+%s" 2>/dev/null)
   else
@@ -64,8 +71,7 @@ compute_delta() {
   fi
 }
 
-# --- context window (use pre-calculated used_percentage per docs best practice) ---
-used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+# --- context window ---
 ctx_str=""
 ctx_tokens_str=""
 if [ -n "$used" ]; then
@@ -78,14 +84,6 @@ if [ -n "$used" ]; then
     ctx_color='\033[38;2;156;162;175m'
   fi
   ctx_str="${ctx_color}${used_int}%\033[0m"
-  ctx_total=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
-  ctx_used_tokens=$(echo "$input" | jq -r '
-    if .context_window.current_usage != null then
-      (.context_window.current_usage.input_tokens // 0)
-      + (.context_window.current_usage.output_tokens // 0)
-      + (.context_window.current_usage.cache_creation_input_tokens // 0)
-      + (.context_window.current_usage.cache_read_input_tokens // 0)
-    else empty end' 2>/dev/null)
   if [ -n "$ctx_used_tokens" ] && [ -n "$ctx_total" ]; then
     ctx_used_k=$(( ctx_used_tokens / 1000 ))
     ctx_total_k=$(( ctx_total / 1000 ))

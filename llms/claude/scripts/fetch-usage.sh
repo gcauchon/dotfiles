@@ -7,6 +7,13 @@
 # All output is suppressed; meant to be run in background.
 
 CACHE_FILE="/tmp/.claude_usage_cache"
+CACHE_TTL=30
+
+# Skip if cache is fresh — avoids credential lookup and API call
+if [ -f "$CACHE_FILE" ]; then
+  cache_age=$(( $(date -u +%s) - $(stat -f %m "$CACHE_FILE" 2>/dev/null || echo 0) ))
+  [ "$cache_age" -lt "$CACHE_TTL" ] && exit 0
+fi
 
 if [ "$(uname)" = "Darwin" ]; then
   raw_creds=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null)
@@ -31,13 +38,12 @@ if [ -z "$usage_json" ]; then
   exit 0
 fi
 
-five_h_raw=$(printf '%s' "$usage_json" | jq -r '.five_hour.utilization // empty' 2>/dev/null)
-seven_d_raw=$(printf '%s' "$usage_json" | jq -r '.seven_day.utilization // empty' 2>/dev/null)
-five_h_reset=$(printf '%s' "$usage_json" | jq -r '.five_hour.resets_at // ""' 2>/dev/null)
-seven_d_reset=$(printf '%s' "$usage_json" | jq -r '.seven_day.resets_at // ""' 2>/dev/null)
+# Parse and validate in a single jq pass — outputs 4 lines or nothing on bad JSON
+parsed=$(printf '%s' "$usage_json" | jq -r '
+  (.five_hour.utilization // empty | round | tostring),
+  (.seven_day.utilization // empty | round | tostring),
+  (.five_hour.resets_at // ""),
+  (.seven_day.resets_at // "")
+' 2>/dev/null) || exit 0
 
-if [ -n "$five_h_raw" ] && [ -n "$seven_d_raw" ]; then
-  five_h=$(printf "%.0f" "$five_h_raw")
-  seven_d=$(printf "%.0f" "$seven_d_raw")
-  printf '%s\n%s\n%s\n%s\n' "$five_h" "$seven_d" "$five_h_reset" "$seven_d_reset" > "$CACHE_FILE"
-fi
+[ -n "$parsed" ] && printf '%s\n' "$parsed" > "$CACHE_FILE"

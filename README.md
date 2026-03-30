@@ -68,18 +68,25 @@ All configuration files are symlinked from this repo:
 
 - ZSH: sheldon plugins, starship prompt
 - Terminal: ghostty, tmux
-- Editor: neovim (full lua config)
+- Editor: neovim (full lua config), VS Code settings via extensions
 - Git: gitconfig, gitignore, tigrc
 - 1Password SSH agent config (for commit signing)
 - mise runtime versions
 - Claude Code settings & statusline
 
-## AI Agent Configuration
+## Claude Configuration (llms/claude/)
 
-This repo uses [Claude Code](https://claude.ai/code) as its AI coding assistant. All configuration lives in `.claude/`:
+Configuration for both [Claude.ai](https://claude.ai) and [Claude Code](https://claude.ai/code), symlinked to `~/.claude/` by `04-symlinks.sh`.
 
-- `CLAUDE.md` — Project instructions and codebase conventions
-- `skills/` — Agent skills (e.g., `neovim-lua-config` for Neovim Lua patterns)
-- `settings.json` — Symlinked from `llms/claude/settings.json` to `~/.claude/settings.json`
+| File | Symlink Target | Purpose |
+|------|---------------|---------|
+| `CLAUDE.md` | `~/.claude/CLAUDE.md` | User-level preferences (code style, stack, git conventions) |
+| `settings.json` | `~/.claude/settings.json` | Claude Code settings (permissions, hooks, model, status line) |
+| `rules/` | `~/.claude/rules/` | Response style, language, tone directives |
+| `scripts/` | `~/.claude/scripts/` | Custom status line and API usage tracking |
+
+**Dual-purpose files**: `CLAUDE.md` and `rules/conversation-style.md` are loaded by Claude Code as project/global instructions. Their content must also be copied manually to Claude.ai under **Settings > User Preferences** to maintain consistent behavior across both interfaces.
+
+Agent skills live in `.claude/skills/` (e.g., `neovim-lua-config` for Neovim Lua patterns).
 
 ### You are in business! 🚀
