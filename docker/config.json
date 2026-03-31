@@ -1,5 +1,10 @@
 {
-  "detachKeys": "ctrl-q,q",
-  "psFormat": "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}",
-  "imagesFormat": "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"
+	"auths": {
+		"dhi.io": {
+			"auth": "Z2NhdWNob246bW9kZXJuX2Rldk9QUzs="
+		}
+	},
+	"psFormat": "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}",
+	"imagesFormat": "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}",
+	"detachKeys": "ctrl-q,q"
 }

@@ -4,71 +4,59 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          "fish", "lua", "bash", "vim", "vimdoc", "query", "regex",
-          "python", "rust", "elixir", "heex", "eex", "ruby", "sql",
-          "html", "css", "javascript", "typescript",
-          "xml", "json", "markdown", "yaml", "toml", "dockerfile",
-          "git_config", "git_rebase", "gitignore",
-        },
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-        indent = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-        },
-      }
-    end
+    opts = {
+      ensure_installed = {
+        "fish", "lua", "bash", "vim", "vimdoc", "query", "regex",
+        "python", "rust", "elixir", "heex", "eex", "ruby", "sql",
+        "html", "css", "javascript", "typescript",
+        "xml", "json", "markdown", "yaml", "toml", "dockerfile",
+        "git_config", "git_rebase", "gitignore",
+      },
+      auto_install = true,
+    },
   },
-  
+
+  -- Treesitter textobjects
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+          ["aa"] = "@parameter.outer",
+          ["ia"] = "@parameter.inner",
+        },
+      },
+      move = {
+        enable = true,
+        set_jumps = true,
+        goto_next_start = {
+          ["]m"] = "@function.outer",
+          ["]]"] = "@class.outer",
+        },
+        goto_next_end = {
+          ["]M"] = "@function.outer",
+          ["]["] = "@class.outer",
+        },
+        goto_previous_start = {
+          ["[m"] = "@function.outer",
+          ["[["] = "@class.outer",
+        },
+        goto_previous_end = {
+          ["[M"] = "@function.outer",
+          ["[]"] = "@class.outer",
+        },
+      },
+    },
+  },
+
   -- LSP UI improvements
   {
     'nvimdev/lspsaga.nvim',

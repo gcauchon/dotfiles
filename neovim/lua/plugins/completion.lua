@@ -25,8 +25,6 @@ return {
       require('mason-lspconfig').setup({
         ensure_installed = {
           'lua_ls',           -- Lua
-          'elixirls',         -- Elixir
-          'ruby_lsp',         -- Ruby
           'pyright',          -- Python
           'ts_ls',            -- TypeScript/JavaScript
           'html',             -- HTML
@@ -94,7 +92,7 @@ return {
 
       -- Servers with default config
       local simple_servers = {
-        'ruby_lsp', 'pyright', 'ts_ls', 'html', 'cssls',
+        'pyright', 'ts_ls', 'html', 'cssls',
         'jsonls', 'yamlls', 'bashls', 'dockerls', 'marksman',
       }
       for _, server in ipairs(simple_servers) do
@@ -103,7 +101,7 @@ return {
 
       -- Enable all configured servers
       vim.lsp.enable({
-        'lua_ls', 'elixirls', 'ruby_lsp', 'pyright', 'ts_ls',
+        'lua_ls', 'elixirls', 'pyright', 'ts_ls',
         'html', 'cssls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'marksman',
       })
     end

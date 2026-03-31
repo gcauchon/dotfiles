@@ -11,7 +11,7 @@ This is a macOS dotfiles repository for bootstrapping a new Mac with development
 ```bash
 # Run setup scripts sequentially (order matters)
 ./01-defaults.sh    # macOS system preferences
-./02-homebrew.sh    # Homebrew + zsh symlinks + shell plugins (sheldon, fzf, zoxide, starship)
+./02-homebrew.sh    # Homebrew + zsh symlinks + chsh to zsh + shell plugins (sheldon, fzf, zoxide, starship)
 ./03-install.sh     # Terminal/dev tools (ghostty, tmux, neovim, mise, git tools)
 ./04-symlinks.sh    # Create config symlinks
 ./05-cleanup.sh     # Post-install manual steps reminder

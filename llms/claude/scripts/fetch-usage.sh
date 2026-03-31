@@ -11,7 +11,7 @@ CACHE_TTL=30
 
 # Skip if cache is fresh — avoids credential lookup and API call
 if [ -f "$CACHE_FILE" ]; then
-  cache_age=$(( $(date -u +%s) - $(stat -f %m "$CACHE_FILE" 2>/dev/null || echo 0) ))
+  cache_age=$(( $(date -u +%s) - $(stat -c %Y "$CACHE_FILE" 2>/dev/null || echo 0) ))
   [ "$cache_age" -lt "$CACHE_TTL" ] && exit 0
 fi
 

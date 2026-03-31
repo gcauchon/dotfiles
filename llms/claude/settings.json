@@ -10,6 +10,8 @@
       "Read",
       "Glob",
       "Grep",
+      "Edit(.claude/plans/*)",
+      "Write(.claude/plans/*)",
       "Bash(git status*)",
       "Bash(git diff*)",
       "Bash(git log*)",
@@ -26,12 +28,7 @@
       "Bash(tail *)",
       "Bash(wc *)",
       "Bash(find *)",
-      "Bash(which *)",
-      "Bash(brew *)",
-      "Bash(uv *)",
-      "Bash(mise *)",
-      "Bash(docker compose *)",
-      "Bash(make *)"
+      "Bash(which *)"
     ],
     "deny": [
       "Bash(git push --force*)",
@@ -44,17 +41,6 @@
   },
   "model": "opusplan",
   "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "",
@@ -70,7 +56,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); [[ $fp =~ (^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$ ]] && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
+            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); echo \"$fp\" | grep -qE '(^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$' && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
           }
         ]
       }
@@ -81,7 +67,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); if [[ -n $fp && $fp =~ \\.(sh|bash|zsh)$ ]]; then shellcheck \"$fp\" 2>&1; fi; exit 0"
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$fp\" ] && echo \"$fp\" | grep -qE '\\.(sh|bash|zsh)$'; then shellcheck \"$fp\" 2>&1; fi; exit 0"
           }
         ]
       },

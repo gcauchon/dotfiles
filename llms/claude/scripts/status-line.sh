@@ -23,7 +23,7 @@ GIT_CACHE="/tmp/.claude_statusline_git_cache"
 branch=""
 use_cache=0
 if [ -f "$GIT_CACHE" ]; then
-  cache_age=$(( $(date -u +%s) - $(stat -f %m "$GIT_CACHE" 2>/dev/null || echo 0) ))
+  cache_age=$(( $(date -u +%s) - $(stat -c %Y "$GIT_CACHE" 2>/dev/null || echo 0) ))
   [ "$cache_age" -lt 5 ] && use_cache=1
 fi
 if [ "$use_cache" = "1" ]; then

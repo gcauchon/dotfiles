@@ -1,6 +1,5 @@
 # Defaults - allow agent keys (keychain) and prefer current agent socket
 Host *
-    IdentityAgent $SSH_AUTH_SOCK
     IdentitiesOnly no
 
 # GitHub - ED25519 key
