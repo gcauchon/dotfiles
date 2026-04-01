@@ -37,7 +37,8 @@
       "Read(**/.env)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
-    ]
+    ],
+    "defaultMode": "plan"
   },
   "model": "opusplan",
   "hooks": {
