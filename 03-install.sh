@@ -3,6 +3,7 @@
 # Terminal
 brew install ghostty
 brew install tmux
+brew install terminal-notifier
 
 # neovim
 brew install neovim

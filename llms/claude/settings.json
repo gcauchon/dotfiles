@@ -50,7 +50,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
+            "command": "sh $HOME/.claude/scripts/notify.sh"
           }
         ]
       }
@@ -114,5 +114,6 @@
   "plansDirectory": ".claude/plans",
   "noBanner": true,
   "autoUpdateChannel": "stable",
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "effortLevel": "high"
 }
