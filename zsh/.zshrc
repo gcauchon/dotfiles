@@ -1,3 +1,6 @@
+# GPG (interactive passphrase prompts)
+export GPG_TTY=$(tty)
+
 # Aliases
 alias ll='ls -oah --color=auto'
 alias ..='cd ..'
@@ -23,16 +26,10 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
-# Homebrew
-# eval "$(brew shellenv)" MacOS
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 # mise (version manager)
 eval "$(mise activate zsh)"
 
 # Sheldon (plugin manager)
-# Add to PATH since the simplet Sheldon install was using Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(sheldon source)"
 
 # Starship (prompt SDKs versions)
@@ -40,9 +37,13 @@ eval "$(starship init zsh)"
 
 # SSH agent (keychain) for WSL2 shells
 if [[ -n "${WSL_INTEROP:-}" ]] && command -v keychain >/dev/null 2>&1; then
-	eval "$(keychain --quiet --eval ~/.ssh/id_ed25519 ~/.ssh/id_rsa-4096)"
+  eval "$(keychain --quiet --eval ~/.ssh/id_ed25519 ~/.ssh/id_rsa-4096)"
 fi
 
-# Completion
+# Completion (cache compdump, re-check once per day)
 autoload -Uz compinit
-compinit
+if [[ ! -f ~/.zcompdump || -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
