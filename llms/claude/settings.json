@@ -101,5 +101,6 @@
   "plansDirectory": ".claude/plans",
   "noBanner": true,
   "autoUpdateChannel": "stable",
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "effortLevel": "high"
 }

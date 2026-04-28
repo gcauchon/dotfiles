@@ -8,6 +8,9 @@
   excludesfile = /Users/gcauchon/.gitignore_global
   editor = nvim
 
+[init]
+  defaultBranch = main
+
 [pager]
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
@@ -15,17 +18,12 @@
 [diff]
   noprefix = true
   tool = tig
-  verbosity = 5
-
-[init]
-  defaultBranch = main
 
 [pull]
-  rebase = true
+  ff = only
 
 [merge]
   tool = diffmerge
-  verbosity = 5
 
 [commit]
   gpgsign = true
@@ -36,25 +34,27 @@
 [alias]
   a = add --all
   c = commit --message
-  ca = commit  --amend
+  ca = commit --amend
+  cane = commit --amend --no-edit
   s = status --untracked-files=all
+  d = diff
+  ds = diff --staged
   br = branch --verbose
-  bl = branch --list
-  bd = branch --delete --force
+  bd = branch --delete
+  bdf = branch --delete --force
   co = checkout
-  cb = checkout -b
+  cb = switch --create
   f = fetch
   fm = !git fetch --verbose && git merge --ff-only
   fp = fetch --prune
   m = merge --ff-only
   unstage = reset HEAD
-  rollback = reset --soft HEAD^1
+  rollback = reset --soft HEAD~1
   r = rebase
   rc = rebase --continue
   rs = rebase --skip
   ra = rebase --abort
   p = push
   ph = push --set-upstream origin HEAD
-  pf = push --force-with-lease
-  po = push origin
+  pf = push --force-with-lease --force-if-includes
 

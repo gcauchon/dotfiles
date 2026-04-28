@@ -79,7 +79,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - Commit signing via 1Password SSH agent (`gpg.format = ssh` → `op-ssh-sign`)
 - Default editor: nvim, diff pager: diff-so-fancy
 - Default branch: `main`, pull with rebase
-- Key aliases: `a` (add all), `c` (signed commit), `s` (status), `ph` (push HEAD), `pf` (force-with-lease)
+- Key aliases: `a` (add all), `c` (signed commit), `ca`/`cane` (amend with/without message), `s` (status), `d`/`ds` (diff/staged), `bd`/`bdf` (safe/force branch delete), `ph` (push HEAD), `pf` (force-with-lease + force-if-includes)
 
 ### Agent Skills
 
