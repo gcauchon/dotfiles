@@ -2,6 +2,7 @@
 input=$(cat)
 
 # --- parse all fields in a single jq pass ---
+model="" dir="" used="" ctx_total="" ctx_used_tokens=""
 eval "$(printf '%s' "$input" | jq -r '
   @sh "model=\(.model.display_name // "")",
   @sh "dir=\(.workspace.current_dir // .cwd // "")",
@@ -19,7 +20,8 @@ eval "$(printf '%s' "$input" | jq -r '
 dir_name=$(basename "$dir")
 
 # --- git branch (cached, 5s TTL) ---
-GIT_CACHE="/tmp/.claude_statusline_git_cache"
+dir_hash=$(printf '%s' "$dir" | cksum | cut -d' ' -f1)
+GIT_CACHE="/tmp/.claude_statusline_git_${dir_hash}"
 branch=""
 use_cache=0
 if [ -f "$GIT_CACHE" ]; then

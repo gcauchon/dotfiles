@@ -39,7 +39,7 @@
   s = status --untracked-files=all
   d = diff
   ds = diff --staged
-  br = branch --verbose
+  bl = branch --verbose
   bd = branch --delete
   bdf = branch --delete --force
   co = checkout

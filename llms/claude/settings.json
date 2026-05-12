@@ -1,11 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "effortLevel": "high",
+  "model": "opusplan",
+  "availableModels": ["opus", "sonnet", "haiku", "opusplan"],
+  "autoMemoryEnabled": true,
+  "includeGitInstructions": false,
+  "plansDirectory": ".claude/plans",
+  "showTurnDuration": true,
+  "noBanner": true,
   "cleanupPeriodDays": 30,
+  "autoUpdatesChannel": "stable",
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
   },
   "permissions": {
+    "defaultMode": "plan",
+    "disableBypassPermissionsMode": "disable",
     "allow": [
       "Read",
       "Glob",
@@ -23,25 +34,67 @@
       "Bash(git merge *)",
       "Bash(git rebase *)",
       "Bash(ls *)",
-      "Bash(cat *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(wc *)",
       "Bash(find *)",
-      "Bash(which *)"
+      "Bash(which *)",
+      "Bash(rg *)",
+      "Bash(jq *)",
+      "Bash(mise *)",
+      "Bash(tig*)",
+      "Bash(gh pr view*)",
+      "Bash(gh pr list*)",
+      "Bash(gh issue view*)",
+      "Bash(gh run view*)",
+      "Bash(gh api *)",
+      "WebSearch",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:hub.docker.com)",
+      "WebFetch(domain:postgresql.org)",
+      "mcp__context7__query-docs",
+      "mcp__context7__resolve-library-id"
+    ],
+    "ask": [
+      "Bash(git push*)"
     ],
     "deny": [
       "Bash(git push --force*)",
       "Bash(git reset --hard*)",
       "Bash(sudo *)",
+      "Bash(curl * | sh*)",
+      "Bash(wget * | sh*)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~*)",
       "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
-    ],
-    "defaultMode": "plan"
+    ]
   },
-  "model": "opusplan",
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "",
@@ -77,7 +130,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log"
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log && tail -n 10000 ~/.claude/bash-commands.log > ~/.claude/bash-commands.log.tmp && mv ~/.claude/bash-commands.log.tmp ~/.claude/bash-commands.log"
           }
         ]
       }
@@ -98,9 +151,20 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
-  "plansDirectory": ".claude/plans",
-  "noBanner": true,
-  "autoUpdateChannel": "stable",
-  "showTurnDuration": true,
-  "effortLevel": "high"
+  "extraKnownMarketplaces": {
+    "umano-medical-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "umano-medical/connect-ai-workflows"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "umano-connect@umano-medical-plugins": true,
+    "umano-medical@umano-medical-plugins": true
+  },
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": ""
+  }
 }
