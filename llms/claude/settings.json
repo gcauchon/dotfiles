@@ -55,7 +55,10 @@
       "mcp__context7__resolve-library-id"
     ],
     "ask": [
-      "Bash(git push*)"
+      "Bash(git push*)",
+      "Read(**/.env)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)"
     ],
     "deny": [
       "Bash(git push --force*)",
@@ -65,10 +68,6 @@
       "Bash(wget * | sh*)",
       "Bash(rm -rf /*)",
       "Bash(rm -rf ~*)",
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/secrets/**)",
-      "Read(**/credentials/**)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
     ]
@@ -91,20 +90,15 @@
           {
             "type": "command",
             "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
+          },
           {
             "type": "command",
             "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
           }
         ]
-      },
+      }
+    ],
+    "PreToolUse": [
       {
         "matcher": "Edit|Write",
         "hooks": [
