@@ -1,22 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "effortLevel": "high",
-  "model": "opusplan",
-  "availableModels": ["opus", "sonnet", "haiku", "opusplan"],
-  "autoMemoryEnabled": true,
-  "includeGitInstructions": false,
-  "plansDirectory": ".claude/plans",
-  "showTurnDuration": true,
-  "noBanner": true,
   "cleanupPeriodDays": 30,
-  "autoUpdatesChannel": "stable",
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
   },
+  "includeGitInstructions": false,
   "permissions": {
-    "defaultMode": "plan",
-    "disableBypassPermissionsMode": "disable",
     "allow": [
       "Read",
       "Glob",
@@ -54,14 +44,9 @@
       "mcp__context7__query-docs",
       "mcp__context7__resolve-library-id"
     ],
-    "ask": [
-      "Bash(git push*)",
-      "Read(**/.env)",
-      "Read(**/secrets/**)",
-      "Read(**/credentials/**)"
-    ],
     "deny": [
       "Bash(git push --force*)",
+      "Bash(git pf)",
       "Bash(git reset --hard*)",
       "Bash(sudo *)",
       "Bash(curl * | sh*)",
@@ -70,8 +55,17 @@
       "Bash(rm -rf ~*)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
-    ]
+    ],
+    "ask": [
+      "Bash(git push*)",
+      "Read(**/.env)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)"
+    ],
+    "defaultMode": "plan",
+    "disableBypassPermissionsMode": "disable"
   },
+  "model": "opusplan",
   "hooks": {
     "SessionStart": [
       {
@@ -145,6 +139,10 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
+  "enabledPlugins": {
+    "umano-connect@umano-medical-plugins": true,
+    "umano-medical@umano-medical-plugins": true
+  },
   "extraKnownMarketplaces": {
     "umano-medical-plugins": {
       "source": {
@@ -153,12 +151,10 @@
       }
     }
   },
-  "enabledPlugins": {
-    "umano-connect@umano-medical-plugins": true,
-    "umano-medical@umano-medical-plugins": true
-  },
-  "attribution": {
-    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": ""
-  }
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "plansDirectory": ".claude/plans",
+  "autoMemoryEnabled": true,
+  "showTurnDuration": true,
+  "noBanner": true
 }

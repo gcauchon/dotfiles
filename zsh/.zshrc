@@ -10,7 +10,7 @@ alias .....='cd ../../../..'
 
 alias mkp='mkdir --parents'
 alias rmd='rmdir'
-alias zreload='. ~/.zshrc'
+alias zreload='exec zsh'
 
 alias code="/mnt/c/Users/guillaume.cauchon/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 
@@ -41,9 +41,17 @@ if [[ -n "${WSL_INTEROP:-}" ]] && command -v keychain >/dev/null 2>&1; then
 fi
 
 # Completion (cache compdump, re-check once per day)
+fpath=(~/.local/share/zsh/site-functions $fpath)
 autoload -Uz compinit
 if [[ ! -f ~/.zcompdump || -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
   compinit -C
 fi
+
+# Bash-style completions (tofu/terraform implement the `complete -C` protocol)
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C tofu tofu
+
+# Generated completion scripts (az via argcomplete, npm — see 05-cleanup.sh)
+for f in ~/.local/share/zsh/completions/*.zsh(N); do source "$f"; done

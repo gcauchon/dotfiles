@@ -112,12 +112,12 @@ line1="${line1}${SEP}"
 line1="${line1}"'\033[1m\033[38;2;76;208;222m'"$dir_name"'\033[22m\033[0m'
 if [ -n "$branch" ]; then
   line1="${line1}${SEP}"
-  if [ "$is_worktree" = "1" ]; then
-    line1="${line1}"'\033[2m\033[38;2;76;208;222m⎇ \033[22m\033[0m'
-  fi
   line1="${line1}"'\033[1m\033[38;2;192;103;222m'"$branch"'\033[22m\033[0m'
+  if [ "$is_worktree" = "1" ]; then
+    line1="${line1}"'\033[2m\033[38;2;76;208;222m ⎇ \033[22m\033[0m'
+  fi
   if [ -n "$dirty" ] && [ "$dirty" -gt 0 ] 2>/dev/null; then
-    line1="${line1}"' \033[33m●'"$dirty"'\033[0m'
+    line1="${line1}"'\033[33m ● '"$dirty"'\033[0m'
   fi
 fi
 printf '%b\n' "$line1"
