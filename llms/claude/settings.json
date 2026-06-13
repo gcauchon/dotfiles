@@ -40,7 +40,8 @@
       "Read(**/.env)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
-    ]
+    ],
+    "defaultMode": "plan"
   },
   "model": "opusplan",
   "hooks": {
@@ -111,9 +112,13 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
+  "effortLevel": "high",
   "plansDirectory": ".claude/plans",
-  "noBanner": true,
-  "autoUpdateChannel": "stable",
+  "theme": "auto",
+  "editorMode": "normal",
+  "preferredNotifChannel": "ghostty",
+  "autoCompactEnabled": false,
   "showTurnDuration": true,
-  "effortLevel": "high"
+  "noBanner": true,
+  "autoUpdateChannel": "stable"
 }
