@@ -1,3 +1,12 @@
+-- Use Neovim 0.11+ native virtual_lines instead of lsp_lines.nvim
+vim.diagnostic.config({
+  virtual_lines = { current_line = true },
+  virtual_text = false,
+  severity_sort = true,
+  signs = true,
+  underline = true,
+})
+
 return {
   -- Treesitter configuration
   {
@@ -26,9 +35,9 @@ return {
           enable = true,
           keymaps = {
             init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+            node_incremental = "gnn",  -- in visual mode; expand with same key
+            scope_incremental = "gns",
+            node_decremental = "gnp",
           },
         },
         textobjects = {
@@ -89,16 +98,4 @@ return {
     }
   },
 
-  -- Show diagnostics in virtual text
-  {
-    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-    event = 'LspAttach',
-    config = function()
-      require('lsp_lines').setup()
-      -- Disable virtual_text since it's redundant due to lsp_lines
-      vim.diagnostic.config({
-        virtual_text = false,
-      })
-    end,
-  },
 }

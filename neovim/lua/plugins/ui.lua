@@ -1,22 +1,4 @@
 return {
-  -- Statusline
-  { 
-    'itchyny/lightline.vim', 
-    event = "VeryLazy",
-    config = function()
-      vim.g.lightline = {
-        colorscheme = 'one',
-        active = {
-          left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
-          right = { { 'lineinfo' }, { 'percent' }, { 'filetype', 'fileformat', 'encoding' } }
-        },
-        component_function = {
-          gitbranch = 'FugitiveHead'
-        }
-      }
-    end
-  },
-  
   -- Theme
   {
     'olimorris/onedarkpro.nvim',
@@ -135,6 +117,7 @@ return {
         { "<leader>q", group = "Quickfix" },
         { "<leader>e", group = "Error" },
         { "<leader>s", group = "Save" },
+        { "<leader>x", group = "Cut" },
       })
     end,
   },

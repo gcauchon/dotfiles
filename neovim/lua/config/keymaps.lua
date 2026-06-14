@@ -19,14 +19,14 @@ map({ 'n', 'v' }, 'd', '"_d', { desc = 'Delete (black hole)' })
 map({ 'n', 'v' }, 'D', '"_D', { desc = 'Delete to end (black hole)' })
 map({ 'n', 'v' }, 'x', '"_x', { desc = 'Delete char (black hole)' })
 
--- Cut (delete + yank) using m
-map({ 'n', 'v' }, 'm', 'd', { desc = 'Cut' })
-map({ 'n', 'v' }, 'M', 'D', { desc = 'Cut to end' })
-map('n', 'mm', 'dd', { desc = 'Cut line' })
+-- Cut (delete + yank) using <leader>x — frees up m so vim marks work
+map({ 'n', 'v' }, '<leader>x', 'd', { desc = 'Cut' })
+map({ 'n', 'v' }, '<leader>X', 'D', { desc = 'Cut to end' })
+map('n', '<leader>xx', 'dd', { desc = 'Cut line' })
 
--- Buffer navigation
-map('n', '>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
-map('n', '<', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+-- Buffer navigation — ]b/[b mirrors ]c/[c (hunks) and ]d/[d (diagnostics)
+map('n', ']b', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+map('n', '[b', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
 map('n', '<leader>v', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
 
 -- QuickFix (ie Search, Linter, etc...)

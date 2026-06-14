@@ -49,6 +49,9 @@ return {
           width = 30,
         },
       })
+
+      -- Statusline (replaces lightline.vim)
+      require('mini.statusline').setup({ use_icons = true })
     end,
     keys = {
       -- File navigation
