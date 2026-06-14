@@ -64,7 +64,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - Prompt: starship (`zsh/starship.toml`)
 - Version manager: mise (`mise/config.toml`) — Node.js 22.19.0, Ruby 3.4.6, Python 3.13.7, uv 0.8.17
 - Plugins: fzf, zoxide, zsh-syntax-highlighting, zsh-completions, zsh-autosuggestions
-- `.zshenv` sets `ERL_AFLAGS` for Erlang REPL shell history
+- `.zshenv` sets `ERL_AFLAGS` for Erlang REPL shell history, `EDITOR`/`VISUAL` to nvim, and `BUILDKIT_PROGRESS=tty` for Docker
 
 ### Terminal & Tmux
 

@@ -14,7 +14,7 @@ alias .....='cd ../../../..'
 
 alias mkp='mkdir --parents'
 alias rmd='rmdir'
-alias zreload='. ~/.zshrc'
+alias zreload='exec zsh'
 
 # History
 HISTFILE=~/.zsh_history
@@ -49,6 +49,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Completion — full security check only when dump is older than 24 hours
+fpath=(~/.local/share/zsh/site-functions $fpath)
 autoload -Uz compinit
 local zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 if [[ ! -d "${zcompdump:h}" ]]; then mkdir -p "${zcompdump:h}"; fi
@@ -57,3 +58,10 @@ if [[ -n "${zcompdump}"(#qNmh-24) ]]; then
 else
   compinit -d "$zcompdump"      # full check, update dump
 fi
+
+# Bash-style completions (tofu/terraform use the `complete -C` protocol)
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C tofu tofu
+
+# Generated completion scripts (az via argcomplete, npm — see 05-cleanup.sh)
+for f in ~/.local/share/zsh/completions/*.zsh(N); do source "$f"; done
