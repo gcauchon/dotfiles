@@ -7,15 +7,21 @@
   autocrlf = input
   excludesfile = /Users/gcauchon/.gitignore_global
   editor = nvim
+  pager = delta
 
-[pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  show = diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  syntax-theme = OneDark
 
 [diff]
-  noprefix = true
   tool = tig
   verbosity = 5
+  algorithm = histogram
+  colorMoved = default
 
 [init]
 	defaultBranch = main
@@ -23,6 +29,7 @@
 [merge]
   tool = diffmerge
   verbosity = 5
+  conflictstyle = zdiff3
 
 [commit]
   gpgsign = true
@@ -60,3 +67,22 @@
 
 [pull]
 	rebase = true
+
+[push]
+  autoSetupRemote = true
+
+[fetch]
+  prune = true
+
+[rebase]
+  autoStash = true
+  autosquash = true
+
+[rerere]
+  enabled = true
+
+[branch]
+  sort = -committerdate
+
+[column]
+  ui = auto

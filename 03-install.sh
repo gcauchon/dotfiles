@@ -15,7 +15,7 @@ brew install ripgrep
 # git
 brew install git
 brew install tig
-brew install diff-so-fancy
+brew install git-delta
 
 # Web browsers
 brew install firefox
@@ -33,6 +33,10 @@ brew install docker
 brew install colima
 brew install jq
 brew install ngrok
+
+# Modern CLI replacements
+brew install eza              # Better ls (replaces ls -oah)
+brew install bat              # Better cat (syntax highlighting)
 
 # Utilities
 brew install alfred
