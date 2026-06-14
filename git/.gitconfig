@@ -44,12 +44,16 @@
   a = add --all
   c = commit --gpg-sign --message
   ca = commit --gpg-sign --amend
+  cane = commit --gpg-sign --amend --no-edit
   s = status --untracked-files=all
+  d = diff
+  ds = diff --staged
   br = branch --verbose
   bl = branch --list
-  bd = branch --delete --force
+  bd = branch --delete
+  bdf = branch --delete --force
   co = checkout
-  cb = checkout -b
+  cb = switch --create
   f = fetch
   fm = !git fetch --verbose && git merge --ff-only
   fp = fetch --prune
@@ -62,7 +66,7 @@
   ra = rebase --abort
   p = push
   ph = push --set-upstream origin HEAD
-  pf = push --force-with-lease
+  pf = push --force-with-lease --force-if-includes
   po = push origin
 
 [pull]
