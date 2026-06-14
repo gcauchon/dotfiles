@@ -2,6 +2,7 @@
 input=$(cat)
 
 # --- parse all fields in a single jq pass ---
+model="" dir="" used="" ctx_total="" ctx_used_tokens=""
 eval "$(printf '%s' "$input" | jq -r '
   @sh "model=\(.model.display_name // "")",
   @sh "dir=\(.workspace.current_dir // .cwd // "")",
@@ -18,21 +19,31 @@ eval "$(printf '%s' "$input" | jq -r '
 
 dir_name=$(basename "$dir")
 
-# --- git branch (cached, 5s TTL) ---
-GIT_CACHE="/tmp/.claude_statusline_git_cache"
+# --- git branch + worktree + dirty (cached, 5s TTL per directory) ---
+dir_hash=$(printf '%s' "$dir" | cksum | cut -d' ' -f1)
+GIT_CACHE="/tmp/.claude_statusline_git_${dir_hash}"
 branch=""
+is_worktree=0
+dirty=0
 use_cache=0
 if [ -f "$GIT_CACHE" ]; then
   cache_age=$(( $(date -u +%s) - $(stat -f %m "$GIT_CACHE" 2>/dev/null || echo 0) ))
   [ "$cache_age" -lt 5 ] && use_cache=1
 fi
 if [ "$use_cache" = "1" ]; then
-  branch=$(cat "$GIT_CACHE")
+  { read -r branch; read -r is_worktree; read -r dirty; } < "$GIT_CACHE"
 else
   if git -C "$dir" rev-parse --git-dir > /dev/null 2>&1; then
     branch=$(git -C "$dir" symbolic-ref --short HEAD 2>/dev/null || git -C "$dir" rev-parse --short HEAD 2>/dev/null)
+    common=$(git -C "$dir" rev-parse --git-common-dir 2>/dev/null)
+    gdir=$(git -C "$dir" rev-parse --git-dir 2>/dev/null)
+    case "$common" in
+      "$gdir"|".git") is_worktree=0 ;;
+      *) is_worktree=1 ;;
+    esac
+    dirty=$(git -C "$dir" --no-optional-locks status --porcelain 2>/dev/null | wc -l | tr -d ' ')
   fi
-  printf '%s' "$branch" > "$GIT_CACHE"
+  printf '%s\n%s\n%s\n' "$branch" "$is_worktree" "$dirty" > "$GIT_CACHE"
 fi
 
 # --- usage stats (5h / 7d) from cache ---
@@ -100,7 +111,14 @@ line1='\033[38;5;208m\033[1m'"$model"'\033[22m\033[0m'
 line1="${line1}${SEP}"
 line1="${line1}"'\033[1m\033[38;2;76;208;222m'"$dir_name"'\033[22m\033[0m'
 if [ -n "$branch" ]; then
-  line1="${line1}${SEP}"'\033[1m\033[38;2;192;103;222m'"$branch"'\033[22m\033[0m'
+  line1="${line1}${SEP}"
+  line1="${line1}"'\033[1m\033[38;2;192;103;222m'"$branch"'\033[22m\033[0m'
+  if [ "$is_worktree" = "1" ]; then
+    line1="${line1}"'\033[2m\033[38;2;76;208;222m ⎇ \033[22m\033[0m'
+  fi
+  if [ -n "$dirty" ] && [ "$dirty" -gt 0 ] 2>/dev/null; then
+    line1="${line1}"'\033[33m ● '"$dirty"'\033[0m'
+  fi
 fi
 printf '%b\n' "$line1"
 

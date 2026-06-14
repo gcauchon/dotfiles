@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
+  "includeGitInstructions": false,
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
@@ -10,6 +11,8 @@
       "Read",
       "Glob",
       "Grep",
+      "Edit(.claude/plans/*)",
+      "Write(.claude/plans/*)",
       "Bash(git status*)",
       "Bash(git diff*)",
       "Bash(git log*)",
@@ -21,27 +24,46 @@
       "Bash(git merge *)",
       "Bash(git rebase *)",
       "Bash(ls *)",
-      "Bash(cat *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(wc *)",
       "Bash(find *)",
       "Bash(which *)",
-      "Bash(brew *)",
-      "Bash(uv *)",
+      "Bash(rg *)",
+      "Bash(jq *)",
       "Bash(mise *)",
-      "Bash(docker compose *)",
-      "Bash(make *)"
+      "Bash(tig*)",
+      "Bash(gh pr view*)",
+      "Bash(gh pr list*)",
+      "Bash(gh issue view*)",
+      "Bash(gh run view*)",
+      "Bash(gh api *)",
+      "WebSearch",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:hub.docker.com)",
+      "WebFetch(domain:postgresql.org)",
+      "mcp__context7__query-docs",
+      "mcp__context7__resolve-library-id"
     ],
     "deny": [
       "Bash(git push --force*)",
+      "Bash(git pf)",
       "Bash(git reset --hard*)",
       "Bash(sudo *)",
-      "Read(**/.env)",
+      "Bash(curl * | sh*)",
+      "Bash(wget * | sh*)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~*)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
     ],
-    "defaultMode": "plan"
+    "ask": [
+      "Bash(git push*)",
+      "Read(**/.env)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)"
+    ],
+    "defaultMode": "plan",
+    "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
   "hooks": {
@@ -56,22 +78,38 @@
         ]
       }
     ],
-    "PreToolUse": [
+    "SessionStart": [
       {
-        "matcher": "",
+        "matcher": "startup|resume",
         "hooks": [
           {
             "type": "command",
             "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
           }
         ]
-      },
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log"
+          },
+          {
+            "type": "command",
+            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
       {
         "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); [[ $fp =~ (^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$ ]] && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
+            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); echo \"$fp\" | grep -qE '(^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$' && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
           }
         ]
       }
@@ -82,7 +120,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); if [[ -n $fp && $fp =~ \\.(sh|bash|zsh)$ ]]; then shellcheck \"$fp\" 2>&1; fi; exit 0"
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$fp\" ] && echo \"$fp\" | grep -qE '\\.(sh|bash|zsh)$'; then shellcheck \"$fp\" 2>&1; fi; exit 0"
           }
         ]
       },
@@ -91,7 +129,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log"
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log && tail -n 10000 ~/.claude/bash-commands.log > ~/.claude/bash-commands.log.tmp && mv ~/.claude/bash-commands.log.tmp ~/.claude/bash-commands.log"
           }
         ]
       }
@@ -112,6 +150,7 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
+  "autoMemoryEnabled": true,
   "effortLevel": "high",
   "plansDirectory": ".claude/plans",
   "theme": "auto",

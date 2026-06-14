@@ -46,4 +46,11 @@ parsed=$(printf '%s' "$usage_json" | jq -r '
   (.seven_day.resets_at // "")
 ' 2>/dev/null) || exit 0
 
-[ -n "$parsed" ] && printf '%s\n' "$parsed" > "$CACHE_FILE"
+if [ -n "$parsed" ]; then
+  tmp=$(mktemp "${CACHE_FILE}.XXXXXX") || exit 0
+  if printf '%s\n' "$parsed" > "$tmp"; then
+    mv "$tmp" "$CACHE_FILE" || rm -f "$tmp"
+  else
+    rm -f "$tmp"
+  fi
+fi
