@@ -1,5 +1,12 @@
 # Aliases
-alias ll='ls -oah --color=auto'
+if command -v eza &>/dev/null; then
+  alias ll='eza -lah --git'
+else
+  alias ll='ls -oahG'
+fi
+if command -v bat &>/dev/null; then
+  alias cat='bat --paging=never'
+fi
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -20,6 +27,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
+setopt INTERACTIVE_COMMENTS
+setopt EXTENDED_GLOB
 
 # Homebrew
 eval "$(brew shellenv)"
@@ -33,6 +42,18 @@ eval "$(starship init zsh)"
 # mise (version manager)
 eval "$(mise activate zsh)"
 
-# Completion
+# fzf (key bindings + completion)
+eval "$(fzf --zsh)"
+
+# zoxide (smart cd)
+eval "$(zoxide init zsh)"
+
+# Completion — full security check only when dump is older than 24 hours
 autoload -Uz compinit
-compinit
+local zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+if [[ ! -d "${zcompdump:h}" ]]; then mkdir -p "${zcompdump:h}"; fi
+if [[ -n "${zcompdump}"(#qNmh-24) ]]; then
+  compinit -C -d "$zcompdump"   # skip security check, dump is fresh
+else
+  compinit -d "$zcompdump"      # full check, update dump
+fi

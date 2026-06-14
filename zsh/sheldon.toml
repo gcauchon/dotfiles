@@ -14,17 +14,12 @@ shell = "zsh"
 
 [plugins]
 
-[plugins.fzf]
-github = "junegunn/fzf"
-
-[plugins.zoxide]
-github = "ajeetdsouza/zoxide"
-
-[plugins.syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-
 [plugins.completions]
 github = "zsh-users/zsh-completions"
 
 [plugins.autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+
+# Must be last
+[plugins.syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
