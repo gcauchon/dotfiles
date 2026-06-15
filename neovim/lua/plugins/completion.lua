@@ -139,7 +139,9 @@ return {
       snippets = { preset = 'luasnip' },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
-        cmdline = { 'cmdline', 'path' },
+      },
+      cmdline = {
+        sources = { 'cmdline', 'path' },
       },
       completion = {
         menu = {
