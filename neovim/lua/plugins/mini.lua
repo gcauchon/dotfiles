@@ -55,8 +55,7 @@ return {
     end,
     keys = {
       -- File navigation
-      { "<leader>ff",  function() require('mini.pick').builtin.files() end, desc = "Find files" },
-      { "<leader>fr", function() require('mini.extra').pickers.oldfiles() end, desc = "Recent files" },
+      { "<leader>ff",  function() require('mini.pick').builtin.files() end, desc = "Find files (incl. hidden/ignored)" },
       
       -- Search
       { "<leader>fg", function() require('mini.pick').builtin.grep_live() end, desc = "Live grep" },

@@ -7,6 +7,7 @@ brew install terminal-notifier
 
 # neovim
 brew install neovim
+brew install tree-sitter-cli # CLI for nvim-treesitter main-branch parser builds
 brew install lua
 brew install luarocks
 brew install fd

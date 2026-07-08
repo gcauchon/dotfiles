@@ -33,6 +33,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `zsh/sheldon.toml` → `~/.config/sheldon/plugins.toml`
 - `zsh/starship.toml` → `~/.config/starship.toml`
 - `zsh/tmux.conf` → `~/.config/tmux/tmux.conf`
+- `zsh/ripgreprc` → `~/.config/ripgrep/ripgreprc`
 - `neovim/` → `~/.config/nvim/`
 - `git/.gitconfig` → `~/.gitconfig`
 - `git/.gitignore_global` → `~/.gitignore_global`

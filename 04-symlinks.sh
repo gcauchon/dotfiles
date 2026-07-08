@@ -17,6 +17,10 @@ ln -s "$PWD"/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
 # Starship prompt status line
 ln -s "$PWD"/zsh/starship.toml ~/.config/starship.toml
 
+# Ripgrep
+mkdir -p ~/.config/ripgrep
+ln -s "$PWD"/zsh/ripgreprc ~/.config/ripgrep/ripgreprc
+
 # Ghostty
 mkdir -p ~/.config/ghostty
 ln -s "$PWD"/ghostty/config ~/.config/ghostty/config

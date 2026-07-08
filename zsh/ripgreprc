@@ -1,0 +1,8 @@
+# Search hidden files/directories (dotfiles) by default
+--hidden
+
+# Don't respect .gitignore/.ignore — search ignored files too
+--no-ignore
+
+# Still skip .git internals (noise, not useful to search)
+--glob=!.git/*
