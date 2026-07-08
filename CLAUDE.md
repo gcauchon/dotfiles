@@ -57,6 +57,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - LSP uses Neovim 0.11+ API (`vim.lsp.config()` / `vim.lsp.enable()`) — not the older `lspconfig[server].setup()` pattern
 - 12 LSP servers: lua_ls, elixirls, ruby_lsp, pyright, ts_ls, html, cssls, jsonls, yamlls, bashls, dockerls, marksman
 - Fuzzy finder: mini.pick (not telescope). File explorer: mini.files. Surround/pairs/comment: mini.nvim suite
+- Claude Code IDE integration: `coder/claudecode.nvim` (`neovim/lua/plugins/claudecode.lua`), native `:terminal` provider (no snacks.nvim), MCP-connected like the VS Code extension. Keymaps under `<leader>a`
 - 2-space indentation, no swapfiles, system clipboard
 
 ### ZSH Configuration

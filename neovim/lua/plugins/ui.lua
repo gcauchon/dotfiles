@@ -107,17 +107,18 @@ return {
       
       -- Register leader key groups
       wk.add({
-        { "<leader>l", group = "Lazy" },
-        { "<leader>m", group = "Mason" },
         { "<leader>t", group = "Tree" },
         { "<leader>v", group = "Buffer" },
         { "<leader>h", group = "Hunk" },
         { "<leader>f", group = "Find" },
+        { "<leader>a", group = "AI" },
         { "<leader>g", group = "Git" },
         { "<leader>q", group = "Quickfix" },
         { "<leader>e", group = "Error" },
         { "<leader>s", group = "Save" },
         { "<leader>x", group = "Cut" },
+        { "<leader>l", group = "Lazy" },
+        { "<leader>m", group = "Mason" },
       })
     end,
   },

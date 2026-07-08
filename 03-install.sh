@@ -18,6 +18,10 @@ brew install git
 brew install tig
 brew install git-delta
 
+# AI
+curl -fsSL https://claude.ai/install.sh | sh
+# brew install claude-code -- the release cycle is slow, so we install the latest version directly from the Claude team
+
 # Web browsers
 brew install firefox
 brew install google-chrome

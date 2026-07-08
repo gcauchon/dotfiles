@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
-  "includeGitInstructions": false,
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
@@ -150,9 +149,10 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
-  "autoMemoryEnabled": true,
   "effortLevel": "high",
   "plansDirectory": ".claude/plans",
+  "tui": "fullscreen",
+  "autoMemoryEnabled": true,
   "theme": "auto",
   "editorMode": "normal",
   "preferredNotifChannel": "ghostty",
