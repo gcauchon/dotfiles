@@ -65,7 +65,7 @@
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opusplan",
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -154,6 +154,7 @@
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "plansDirectory": ".claude/plans",
+  "tui": "fullscreen",
   "autoMemoryEnabled": true,
   "showTurnDuration": true,
   "noBanner": true
