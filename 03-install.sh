@@ -37,6 +37,7 @@ brew install visual-studio-code
 brew install docker
 brew install colima
 brew install jq
+brew install dprint
 brew install ngrok
 
 # Modern CLI replacements

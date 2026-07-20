@@ -102,21 +102,21 @@ map('n', '<leader>s', ':w<CR>')
 
 Keymap groups (registered in which-key):
 
-| Prefix | Purpose |
-|--------|---------|
-| `<leader>f` | Find (mini.pick) |
-| `<leader>g` | Git/Grep |
-| `<leader>h` | Git hunks |
-| `<leader>l` | LSP |
-| `<leader>r` | Rename |
-| `<leader>c` | Code/Clear |
-| `<leader>s` | Save |
+| Prefix      | Purpose                |
+| ----------- | ---------------------- |
+| `<leader>f` | Find (mini.pick)       |
+| `<leader>g` | Git/Grep               |
+| `<leader>h` | Git hunks              |
+| `<leader>l` | LSP                    |
+| `<leader>r` | Rename                 |
+| `<leader>c` | Code/Clear             |
+| `<leader>s` | Save                   |
 | `<leader>t` | File tree (mini.files) |
-| `<leader>v` | Buffer delete |
-| `<leader>m` | Mason |
-| `<leader>e` | Diagnostic float |
-| `<leader>q` | Quickfix |
-| `>` / `<` | Buffer next/prev |
+| `<leader>v` | Buffer delete          |
+| `<leader>m` | Mason                  |
+| `<leader>e` | Diagnostic float       |
+| `<leader>q` | Quickfix               |
+| `>` / `<`   | Buffer next/prev       |
 
 ## Autocommands
 

@@ -15,9 +15,10 @@
 </language>
 
 <output>
-- Never generate Office documents (docx, pptx, xlsx) — they can't be diffed, versioned, or rendered inline. 
+- Never generate Office documents (docx, pptx, xlsx) — they can't be diffed, versioned, or rendered inline.
 - Use Markdown for written content and CSV for tabular data
 - When using tools, present findings directly — no narration, no action announcements, no result recaps
+- Do not hard-wrap markdown prose at 80 characters or any fixed column — write full-length lines and let the text editor's soft wrap handle display
 </output>
 
 <approach>
@@ -28,6 +29,6 @@
 <tone>
 - No em-dashes
 - No filler
-- No formal transitions 
+- No formal transitions
 - Avoid AI-speak (delve, leverage, utilize, robust, comprehensive, pivotal, streamline) as these patterns signal generic AI output and reduce clarity
 </tone>

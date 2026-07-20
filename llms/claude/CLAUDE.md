@@ -34,10 +34,12 @@
 ## Languages & Stack
 
 ### Personal / Side Projects
+
 - Primary: Elixir (with OTP), Ruby, Python, Node.js
 - Secondary: Java, Javascript/Typescript (frontend / SPA)
 
 ### Work (Umano Medical)
+
 - Backend: .NET Core (C#)
 - Frontend: Vue.js with Quasar Framework
 - Messaging: MQTT
@@ -45,6 +47,7 @@
 - Infrastructure: OpenTofu (IaC), Keycloak (identity)
 
 ### Tooling
+
 - Version manager: `mise` — use it for runtime version switching, not system-level installs
 - Shell: `zsh` — always test shell commands in zsh, not bash
 - Editor: Visual Studio Code (with Claude Code in terminal mode) + Neovim (`lua` configuration)

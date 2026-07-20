@@ -47,7 +47,6 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `llms/claude/rules/` → `~/.claude/rules/` (conversation style, etc.)
 - `llms/claude/scripts/` → `~/.claude/scripts/` (statusline, usage fetch)
 
-
 ### Neovim Configuration
 
 - Uses lazy.nvim for plugin management
