@@ -5,6 +5,7 @@
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
   },
+  "includeGitInstructions": false,
   "permissions": {
     "allow": [
       "Read",
@@ -17,11 +18,8 @@
       "Bash(git log*)",
       "Bash(git branch*)",
       "Bash(git stash*)",
-      "Bash(git checkout*)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git merge *)",
-      "Bash(git rebase *)",
       "Bash(ls *)",
       "Bash(find *)",
       "Bash(which *)",
@@ -47,6 +45,7 @@
       "Bash(git push --force*)",
       "Bash(git pf)",
       "Bash(git reset --hard*)",
+      "Bash(git clean*)",
       "Bash(sudo *)",
       "Bash(curl * | sh*)",
       "Bash(wget * | sh*)",
@@ -57,6 +56,9 @@
     ],
     "ask": [
       "Bash(git push*)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git checkout*)",
       "Read(**/.env)",
       "Read(**/secrets/**)",
       "Read(**/credentials/**)"
@@ -93,7 +95,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log"
+            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log && tail -n 5000 ~/.claude/prompts.log > ~/.claude/prompts.log.tmp && mv ~/.claude/prompts.log.tmp ~/.claude/prompts.log"
           },
           {
             "type": "command",
@@ -149,6 +151,18 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
+  "enabledPlugins": {
+    "umano-connect@umano-medical-plugins": true,
+    "umano-medical@umano-medical-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "umano-medical-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "umano-medical/umano-ai-workflows"
+      }
+    }
+  },
   "effortLevel": "high",
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
@@ -159,5 +173,5 @@
   "autoCompactEnabled": false,
   "showTurnDuration": true,
   "noBanner": true,
-  "autoUpdateChannel": "stable"
+  "autoUpdatesChannel": "latest"
 }

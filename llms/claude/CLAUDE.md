@@ -2,9 +2,8 @@
 
 ## Task Management
 
-- Use `tasks/todo.md` for tracking progress across compactions (separate from plan mode)
-- For non-trivial tasks (3+ steps), write the plan there and confirm before starting
-- Track progress: mark items complete as you go, summarize changes at each step
+- For any multi-step task (3+ steps), use the TodoWrite tool to track progress. Do not create a markdown todo file
+- Track progress: mark items in_progress when starting and completed as you finish; summarize changes at each step
 - After corrections: capture the lesson in `tasks/lessons.md` as a rule that prevents recurrence
 
 ## Subagents
@@ -75,5 +74,5 @@
 
 ## MCP & Tooling
 
-- For Jira: prefer Atlassian CLI (`acli`) over MCP when available
+- For Jira: prefer Atlassian CLI (`acli`) over MCP when available, unless a project skill mandates MCP — project rules win
 - Claude Projects follow a pop culture naming convention — respect existing names
