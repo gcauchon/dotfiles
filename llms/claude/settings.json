@@ -56,6 +56,7 @@
     ],
     "ask": [
       "Bash(git push*)",
+      "Bash(git commit --amend*)",
       "Bash(git merge *)",
       "Bash(git rebase *)",
       "Bash(git checkout*)",
