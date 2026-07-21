@@ -42,7 +42,7 @@ ln -s "$PWD"/mise/config.toml ~/.config/mise/config.toml
 
 # Docker
 mkdir -p ~/.docker
-ln -s $PWD/docker/config.json ~/.docker/config.json
+ln -s "$PWD"/docker/config.json ~/.docker/config.json
 
 # Claude
 mkdir -p ~/.claude
