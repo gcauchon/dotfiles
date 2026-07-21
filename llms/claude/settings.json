@@ -64,6 +64,7 @@
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
+  "outputStyle": "voice-and-format",
   "hooks": {
     "PreToolUse": [
       {
