@@ -121,5 +121,15 @@
   "tui": "fullscreen",
   "autoMemoryEnabled": true,
   "showTurnDuration": true,
-  "noBanner": true
+  "noBanner": true,
+  "sandbox": {
+    "enabled": true,
+    "credentials": {
+      "files": [
+        { "path": "~/.ssh", "mode": "deny" },
+        { "path": "~/.aws/credentials", "mode": "deny" },
+        { "path": "~/.claude/.credentials.json", "mode": "deny" }
+      ]
+    }
+  }
 }
