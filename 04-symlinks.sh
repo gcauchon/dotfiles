@@ -25,6 +25,9 @@ ln -s "$PWD"/ghostty/config ~/.config/ghostty/config
 mkdir -p ~/.config/tmux
 ln -s "$PWD"/zsh/tmux.conf ~/.config/tmux/tmux.conf
 
+# EditorConfig (global 2-space defaults, honored by Neovim 0.9+, VS Code, JetBrains, etc.)
+ln -s "$PWD"/.editorconfig ~/.editorconfig
+
 # Neovim
 ln -s "$PWD"/neovim ~/.config/nvim
 
