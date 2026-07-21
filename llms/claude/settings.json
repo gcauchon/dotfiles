@@ -65,7 +65,7 @@
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opus[1m]",
+  "model": "opusplan",
   "hooks": {
     "SessionStart": [
       {
