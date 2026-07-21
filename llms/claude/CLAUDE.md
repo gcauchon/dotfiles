@@ -1,15 +1,5 @@
 # User Preferences
 
-## Task Management
-
-For any multi-step task (3+ steps), use the TodoWrite tool to track progress. Do not create a markdown todo file.
-
-- At the start of a task with three or more steps, write the full plan to TodoWrite with each step as a separate item.
-- Mark exactly one item as in_progress before starting work on it.
-- Mark an item completed immediately after finishing it, before starting the next item. Do not batch completions at the end.
-- If the plan changes mid-task, update TodoWrite to reflect the new reality rather than leaving stale items.
-- After corrections: capture the lesson in `tasks/lessons.md` as a rule that prevents recurrence.
-
 ## Subagents
 
 - Use subagents for isolated subtasks to keep main context clean

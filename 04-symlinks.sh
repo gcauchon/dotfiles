@@ -51,3 +51,4 @@ ln -s "$PWD"/llms/claude/settings.json ~/.claude/settings.json
 ln -s "$PWD"/llms/claude/rules ~/.claude/rules
 ln -s "$PWD"/llms/claude/scripts ~/.claude/scripts
 ln -s "$PWD"/llms/claude/output-styles ~/.claude/output-styles
+ln -s "$PWD"/llms/claude/skills ~/.claude/skills
