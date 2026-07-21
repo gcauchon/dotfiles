@@ -1,21 +1,27 @@
 # User Preferences
 
+## Task Management
+
+For any multi-step task, track progress with the harness's built-in todo/task tool — do not create a markdown todo file.
+
+- Write the full plan upfront, one item per step; mark completed immediately after each, never batch at the end.
+- If the plan changes mid-task, update the list rather than leaving stale items.
+
 ## Subagents
 
-- Use subagents for isolated subtasks to keep main context clean
-- One clear responsibility per subagent — scope tightly, report results back
+- Scope each subagent to one clear responsibility
 - For cross-cutting work (e.g., embedded + web + infra), prefer parallel subagents over sequential
 
 ## Compaction
 
-- When compacting, always preserve: list of modified files, current test status, active todo items, and key architectural decisions made this session
+- When compacting, always preserve: list of modified files, current test status, active tasks, and key architectural decisions made this session
 - Summarize what was attempted and what failed, not just final state
 
 ## Code Style
 
 - Prefer early returns over deep nesting
-- Prefer functional patterns where the language idiom supports it (e.g., Enum pipelines in Elixir, LINQ in C#, list comprehensions in Python)
-- When unsure about project conventions, read existing code first — ask if still ambiguous
+- Prefer functional patterns where the language idiom supports it (e.g., Enum pipelines in `Elixir`, LINQ in `C#`, list comprehensions in `Python`)
+- If project conventions are ambiguous after reading existing code, ask
 
 ## Testing
 
@@ -24,29 +30,22 @@
 
 ## Languages & Stack
 
-### Personal / Side Projects
+When the language or framework is open (greenfield, scripts, examples, prototypes) and no existing code dictates otherwise, propose known tech BEFORE suggesting anything else:
 
-- Primary: Elixir (with OTP), Ruby, Python, Node.js
-- Secondary: Java, Javascript/Typescript (frontend / SPA)
+- Personal projects: `Elixir` (BEAM + OTP) for web projects; `Python` or `Node.js` for JS-native tooling; `TypeScript` for SPA frontends.
+- Umano Medical work: `.NET Core` (C#) backend, `Vue.js` + `Quasar` frontend, `Python` for proof of concept.
 
-### Work (Umano Medical)
-
-- Backend: .NET Core (C#)
-- Frontend: Vue.js with Quasar Framework
-- Messaging: MQTT
-- Embedded: C/C++ on RTOS, migrating toward Embedded Linux
-- Infrastructure: OpenTofu (IaC), Keycloak (identity)
+Per-domain work stack detail (messaging, embedded, IaC, identity) belongs in that repo's own `CLAUDE.md`, not here.
 
 ### Tooling
 
-- Version manager: `mise` — use it for runtime version switching, not system-level installs
+- Version manager: `mise` — use it for runtime version switching, not system-level installs; in real project codebases, rely on it to auto-load environment variables via `.env` (12-Factor)
 - Shell: `zsh` — always test shell commands in zsh, not bash
 - Editor: Visual Studio Code (with Claude Code in terminal mode) + Neovim (`lua` configuration)
 - Terminal: Ghostty with `tmux`
 
 ## Git
 
-- Signed commits via 1Password SSH agent
 - Prefer rebase over merge for local branches
 - Commit messages: imperative mood, concise subject line, focus on "why" not "what"
   - Feature: "Add payment webhook endpoint"
@@ -57,15 +56,15 @@
 ## Security
 
 - Proactively flag potential security issues (OWASP top 10, secrets in code, insecure defaults)
-- `~/.gitignore_global` already excludes common secret patterns (.env, keys, credentials); when a project has its own sensitive paths beyond that, add them to its `.gitignore` too
+- `~/.gitignore_global` already excludes common secret patterns (.env, keys, credentials)
+- When a project has its own sensitive paths beyond that, propose adding them to its `.gitignore`
 
 ## Environment
 
-- macOS (Homebrew) or WSL2 (linuxbrew) — these dotfiles target both
-- Docker via Colima on macOS, not Docker Desktop
+- macOS (`Homebrew`) or Debian over WSL2 (`linuxbrew`) — these dotfiles target both
+- Docker via Colima on macOS, not Docker Desktop; native `docker` on Debian
 - 1Password for passwords, secrets, SSH keys, and commit signing
 
 ## MCP & Tooling
 
-- For Jira: the `umano-connect` skills own the Atlassian MCP workflow — use them for work Jira. Prefer `acli` only for ad-hoc/personal Jira outside those skills
-- Claude Projects follow a pop culture naming convention — respect existing names
+- For work Jira, read the `umano-connect:jira` skill before any Atlassian tool call — never bypass it with `acli`
