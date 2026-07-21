@@ -29,6 +29,14 @@
 - Primary: Elixir (with OTP), Ruby, Python, Node.js
 - Secondary: Java, Javascript/Typescript (frontend / SPA)
 
+### Work (Umano Medical)
+
+- Backend: .NET Core (C#)
+- Frontend: Vue.js with Quasar Framework
+- Messaging: MQTT
+- Embedded: C/C++ on RTOS, migrating toward Embedded Linux
+- Infrastructure: OpenTofu (IaC), Keycloak (identity)
+
 ### Tooling
 
 - Version manager: `mise` — use it for runtime version switching, not system-level installs
@@ -38,6 +46,7 @@
 
 ## Git
 
+- Signed commits via 1Password SSH agent
 - Prefer rebase over merge for local branches
 - Commit messages: imperative mood, concise subject line, focus on "why" not "what"
   - Feature: "Add payment webhook endpoint"
