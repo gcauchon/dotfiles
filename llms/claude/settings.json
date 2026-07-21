@@ -1,11 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "model": "opusplan",
+  "effortLevel": "high",
+  "plansDirectory": ".claude/plans",
+  "tui": "fullscreen",
+  "outputStyle": "voice-and-format",
+  "includeGitInstructions": false,
+  "autoMemoryEnabled": true,
+  "showTurnDuration": true,
   "cleanupPeriodDays": 30,
+  "autoUpdatesChannel": "latest",
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
   },
-  "includeGitInstructions": false,
   "permissions": {
     "allow": [
       "Read",
@@ -63,8 +71,6 @@
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opusplan",
-  "outputStyle": "voice-and-format",
   "hooks": {
     "PreToolUse": [
       {
@@ -93,10 +99,6 @@
     "type": "command",
     "command": "sh $HOME/.claude/scripts/status-line.sh"
   },
-  "enabledPlugins": {
-    "umano-connect@umano-medical-plugins": true,
-    "umano-medical@umano-medical-plugins": true
-  },
   "extraKnownMarketplaces": {
     "umano-medical-plugins": {
       "source": {
@@ -105,12 +107,10 @@
       }
     }
   },
-  "effortLevel": "high",
-  "autoUpdatesChannel": "latest",
-  "plansDirectory": ".claude/plans",
-  "tui": "fullscreen",
-  "autoMemoryEnabled": true,
-  "showTurnDuration": true,
+  "enabledPlugins": {
+    "umano-connect@umano-medical-plugins": true,
+    "umano-medical@umano-medical-plugins": true
+  },
   "sandbox": {
     "enabled": true,
     "credentials": {
