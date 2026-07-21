@@ -67,31 +67,6 @@
   },
   "model": "opusplan",
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "startup|resume",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log"
-          },
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
@@ -119,17 +94,6 @@
           {
             "type": "command",
             "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log && tail -n 10000 ~/.claude/bash-commands.log > ~/.claude/bash-commands.log.tmp && mv ~/.claude/bash-commands.log.tmp ~/.claude/bash-commands.log"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
           }
         ]
       }
