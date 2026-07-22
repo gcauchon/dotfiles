@@ -6,31 +6,28 @@
     "BASH_DEFAULT_TIMEOUT_MS": "120000"
   },
   "includeGitInstructions": false,
+  "outputStyle": "voice-and-format",
   "permissions": {
     "allow": [
       "Read",
       "Glob",
       "Grep",
       "Edit(.claude/plans/*)",
-      "Write(.claude/plans/*)",
       "Bash(git status*)",
-      "Bash(git diff*)",
-      "Bash(git log*)",
-      "Bash(git branch*)",
-      "Bash(git stash*)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
       "Bash(ls *)",
       "Bash(find *)",
       "Bash(which *)",
       "Bash(rg *)",
       "Bash(jq *)",
       "Bash(mise *)",
-      "Bash(tig*)",
-      "Bash(gh pr view*)",
-      "Bash(gh pr list*)",
-      "Bash(gh issue view*)",
-      "Bash(gh run view*)",
+      "Bash(tig *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh issue view *)",
+      "Bash(gh run view *)",
       "Bash(gh api *)",
       "WebSearch",
       "WebFetch(domain:docs.claude.com)",
@@ -47,19 +44,20 @@
       "Bash(git reset --hard*)",
       "Bash(git clean*)",
       "Bash(sudo *)",
-      "Bash(curl * | sh*)",
-      "Bash(wget * | sh*)",
       "Bash(rm -rf /*)",
       "Bash(rm -rf ~*)",
       "Read(**/*.key)",
       "Read(**/*.pem)"
     ],
     "ask": [
-      "Bash(git push*)",
-      "Bash(git commit --amend*)",
+      "Bash(git branch *)",
+      "Bash(git stash *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
       "Bash(git merge *)",
+      "Bash(git push *)",
       "Bash(git rebase *)",
-      "Bash(git checkout*)",
       "Read(**/.env)",
       "Read(**/secrets/**)",
       "Read(**/credentials/**)"
@@ -80,38 +78,13 @@
         ]
       }
     ],
-    "SessionStart": [
-      {
-        "matcher": "startup|resume",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + (.prompt // \"\")' >> ~/.claude/prompts.log && tail -n 5000 ~/.claude/prompts.log > ~/.claude/prompts.log.tmp && mv ~/.claude/prompts.log.tmp ~/.claude/prompts.log"
-          },
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); echo \"$fp\" | grep -qE '(^|/)\\.git/|node_modules/|\\.lock$|\\.pyc$' && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
+            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); echo \"$fp\" | grep -qE '(^|/)\\.git/|node_modules/|\\.lock$' && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
           }
         ]
       }
@@ -122,27 +95,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$fp\" ] && echo \"$fp\" | grep -qE '\\.(sh|bash|zsh)$'; then shellcheck \"$fp\" 2>&1; fi; exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '\"[\" + (now | todate) + \"] \" + .tool_input.command' >> ~/.claude/bash-commands.log && tail -n 10000 ~/.claude/bash-commands.log > ~/.claude/bash-commands.log.tmp && mv ~/.claude/bash-commands.log.tmp ~/.claude/bash-commands.log"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "sh $HOME/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &"
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); command -v shellcheck >/dev/null 2>&1 || exit 0; if [ -n \"$fp\" ] && echo \"$fp\" | grep -qE '\\.(sh|bash)$'; then findings=$(shellcheck --severity=warning \"$fp\" 2>&1); if [ -n \"$findings\" ]; then echo \"$findings\" >&2; exit 2; fi; fi; exit 0"
           }
         ]
       }
@@ -173,6 +126,15 @@
   "preferredNotifChannel": "ghostty",
   "autoCompactEnabled": false,
   "showTurnDuration": true,
-  "noBanner": true,
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
+  "sandbox": {
+    "enabled": true,
+    "credentials": {
+      "files": [
+        { "path": "~/.ssh", "mode": "deny" },
+        { "path": "~/.aws/credentials", "mode": "deny" },
+        { "path": "~/.claude/.credentials.json", "mode": "deny" }
+      ]
+    }
+  }
 }

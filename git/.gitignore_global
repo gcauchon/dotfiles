@@ -32,7 +32,24 @@ npm-debug.log
 .envrc
 tmp
 
+# Secrets / credentials
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa
+id_ed25519
+credentials.json
+.credentials.json
+
 # Claude Code
 .claude/plans
 
 **/.claude/settings.local.json
+
+**/.claude/.cc-writes/
