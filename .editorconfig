@@ -9,7 +9,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.md]
-# Two trailing spaces is CommonMark's hard line-break syntax, but 
+# Two trailing spaces is CommonMark's hard line-break syntax, but
 # prose here isn't hard-wrapped and doesn't rely on that convention,
 # so trim like everything else.
 trim_trailing_whitespace = true
