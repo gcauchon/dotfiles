@@ -21,6 +21,10 @@
 
 [pull]
   ff = only
+  rebase = true
+
+[branch]
+  autosetuprebase = always
 
 [merge]
   tool = diffmerge

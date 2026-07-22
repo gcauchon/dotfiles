@@ -33,6 +33,12 @@ brew install jq
 brew install dprint
 #brew install ngrok
 
+# Claude Code sandboxed Bash tool (WSL2/Linux only — macOS uses the built-in Seatbelt framework)
+if [ "$(uname)" != "Darwin" ]; then
+  brew install bubblewrap
+  brew install socat
+fi
+
 # Utilities
 #brew install alfred
 #brew install 1password

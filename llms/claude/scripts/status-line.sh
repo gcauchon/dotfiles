@@ -3,6 +3,7 @@ input=$(cat)
 
 # --- parse all fields in a single jq pass ---
 model="" dir="" used="" ctx_total="" ctx_used_tokens=""
+five_h="" seven_d="" five_h_reset="" seven_d_reset=""
 eval "$(printf '%s' "$input" | jq -r '
   @sh "model=\(.model.display_name // "")",
   @sh "dir=\(.workspace.current_dir // .cwd // "")",
@@ -14,10 +15,23 @@ eval "$(printf '%s' "$input" | jq -r '
        + (.context_window.current_usage.cache_creation_input_tokens // 0)
        + (.context_window.current_usage.cache_read_input_tokens // 0))
     else "" end
-  )"
+  )",
+  @sh "five_h=\(.rate_limits.five_hour.used_percentage // "" | if . == "" then "" else round | tostring end)",
+  @sh "seven_d=\(.rate_limits.seven_day.used_percentage // "" | if . == "" then "" else round | tostring end)",
+  @sh "five_h_reset=\(.rate_limits.five_hour.resets_at // "")",
+  @sh "seven_d_reset=\(.rate_limits.seven_day.resets_at // "")"
 ' 2>/dev/null)"
 
 dir_name=$(basename "$dir")
+
+# --- mtime_epoch: portable file modification time (GNU vs BSD stat) ---
+mtime_epoch() {
+  if [ "$(uname)" = "Darwin" ]; then
+    stat -f %m "$1" 2>/dev/null || echo 0
+  else
+    stat -c %Y "$1" 2>/dev/null || echo 0
+  fi
+}
 
 # --- git branch + worktree + dirty (cached, 5s TTL) ---
 dir_hash=$(printf '%s' "$dir" | cksum | cut -d' ' -f1)
@@ -27,7 +41,7 @@ is_worktree=0
 dirty=0
 use_cache=0
 if [ -f "$GIT_CACHE" ]; then
-  cache_age=$(( $(date -u +%s) - $(stat -c %Y "$GIT_CACHE" 2>/dev/null || echo 0) ))
+  cache_age=$(( $(date -u +%s) - $(mtime_epoch "$GIT_CACHE") ))
   [ "$cache_age" -lt 5 ] && use_cache=1
 fi
 if [ "$use_cache" = "1" ]; then
@@ -46,27 +60,9 @@ else
   printf '%s\n%s\n%s\n' "$branch" "$is_worktree" "$dirty" > "$GIT_CACHE"
 fi
 
-# --- usage stats (5h / 7d) from cache ---
-CACHE_FILE="/tmp/.claude_usage_cache"
-five_h=""
-seven_d=""
-five_h_reset=""
-seven_d_reset=""
-if [ -f "$CACHE_FILE" ]; then
-  { read -r five_h; read -r seven_d; read -r five_h_reset; read -r seven_d_reset; } < "$CACHE_FILE"
-else
-  sh ~/.claude/scripts/fetch-usage.sh > /dev/null 2>&1 &
-fi
-
-# --- compute_delta: given a raw ISO timestamp, returns human-readable time until reset ---
+# --- compute_delta: given a Unix epoch seconds reset time, returns human-readable time until reset ---
 compute_delta() {
-  clean=$(echo "$1" | sed 's/\.[0-9]*//;s/[+-][0-9][0-9]:[0-9][0-9]$//;s/Z$//')
-  if [ "$(uname)" = "Darwin" ]; then
-    reset_epoch=$(TZ=UTC date -j -f "%Y-%m-%dT%H:%M:%S" "$clean" "+%s" 2>/dev/null)
-  else
-    reset_epoch=$(TZ=UTC date -d "$clean" "+%s" 2>/dev/null)
-  fi
-  if [ -z "$reset_epoch" ]; then return; fi
+  reset_epoch="$1"
   now_epoch=$(date -u "+%s")
   diff=$(( reset_epoch - now_epoch ))
   if [ "$diff" -le 0 ]; then echo "now"; return; fi
