@@ -70,4 +70,3 @@ Per-domain work stack detail (messaging, embedded, IaC, identity) belongs in tha
 
 - For work Jira, read the `umano-medical:jira` skill before any Atlassian tool call — never bypass it with `acli`
 - Claude Projects follow a pop culture naming convention — respect existing names
-- Claude Projects follow a pop culture naming convention — respect existing names
