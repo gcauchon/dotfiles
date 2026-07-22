@@ -87,6 +87,7 @@
 
 [branch]
   sort = -committerdate
+  autosetuprebase = always
 
 [column]
   ui = auto
