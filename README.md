@@ -78,14 +78,16 @@ All configuration files are symlinked from this repo:
 
 Configuration for both [Claude.ai](https://claude.ai) and [Claude Code](https://claude.ai/code), symlinked to `~/.claude/` by `04-symlinks.sh`.
 
-| File            | Symlink Target            | Purpose                                                       |
-| --------------- | ------------------------- | ------------------------------------------------------------- |
-| `CLAUDE.md`     | `~/.claude/CLAUDE.md`     | User-level preferences (code style, stack, git conventions)   |
-| `settings.json` | `~/.claude/settings.json` | Claude Code settings (permissions, hooks, model, status line) |
-| `rules/`        | `~/.claude/rules/`        | Response style, language, tone directives                     |
-| `scripts/`      | `~/.claude/scripts/`      | Custom status line and API usage tracking                     |
+| File             | Symlink Target             | Purpose                                                       |
+| ---------------- | -------------------------- | ------------------------------------------------------------- |
+| `CLAUDE.md`      | `~/.claude/CLAUDE.md`      | User-level preferences (code style, stack, git conventions)   |
+| `settings.json`  | `~/.claude/settings.json`  | Claude Code settings (permissions, hooks, model, status line) |
+| `rules/`         | `~/.claude/rules/`         | Language directives (applies to subagents too)                |
+| `output-styles/` | `~/.claude/output-styles/` | Response voice and formatting                                 |
+| `skills/`        | `~/.claude/skills/`        | User-level agent skills                                       |
+| `scripts/`       | `~/.claude/scripts/`       | Custom status line and API usage tracking                     |
 
-**Dual-purpose files**: `CLAUDE.md` and `rules/conversation-style.md` are loaded by Claude Code as project/global instructions. Their content must also be copied manually to Claude.ai under **Settings > User Preferences** to maintain consistent behavior across both interfaces.
+**Dual-purpose files**: `CLAUDE.md` and `output-styles/voice-and-format.md` are loaded by Claude Code as project/global instructions. Their content must also be copied manually to Claude.ai under **Settings > User Preferences** to maintain consistent behavior across both interfaces.
 
 Agent skills live in `.claude/skills/` (e.g., `neovim-lua-config` for Neovim Lua patterns).
 

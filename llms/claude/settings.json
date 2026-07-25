@@ -3,10 +3,10 @@
   "cleanupPeriodDays": 30,
   "env": {
     "SHELL": "/bin/zsh",
-    "BASH_DEFAULT_TIMEOUT_MS": "120000"
+    "BASH_DEFAULT_TIMEOUT_MS": "120000",
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "1"
   },
   "includeGitInstructions": false,
-  "outputStyle": "voice-and-format",
   "permissions": {
     "allow": [
       "Read",
@@ -31,6 +31,7 @@
       "Bash(gh api *)",
       "WebSearch",
       "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:code.claude.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:hub.docker.com)",
@@ -66,6 +67,7 @@
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
+  "fallbackModel": ["sonnet", "haiku"],
   "hooks": {
     "Notification": [
       {
@@ -117,24 +119,61 @@
       }
     }
   },
+  "outputStyle": "voice-and-format",
+  "sandbox": {
+    "enabled": true,
+    "network": {
+      "allowedDomains": [
+        "api.github.com",
+        "objects.githubusercontent.com",
+        "codeload.github.com",
+        "registry.npmjs.org",
+        "*.atlassian.net",
+        "api.atlassian.com",
+        "id.atlassian.com"
+      ]
+    },
+    "credentials": {
+      "files": [
+        {
+          "path": "~/.ssh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.aws/credentials",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.claude/.credentials.json",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.docker/config.json",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/gh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.claude.json",
+          "mode": "deny"
+        }
+      ]
+    },
+    "excludedCommands": [
+      "gh *"
+    ]
+  },
   "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
   "autoMemoryEnabled": true,
   "theme": "auto",
   "editorMode": "normal",
   "preferredNotifChannel": "ghostty",
-  "autoCompactEnabled": false,
-  "showTurnDuration": true,
-  "autoUpdatesChannel": "latest",
-  "sandbox": {
-    "enabled": true,
-    "credentials": {
-      "files": [
-        { "path": "~/.ssh", "mode": "deny" },
-        { "path": "~/.aws/credentials", "mode": "deny" },
-        { "path": "~/.claude/.credentials.json", "mode": "deny" }
-      ]
-    }
-  }
+  "autoCompactEnabled": true,
+  "precomputeCompactionEnabled": true,
+  "showTurnDuration": true
 }

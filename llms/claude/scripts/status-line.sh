@@ -26,7 +26,7 @@ dir_name=$(basename "$dir")
 
 # --- git branch + worktree + dirty (cached, 5s TTL per directory) ---
 dir_hash=$(printf '%s' "$dir" | cksum | cut -d' ' -f1)
-GIT_CACHE="/tmp/.claude_statusline_git_${dir_hash}"
+GIT_CACHE="${TMPDIR:-/tmp}/.claude_statusline_git_${dir_hash}"
 branch=""
 is_worktree=0
 dirty=0

@@ -44,7 +44,9 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `ssh/config` → `~/.ssh/config`
 - `llms/claude/CLAUDE.md` → `~/.claude/CLAUDE.md` (user-level preferences)
 - `llms/claude/settings.json` → `~/.claude/settings.json`
-- `llms/claude/rules/` → `~/.claude/rules/` (conversation style, etc.)
+- `llms/claude/rules/` → `~/.claude/rules/` (language directives)
+- `llms/claude/output-styles/` → `~/.claude/output-styles/` (response voice and formatting)
+- `llms/claude/skills/` → `~/.claude/skills/` (user-level agent skills)
 - `llms/claude/scripts/` → `~/.claude/scripts/` (statusline, usage fetch)
 
 ### Neovim Configuration
