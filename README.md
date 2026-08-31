@@ -70,7 +70,7 @@ All configuration files are symlinked from this repo:
 - Terminal: ghostty, tmux
 - Editor: neovim (full lua config), VS Code settings via extensions
 - Git: gitconfig, gitignore, tigrc
-- 1Password SSH agent config (for commit signing)
+- GnuPG pinentry config (keeps Docker/git passphrase prompts out of the terminal)
 - mise runtime versions
 - Claude Code settings & statusline
 

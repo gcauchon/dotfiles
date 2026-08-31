@@ -1,0 +1,7 @@
+#!/bin/sh
+# gpg-agent spawns this to collect passphrases. Prefer a windowed prompt (WSLg)
+# so the dialog never writes into a terminal Claude Code holds in raw mode.
+if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
+  [ -x /usr/bin/pinentry-gtk-2 ] && exec /usr/bin/pinentry-gtk-2 "$@"
+fi
+exec /usr/bin/pinentry-curses "$@"

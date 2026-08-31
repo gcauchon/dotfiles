@@ -39,6 +39,9 @@ if [ "$(uname)" != "Darwin" ]; then
   brew install socat
 fi
 
+# Credential/secret tooling (docker credsStore=pass, SSH agent, commit signing)
+sudo apt install -y gnupg pass keychain pinentry-gtk2 pinentry-curses
+
 # Utilities
 #brew install alfred
 #brew install 1password

@@ -37,11 +37,11 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `git/.gitconfig` → `~/.gitconfig`
 - `git/.gitignore_global` → `~/.gitignore_global`
 - `git/.tigrc` → `~/.tigrc`
-- `git/1password-agent.toml` → `~/.config/1Password/ssh/agent.toml`
 - `ghostty/config` → `~/.config/ghostty/config`
 - `mise/config.toml` → `~/.config/mise/config.toml`
 - `ssh/config` → `~/.ssh/config`
-- `docker/config.json` → `~/.docker/config.json`
+- `docker/config.json` → `~/.docker/config.json` (uses `credsStore: pass` — keep it that way, or `docker login` writes tokens straight into this tracked file)
+- `gnupg/gpg-agent.conf` → `~/.gnupg/gpg-agent.conf` (routes pinentry through `gnupg/pinentry-wrapper`, keeping GPG passphrase prompts out of any terminal Claude Code holds)
 - `llms/claude/CLAUDE.md` → `~/.claude/CLAUDE.md` (user-level preferences)
 - `llms/claude/settings.json` → `~/.claude/settings.json`
 - `llms/claude/rules/` → `~/.claude/rules/` (conversation style, etc.)
@@ -75,7 +75,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 ### Git Configuration
 
 - User: Guillaume Cauchon (`gcauchon@gmail.com`)
-- Commit signing via 1Password SSH agent (`gpg.format = ssh` → `op-ssh-sign`)
+- Commit signing via `gpg.format = ssh` — git calls `ssh-keygen -Y sign` against the keychain-loaded SSH agent, no `op-ssh-sign` program configured
 - Default editor: nvim, diff pager: diff-so-fancy
 - Default branch: `main`, pull with rebase
 - Key aliases: `a` (add all), `c` (signed commit), `ca`/`cane` (amend with/without message), `s` (status), `d`/`ds` (diff/staged), `bd`/`bdf` (safe/force branch delete), `ph` (push HEAD), `pf` (force-with-lease + force-if-includes)

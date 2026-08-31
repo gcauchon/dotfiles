@@ -1,5 +1,13 @@
-# GPG (interactive passphrase prompts)
-export GPG_TTY=$(tty)
+# GPG (interactive passphrase prompts). Guarded so non-interactive shells
+# (Claude Code's Bash tool, scripts) never inherit a pty gpg-agent could
+# write a prompt into — unset explicitly, since a non-tty child otherwise
+# keeps whatever GPG_TTY the parent shell (a real terminal) already exported.
+if [[ -t 0 ]]; then
+  export GPG_TTY=$(tty)
+  gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+else
+  unset GPG_TTY
+fi
 
 # Aliases
 alias ll='ls -oah --color=auto'

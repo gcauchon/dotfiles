@@ -10,9 +10,9 @@ ln -s "$PWD"/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
 mkdir -p ~/.ssh
 ln -s "$PWD"/ssh/config ~/.ssh/config
 
-# 1Password SSH agent
-mkdir -p ~/.config/1Password/ssh
-ln -s "$PWD"/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
+# GnuPG (pinentry — keeps passphrase prompts out of the terminal)
+mkdir -p ~/.gnupg && chmod 700 ~/.gnupg
+ln -s "$PWD"/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # Starship prompt status line
 ln -s "$PWD"/zsh/starship.toml ~/.config/starship.toml
