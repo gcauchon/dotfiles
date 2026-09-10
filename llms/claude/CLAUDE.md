@@ -2,7 +2,7 @@
 
 ## Task Management
 
-For any multi-step task, track progress with the harness's built-in todo/task tool — do not create a markdown todo file.
+For any multi-step task, track progress with the harness's task-tracking tools (`TaskCreate`/`TaskUpdate`/`TaskList`) — do not create a markdown todo file.
 
 - Write the full plan upfront, one item per step; mark completed immediately after each, never batch at the end.
 - If the plan changes mid-task, update the list rather than leaving stale items.
@@ -22,6 +22,12 @@ For any multi-step task, track progress with the harness's built-in todo/task to
 - Prefer early returns over deep nesting
 - Prefer functional patterns where the language idiom supports it (e.g., Enum pipelines in `Elixir`, LINQ in `C#`, list comprehensions in `Python`)
 - If project conventions are ambiguous after reading existing code, ask
+
+## CLI Invocations
+
+- Default to one CLI invocation per shell call rather than wrapping a loop or shell function around several — it's easier to review and keeps a continuous stream of thought during pairing.
+- Exception: a script that batches several calls to the same mechanical, repetitive operation (e.g. a `gh api` mutation applied to each of N PR review threads) is fine in one call — spamming N near-identical approvals adds noise, not review value.
+- When unsure which case applies, ask before choosing.
 
 ## Testing
 

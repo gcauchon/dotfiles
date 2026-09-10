@@ -4,7 +4,8 @@
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000",
-    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "1"
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "1",
+    "CLAUDE_CODE_ENABLE_TODO_TOOLS": "1"
   },
   "includeGitInstructions": false,
   "permissions": {
@@ -178,5 +179,6 @@
   "preferredNotifChannel": "ghostty",
   "autoCompactEnabled": true,
   "precomputeCompactionEnabled": true,
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "todoFeatureEnabled": true
 }

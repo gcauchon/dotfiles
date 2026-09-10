@@ -91,3 +91,6 @@
 
 [column]
   ui = auto
+
+[includeIf "gitdir:~/Projects/umano/"]
+  path = ~/.gitconfig-umano
