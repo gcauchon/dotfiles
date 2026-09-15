@@ -26,6 +26,8 @@ Three gates. Each guards an action that's hard to walk back — code changes, co
 
 If you're unsure whether you have approval at any gate, you don't. Ask.
 
+Replies are also governed by a hard rule on voice, not just on timing: see **Reply voice** in Step 5. No acknowledgment openers, no commit hashes.
+
 ## Prerequisites
 
 - `gh` CLI, authenticated (`gh auth status`).
@@ -70,7 +72,21 @@ If it isn't available, do it inline: for each group, propose the files to stage 
 
 ## Step 5 — Draft replies, then resolve only on confirmation
 
-For each addressed thread, draft a reasoned reply: what changed and why, or — if the suggestion was declined — why. Keep replies factual and short, referencing the commit or line where it helps. A declined suggestion still gets a reply; disagreeing with a reviewer politely and on the record is part of the job.
+For each addressed thread, draft a reply that opens with the change itself: what the code does now, and why. A declined suggestion still gets a reply, stating the reasoning directly; disagreeing with a reviewer on the record is part of the job.
+
+**Reply voice.** A review thread is a conversation about code, not a social exchange. Three prohibitions, each absolute:
+
+- **No opener before the substance.** The first word is the change. Never "Fixed in `<hash>`", "Confirmed", "Good catch", "Good point", "Right", "Agreed", "Done", "Yes", or any variant of them. The verdict is implicit in the fact that a fix landed, and GitHub's UI already shows the diff.
+- **No commit hash in the prose, anywhere in the reply.** Not as an opener, not as a trailing "Fixed in `<hash>`." line. A reviewer reads the code for context, and the hash carries none. GitHub already links the commits on the thread. Name a symbol, a file, or a behaviour instead.
+- **No softening before a disagreement.** State the reasoning. Skip "you're right, but", "fair point, however", "in principle yes, though".
+
+Wrong:
+
+> Good catch. `on_connect` now returns early when the broker refuses. Fixed in `6b913af`.
+
+Right:
+
+> `on_connect` now returns early when `reason_code.is_failure`, skipping both `subscribe()` calls and `board.mark_connected()`. Added coverage for the refusal and success paths in `test_session.py`.
 
 Post replies only after the user confirms the wording.
 

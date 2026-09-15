@@ -68,7 +68,10 @@
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
-  "fallbackModel": ["sonnet", "haiku"],
+  "fallbackModel": [
+    "sonnet",
+    "haiku"
+  ],
   "hooks": {
     "Notification": [
       {
