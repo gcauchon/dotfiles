@@ -15,7 +15,7 @@
 [delta]
   navigate = true
   line-numbers = true
-  syntax-theme = OneDark
+  syntax-theme = OneHalfDark
 
 [diff]
   tool = tig
