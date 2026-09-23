@@ -157,10 +157,7 @@
           "mode": "deny"
         }
       ]
-    },
-    "excludedCommands": [
-      "gh *"
-    ]
+    }
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
