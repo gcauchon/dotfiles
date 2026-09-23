@@ -46,6 +46,12 @@ eval "$(starship init zsh)"
 # SSH agent (keychain) for WSL2 shells
 if [[ -n "${WSL_INTEROP:-}" ]] && command -v keychain >/dev/null 2>&1; then
   eval "$(keychain --quiet --eval ~/.ssh/id_ed25519 ~/.ssh/id_rsa-4096)"
+  # Publish the agent at a stable path: keychain's socket lives under a random /tmp/ssh-*/ dir,
+  # and Claude Code's sandbox (settings.json sandbox.network.allowUnixSockets) needs a fixed one
+  if [[ -S "${SSH_AUTH_SOCK:-}" ]]; then
+    mkdir -p ~/.local/state/ssh && ln -sfn "$SSH_AUTH_SOCK" ~/.local/state/ssh/agent.sock
+    export SSH_AUTH_SOCK=~/.local/state/ssh/agent.sock
+  fi
 fi
 
 # Completion (cache compdump, re-check once per day)
