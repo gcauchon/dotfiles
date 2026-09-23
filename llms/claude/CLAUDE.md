@@ -2,10 +2,12 @@
 
 ## Task Management
 
-For any multi-step task, track progress with the harness's built-in todo/task tool — do not create a markdown todo file.
+Multi-step work has two layers; they are not interchangeable.
 
-- Write the full plan upfront, one item per step; mark completed immediately after each, never batch at the end.
-- If the plan changes mid-task, update the list rather than leaving stale items.
+- **Upfront plan** — plan mode's plan file, under `.claude/plans`. Write the full plan there, one item per step, before changing anything.
+- **In-flight progress** — the harness's built-in todo/task tool. Mark each item completed immediately after finishing it, never batch at the end. If the plan changes mid-task, update the list rather than leaving stale items.
+
+Never create a markdown to-do file outside `.claude/plans`. If no todo/task tool is exposed, track progress inline in your replies instead — mention it once in passing, and do not treat it as a broken setting.
 
 ## Subagents
 
@@ -22,6 +24,12 @@ For any multi-step task, track progress with the harness's built-in todo/task to
 - Prefer early returns over deep nesting
 - Prefer functional patterns where the language idiom supports it (e.g., Enum pipelines in `Elixir`, LINQ in `C#`, list comprehensions in `Python`)
 - If project conventions are ambiguous after reading existing code, ask
+
+## CLI Invocations
+
+- Default to one CLI invocation per shell call rather than wrapping a loop or shell function around several — it's easier to review and keeps a continuous stream of thought during pairing.
+- Exception: a script that batches several calls to the same mechanical, repetitive operation (e.g. a `gh api` mutation applied to each of N PR review threads) is fine in one call — spamming N near-identical approvals adds noise, not review value.
+- When unsure which case applies, ask before choosing.
 
 ## Testing
 
@@ -46,6 +54,7 @@ Per-domain work stack detail (messaging, embedded, IaC, identity) belongs in tha
 
 ## Git
 
+- Signed commits via SSH agent (1Password on macOS, keychain-loaded keys on WSL2)
 - Prefer rebase over merge for local branches
 - Commit messages: imperative mood, concise subject line, focus on "why" not "what"
   - Feature: "Add payment webhook endpoint"
@@ -63,8 +72,9 @@ Per-domain work stack detail (messaging, embedded, IaC, identity) belongs in tha
 
 - macOS (`Homebrew`) or Debian over WSL2 (`linuxbrew`) — these dotfiles target both
 - Docker via Colima on macOS, not Docker Desktop; native `docker` on Debian
-- 1Password for passwords, secrets, SSH keys, and commit signing
+- 1Password for passwords and secrets; SSH keys and commit signing via 1Password on macOS, keychain on WSL2
 
 ## MCP & Tooling
 
-- For work Jira, read the `umano-connect:jira` skill before any Atlassian tool call — never bypass it with `acli`
+- For work Jira, read the `umano-medical:jira` skill before any Atlassian tool call — never bypass it with `acli`
+- Claude Projects follow a pop culture naming convention — respect existing names

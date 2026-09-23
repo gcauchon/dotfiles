@@ -62,3 +62,10 @@
   ph = push --set-upstream origin HEAD
   pf = push --force-with-lease --force-if-includes
 
+# HTTPS remotes authenticate through gh (written by `gh auth setup-git`, made path-independent by hand)
+[credential "https://github.com"]
+  helper =
+  helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+  helper =
+  helper = !gh auth git-credential

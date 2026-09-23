@@ -1,1 +1,4 @@
 .DS_Store
+
+# claude.ai skill sync writes here through the ~/.claude/skills symlink; machine-local, not config
+llms/claude/skills/synced/

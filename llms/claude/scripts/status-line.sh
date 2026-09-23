@@ -24,18 +24,14 @@ eval "$(printf '%s' "$input" | jq -r '
 
 dir_name=$(basename "$dir")
 
-# --- mtime_epoch: portable file modification time (GNU vs BSD stat) ---
+# --- mtime_epoch: portable file modification time (GNU stat first, BSD fallback) ---
 mtime_epoch() {
-  if [ "$(uname)" = "Darwin" ]; then
-    stat -f %m "$1" 2>/dev/null || echo 0
-  else
-    stat -c %Y "$1" 2>/dev/null || echo 0
-  fi
+  stat -c %Y "$1" 2>/dev/null || stat -f %m "$1" 2>/dev/null || echo 0
 }
 
-# --- git branch + worktree + dirty (cached, 5s TTL) ---
+# --- git branch + worktree + dirty (cached, 5s TTL per directory) ---
 dir_hash=$(printf '%s' "$dir" | cksum | cut -d' ' -f1)
-GIT_CACHE="/tmp/.claude_statusline_git_${dir_hash}"
+GIT_CACHE="${TMPDIR:-/tmp}/.claude_statusline_git_${dir_hash}"
 branch=""
 is_worktree=0
 dirty=0
