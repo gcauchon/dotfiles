@@ -43,9 +43,13 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `docker/config.json` → `~/.docker/config.json` (uses `credsStore: pass` — keep it that way, or `docker login` writes tokens straight into this tracked file)
 - `gnupg/gpg-agent.conf` → `~/.gnupg/gpg-agent.conf` (routes pinentry through `gnupg/pinentry-wrapper`, keeping GPG passphrase prompts out of any terminal Claude Code holds)
 - `llms/claude/CLAUDE.md` → `~/.claude/CLAUDE.md` (user-level preferences)
-- `llms/claude/settings.json` → `~/.claude/settings.json`
-- `llms/claude/rules/` → `~/.claude/rules/` (conversation style, etc.)
-- `llms/claude/scripts/` → `~/.claude/scripts/` (statusline, usage fetch)
+- `llms/claude/settings.json` → `~/.claude/settings.json` (`CLAUDE_CODE_ENABLE_TODO_TOOLS=1` in its `env` restores the todo/task tools, which Claude Code 2.1.233 gated off for Opus 4.8 / Sonnet 5 and newer — re-check on upgrades, since the escape hatch may go away; plan files under `.claude/plans` are the idiomatic upfront-plan mechanism regardless)
+- `llms/claude/rules/` → `~/.claude/rules/` (language, markdown, PR-comment voice directives)
+- `llms/claude/output-styles/` → `~/.claude/output-styles/` (response voice and formatting)
+- `llms/claude/skills/` → `~/.claude/skills/` (user-level agent skills; `skills/synced/` is written there by claude.ai skill sync and is gitignored)
+- `llms/claude/scripts/` → `~/.claude/scripts/` (statusline)
+
+Because these are symlinks into the repo, Claude Code writes into tracked files: `/model` and `/config` toggles land in `settings.json`, and `gh auth setup-git` appends to `git/.gitconfig`. Review such diffs before committing rather than treating them as noise.
 
 ### Neovim Configuration
 
