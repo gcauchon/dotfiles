@@ -3,7 +3,9 @@
   "cleanupPeriodDays": 30,
   "env": {
     "SHELL": "/bin/zsh",
-    "BASH_DEFAULT_TIMEOUT_MS": "120000"
+    "BASH_DEFAULT_TIMEOUT_MS": "120000",
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "1",
+    "CLAUDE_CODE_ENABLE_TODO_TOOLS": "1"
   },
   "includeGitInstructions": false,
   "permissions": {
@@ -24,11 +26,13 @@
       "Bash(tig *)",
       "Bash(gh pr view *)",
       "Bash(gh pr list *)",
+      "Bash(gh pr diff *)",
       "Bash(gh issue view *)",
       "Bash(gh run view *)",
       "Bash(gh api *)",
       "WebSearch",
       "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:code.claude.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:hub.docker.com)",
@@ -40,6 +44,7 @@
       "Bash(git push --force*)",
       "Bash(git pf)",
       "Bash(git reset --hard*)",
+      "Bash(git clean*)",
       "Bash(sudo *)",
       "Bash(rm -rf /*)",
       "Bash(rm -rf ~*)",
@@ -63,6 +68,10 @@
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
+  "fallbackModel": [
+    "sonnet",
+    "haiku"
+  ],
   "hooks": {
     "PreToolUse": [
       {
@@ -103,13 +112,28 @@
     "umano-medical-plugins": {
       "source": {
         "source": "github",
-        "repo": "umano-medical/connect-ai-workflows"
+        "repo": "umano-medical/umano-ai-workflows"
       }
     }
   },
   "outputStyle": "voice-and-format",
   "sandbox": {
     "enabled": true,
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "objects.githubusercontent.com",
+        "codeload.github.com",
+        "registry.npmjs.org",
+        "*.atlassian.net",
+        "api.atlassian.com",
+        "id.atlassian.com"
+      ],
+      "allowUnixSockets": [
+        "~/.local/state/ssh/agent.sock"
+      ]
+    },
     "credentials": {
       "files": [
         {
@@ -123,15 +147,28 @@
         {
           "path": "~/.claude/.credentials.json",
           "mode": "deny"
+        },
+        {
+          "path": "~/.docker/config.json",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.claude.json",
+          "mode": "deny"
         }
       ]
-    }
+    },
+    "excludedCommands": [
+      "gh *"
+    ]
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
   "autoMemoryEnabled": true,
+  "theme": "auto",
   "editorMode": "normal",
+  "autoCompactEnabled": true,
   "showTurnDuration": true
 }
