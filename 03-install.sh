@@ -35,7 +35,7 @@ brew install shellcheck # PostToolUse hook in llms/claude/settings.json lints ed
 #brew install ngrok
 
 # Claude Code — native installer (Homebrew lags releases by days)
-curl -fsSL https://claude.ai/install.sh | sh
+curl -fsSL https://claude.ai/install.sh | bash
 
 # Claude Code sandboxed Bash tool (WSL2/Linux only — macOS uses the built-in Seatbelt framework).
 # Debian packages, not linuxbrew: bubblewrap relies on kernel user namespaces and is best kept in step with the distro
