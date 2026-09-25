@@ -170,6 +170,13 @@
     ]
   },
   "effortLevel": "high",
+  "pluginConfigs": {
+    "agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-or-agents-md"
+      }
+    }
+  },
   "autoUpdatesChannel": "latest",
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",
@@ -180,5 +187,6 @@
   "autoCompactEnabled": true,
   "precomputeCompactionEnabled": true,
   "showTurnDuration": true,
-  "todoFeatureEnabled": true
+  "todoFeatureEnabled": true,
+  "crossSessionInbound": "accept"
 }
