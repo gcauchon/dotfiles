@@ -1,1 +1,4 @@
 .DS_Store
+
+# Claude Code writes account-synced skills through the ~/.claude/skills symlink
+llms/claude/skills/synced/
