@@ -128,13 +128,10 @@
     "enabled": true,
     "network": {
       "allowedDomains": [
-        "api.github.com",
-        "objects.githubusercontent.com",
-        "codeload.github.com",
-        "registry.npmjs.org",
-        "*.atlassian.net",
-        "api.atlassian.com",
-        "id.atlassian.com"
+        "github.com",
+        "githubusercontent.com",
+        "npmjs.org",
+        "atlassian.com"
       ],
       "allowUnixSockets": [
         "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
