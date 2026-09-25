@@ -33,6 +33,7 @@ For any multi-step task, track progress with the built-in task tools (`TaskCreat
 - Default to one CLI invocation per shell call instead of wrapping several in a loop or shell function. Single calls are easier to review and keep a continuous stream of thought during pairing.
 - Exception: a script that applies the same mechanical operation N times (e.g., a `gh api` mutation on each of N PR review threads) is fine in one call. N near-identical approvals add noise, not review value.
 - When unsure which case applies, ask.
+- `gh` only runs outside the sandbox when it is the whole command. Never pipe it or chain it with `|`, `&&`, or `;`. Redirects like `2>&1` are fine. A sandboxed `gh` fails on `~/.config/gh` and on TLS, and retrying it unsandboxed is not the fix.
 
 ## Testing
 
