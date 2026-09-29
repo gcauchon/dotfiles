@@ -2,7 +2,7 @@
 
 ## File Output
 
-- Never create Office documents (docx, pptx, xlsx). They can't be diffed, versioned, or rendered inline. Use Markdown for written content and CSV for tabular data.
+- Default to Markdown for written content and CSV for tabular data. They diff, version, and render inline. Create Office documents (docx, pptx, xlsx) only when explicitly asked, such as Umano sprint reviews through the `umano-pptx` skills.
 - Don't hard-wrap Markdown prose at a fixed column. Write full-length lines and rely on the editor's soft wrap.
 
 ## Task Management

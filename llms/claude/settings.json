@@ -8,6 +8,7 @@
     "CLAUDE_CODE_ENABLE_TODO_TOOLS": "1"
   },
   "includeGitInstructions": false,
+  "attribution": false,
   "permissions": {
     "allow": [
       "Read",
@@ -29,7 +30,6 @@
       "Bash(gh pr diff *)",
       "Bash(gh issue view *)",
       "Bash(gh run view *)",
-      "Bash(gh api *)",
       "WebSearch",
       "WebFetch(domain:docs.claude.com)",
       "WebFetch(domain:code.claude.com)",
@@ -42,6 +42,7 @@
     ],
     "deny": [
       "Bash(git push --force*)",
+      "Bash(git push -f*)",
       "Bash(git pf)",
       "Bash(git reset --hard*)",
       "Bash(git clean*)",
@@ -60,6 +61,7 @@
       "Bash(git merge *)",
       "Bash(git push *)",
       "Bash(git rebase *)",
+      "Bash(gh api *)",
       "Read(**/.env)",
       "Read(**/secrets/**)",
       "Read(**/credentials/**)"
@@ -73,9 +75,20 @@
     "haiku"
   ],
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh $HOME/.claude/scripts/hooks/session-context.sh"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
-        "matcher": "",
+        "matcher": "permission_prompt|idle_prompt|agent_needs_input",
         "hooks": [
           {
             "type": "command",
@@ -90,18 +103,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // .tool_input.path // \"\"'); echo \"$fp\" | grep -qE '(^|/)\\.git/|node_modules/|\\.lock$' && { echo \"Editing '$fp' is blocked by policy. This is a generated or managed file.\" >&2; exit 2; } || true"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); command -v shellcheck >/dev/null 2>&1 || exit 0; if [ -n \"$fp\" ] && echo \"$fp\" | grep -qE '\\.(sh|bash)$'; then findings=$(shellcheck --severity=warning \"$fp\" 2>&1); if [ -n \"$findings\" ]; then echo \"$findings\" >&2; exit 2; fi; fi; exit 0"
+            "command": "sh $HOME/.claude/scripts/hooks/protect-paths.sh"
           }
         ]
       }
@@ -183,7 +185,7 @@
   "autoMemoryEnabled": true,
   "theme": "auto",
   "editorMode": "normal",
-  "preferredNotifChannel": "ghostty",
+  "preferredNotifChannel": "notifications_disabled",
   "autoCompactEnabled": true,
   "precomputeCompactionEnabled": true,
   "showTurnDuration": true,
