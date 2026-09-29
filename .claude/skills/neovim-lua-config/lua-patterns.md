@@ -37,20 +37,29 @@ Concrete examples from this config. Use these as templates when adding or modify
 
 ```lua
 {
-  'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
-  dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-  },
+  'lewis6991/gitsigns.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local cmp = require('cmp')
-    -- setup logic...
+    require('gitsigns').setup({
+      -- setup logic...
+    })
   end,
+},
+```
+
+## Plugin Spec (Pinned Version with opts)
+
+```lua
+-- blink.cmp: pin a major version, pass options through
+{
+  'saghen/blink.cmp',
+  version = '1.*',
+  dependencies = { 'L3MON4D3/LuaSnip' },
+  opts = {
+    keymap = { preset = 'default' },
+    snippets = { preset = 'luasnip' },
+    sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+  },
 },
 ```
 
@@ -128,7 +137,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 ## LSP Configuration (Neovim 0.11+)
 
 ```lua
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 -- LspAttach keymaps (with augroup and desc)
 vim.api.nvim_create_autocmd('LspAttach', {

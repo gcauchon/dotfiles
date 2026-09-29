@@ -18,6 +18,23 @@ autocmd("BufWritePre", {
   end,
 })
 
+-- Reload buffers changed on disk by external tools (Claude Code, git, formatters)
+local reload = augroup("ExternalFileReload", { clear = true })
+
+autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  group = reload,
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then vim.cmd.checktime() end
+  end,
+})
+
+autocmd("FileChangedShellPost", {
+  group = reload,
+  pattern = "*",
+  callback = function() vim.notify("File reloaded from disk", vim.log.levels.INFO) end,
+})
+
 -- File type detection (only for types not detected by Neovim)
 local filetypes = augroup("FileTypeDetection", { clear = true })
 

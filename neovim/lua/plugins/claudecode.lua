@@ -16,8 +16,9 @@ return {
   },
   cmd = {
     "ClaudeCode", "ClaudeCodeFocus", "ClaudeCodeSelectModel",
-    "ClaudeCodeAdd", "ClaudeCodeSend",
-    "ClaudeCodeDiffAccept", "ClaudeCodeDiffDeny",
+    "ClaudeCodeStart", "ClaudeCodeStop", "ClaudeCodeStatus",
+    "ClaudeCodeAdd", "ClaudeCodeTreeAdd", "ClaudeCodeSend", "ClaudeCodeSendText",
+    "ClaudeCodeDiffAccept", "ClaudeCodeDiffDeny", "ClaudeCodeCloseAllDiffs",
   },
   keys = {
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
@@ -29,7 +30,7 @@ return {
     { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send selection" },
     -- mini.files integration: add file under cursor from the explorer
     { "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", ft = "minifiles", desc = "Add file to Claude" },
-    -- Diff review (in a claudecode diff buffer)
+    -- Diff review (global maps; they act on the pending claudecode diff)
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Reject diff" },
   },
