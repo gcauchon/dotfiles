@@ -1,8 +1,8 @@
-query ($owner: String!, $repo: String!, $number: Int!) {
+query ($owner: String!, $repo: String!, $number: Int!, $after: String) {
   repository(owner: $owner, name: $repo) {
     pullRequest(number: $number) {
       headRefName
-      reviewThreads(first: 100) {
+      reviewThreads(first: 100, after: $after) {
         pageInfo {
           hasNextPage
           endCursor
@@ -21,6 +21,16 @@ query ($owner: String!, $repo: String!, $number: Int!) {
               databaseId
               createdAt
               body
+              author {
+                __typename
+                login
+              }
+            }
+          }
+          lastComment: comments(last: 1) {
+            nodes {
+              databaseId
+              createdAt
               author {
                 __typename
                 login
