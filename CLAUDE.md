@@ -48,7 +48,6 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `llms/claude/output-styles/` → `~/.claude/output-styles/` (response voice and formatting)
 - `llms/claude/skills/` → `~/.claude/skills/` (user-level agent skills)
 - `llms/claude/scripts/` → `~/.claude/scripts/` (status line, notification, and hook scripts)
-- `llms/claude/loop.md` → `~/.claude/loop.md` (default prompt for a bare `/loop`)
 
 ### Neovim Configuration
 

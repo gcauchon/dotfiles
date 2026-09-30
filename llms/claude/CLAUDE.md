@@ -35,6 +35,13 @@ For any multi-step task, track progress with the built-in task tools (`TaskCreat
 - When unsure which case applies, ask.
 - `gh` only runs outside the sandbox when it is the whole command. Never pipe it or chain it with `|`, `&&`, or `;`. Redirects like `2>&1` are fine. A sandboxed `gh` fails on `~/.config/gh` and on TLS, and retrying it unsandboxed is not the fix.
 
+## Loops
+
+- Start a recurring workflow explicitly with `/loop [interval] /<skill>`. Don't put task-specific behavior in `loop.md`, since a bare `/loop` would then apply it in every repo.
+- The skill owns the per-tick behavior in a `## Watch mode` section: what one tick checks, what counts as "nothing new" (report it in one line), and when to end the loop.
+- A tick is read-only plus drafting. Approval gates still apply, and commit, push, post, resolve, and merge need explicit approval in the transcript, never a scheduled run.
+- Dynamic `/loop /<skill>` fits waits on external state (CI, reviews). A fixed interval fits steady polling. Use `/schedule` routines or desktop tasks for unattended work that must outlive the session (loops are session-scoped and expire after 7 days).
+
 ## Testing
 
 - Don't default to TDD. Follow the project's CLAUDE.md. If it says nothing, propose a testing approach and confirm before writing tests.

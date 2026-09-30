@@ -86,7 +86,6 @@ Configuration for both [Claude.ai](https://claude.ai) and [Claude Code](https://
 | `output-styles/` | `~/.claude/output-styles/` | Response voice and formatting                                 |
 | `skills/`        | `~/.claude/skills/`        | User-level agent skills                                       |
 | `scripts/`       | `~/.claude/scripts/`       | Status line, notification, and hook scripts                   |
-| `loop.md`        | `~/.claude/loop.md`        | Default prompt for a bare `/loop` (tend the branch's PR)      |
 
 **Dual-purpose files**: `CLAUDE.md` and `output-styles/voice-and-format.md` are loaded by Claude Code as project/global instructions. Their content must also be copied manually to Claude.ai under **Settings > User Preferences** to maintain consistent behavior across both interfaces.
 
