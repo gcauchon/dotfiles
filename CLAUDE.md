@@ -61,6 +61,8 @@ Because these are symlinks into the repo, Claude Code writes into tracked files:
 - 12 LSP servers: lua_ls, elixirls, ruby_lsp, pyright, ts_ls, html, cssls, jsonls, yamlls, bashls, dockerls, marksman
 - Fuzzy finder: mini.pick (not telescope). File explorer: mini.files. Surround/pairs/comment: mini.nvim suite
 - 2-space indentation, no swapfiles, system clipboard
+- Claude Code integration: `claudecode.nvim` (`neovim/lua/plugins/claude-code.lua`) with `terminal.provider = 'none'`, so Claude runs in its own tmux pane and Neovim only hosts the MCP server. Run `/ide` once in the Claude pane to connect. Proposed edits open as vertical diffs in a new tab: `<leader>aa` accepts, `<leader>ad` denies (`:w` also accepts). `<leader>ab` adds the buffer, `<leader>as` sends the visual selection
+- Buffers changed on disk (by Claude) reload through a `checktime` autocmd on `FocusGained`/`BufEnter`/`CursorHold` in `config/autocmds.lua`; it relies on `focus-events on` in `zsh/tmux.conf`
 
 ### ZSH Configuration
 

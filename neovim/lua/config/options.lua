@@ -3,6 +3,7 @@ vim.opt.shell = 'zsh'
 vim.opt.mouse = 'a'                        -- Enable mouse support
 vim.opt.clipboard = 'unnamedplus'          -- Copy/paste to system clipboard
 vim.opt.swapfile = false                   -- Don't use swapfile
+vim.opt.autoread = true                    -- Reload files changed outside (see AutoReload autocmd)
 vim.opt.completeopt = 'menuone,noselect'   -- Autocomplete options
 
 -- Memory, CPU

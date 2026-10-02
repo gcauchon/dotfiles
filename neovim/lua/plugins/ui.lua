@@ -125,6 +125,7 @@ return {
       
       -- Register leader key groups
       wk.add({
+        { "<leader>a", group = "AI" },
         { "<leader>l", group = "Lazy" },
         { "<leader>m", group = "Mason" },
         { "<leader>t", group = "Tree" },

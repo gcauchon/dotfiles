@@ -18,6 +18,15 @@ autocmd("BufWritePre", {
   end,
 })
 
+-- Reload buffers changed on disk (Claude edits files from its tmux pane)
+autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  group = augroup("AutoReload", { clear = true }),
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then vim.cmd("checktime") end
+  end,
+})
+
 -- File type detection (only for types not detected by Neovim)
 local filetypes = augroup("FileTypeDetection", { clear = true })
 
