@@ -75,6 +75,8 @@ Because these are symlinks into the repo, Claude Code writes into tracked files:
 - Terminal: Ghostty with OneDark theme, FiraCode Nerd Font, size 14
 - Tmux prefix: `Ctrl-Q` (remapped from default Ctrl-B)
 - Vi mode keys in tmux; pane split: `=`/`-`, nav: `h/j/k/l`
+- Seamless Neovim/tmux navigation without the prefix: `Ctrl-h/j/k/l` moves, `Alt-h/j/k/l` resizes (smart-splits.nvim in `neovim/lua/plugins/editor.lua` + matching `bind -n` lines in `zsh/tmux.conf`). Inside tmux, use `clear` instead of `Ctrl-L`
+- Copy mode yanks to the system clipboard over OSC 52 (`set-clipboard on`), no `pbcopy` dependency
 
 ### Git Configuration
 

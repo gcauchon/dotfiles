@@ -57,7 +57,6 @@ return {
           lsp_map('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
           lsp_map('n', 'K', vim.lsp.buf.hover, 'Hover documentation')
           lsp_map('n', 'gi', vim.lsp.buf.implementation, 'Go to implementation')
-          lsp_map('n', '<C-k>', vim.lsp.buf.signature_help, 'Signature help')
           lsp_map('n', '<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
           lsp_map('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
           lsp_map('n', 'gr', vim.lsp.buf.references, 'Find references')
