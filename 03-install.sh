@@ -37,12 +37,6 @@ brew install shellcheck # PostToolUse hook in llms/claude/settings.json lints ed
 # Claude Code — native installer (Homebrew lags releases by days)
 curl -fsSL https://claude.ai/install.sh | bash
 
-# Claude Code sandboxed Bash tool (WSL2/Linux only — macOS uses the built-in Seatbelt framework).
-# Debian packages, not linuxbrew: bubblewrap relies on kernel user namespaces and is best kept in step with the distro
-if [ "$(uname)" != "Darwin" ]; then
-  sudo apt install -y bubblewrap socat
-fi
-
 # Credential/secret tooling (docker credsStore=pass, SSH agent, commit signing)
 sudo apt install -y gnupg pass keychain pinentry-gtk2 pinentry-curses
 

@@ -4,7 +4,7 @@
   "env": {
     "SHELL": "/bin/zsh",
     "BASH_DEFAULT_TIMEOUT_MS": "120000",
-    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "1",
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": "0",
     "CLAUDE_CODE_ENABLE_TODO_TOOLS": "1"
   },
   "includeGitInstructions": false,
@@ -118,48 +118,9 @@
   },
   "outputStyle": "voice-and-format",
   "sandbox": {
-    "enabled": true,
-    "network": {
-      "allowedDomains": [
-        "github.com",
-        "api.github.com",
-        "objects.githubusercontent.com",
-        "codeload.github.com",
-        "registry.npmjs.org",
-        "*.atlassian.net",
-        "api.atlassian.com",
-        "id.atlassian.com"
-      ],
-      "allowUnixSockets": [
-        "~/.local/state/ssh/agent.sock"
-      ]
-    },
-    "credentials": {
-      "files": [
-        {
-          "path": "~/.ssh",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.aws/credentials",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.claude/.credentials.json",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.docker/config.json",
-          "mode": "deny"
-        },
-        {
-          "path": "~/.claude.json",
-          "mode": "deny"
-        }
-      ]
-    }
+    "enabled": false
   },
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "autoUpdatesChannel": "latest",
   "plansDirectory": ".claude/plans",
   "tui": "fullscreen",

@@ -81,7 +81,7 @@ Configuration for both [Claude.ai](https://claude.ai) and [Claude Code](https://
 | File             | Symlink Target             | Purpose                                                               |
 | ---------------- | -------------------------- | --------------------------------------------------------------------- |
 | `CLAUDE.md`      | `~/.claude/CLAUDE.md`      | User-level preferences (code style, stack, git conventions)           |
-| `settings.json`  | `~/.claude/settings.json`  | Claude Code settings (permissions, hooks, model, sandbox, statusline) |
+| `settings.json`  | `~/.claude/settings.json`  | Claude Code settings (permissions, hooks, model, statusline)          |
 | `rules/`         | `~/.claude/rules/`         | Language, markdown and PR-comment voice directives                    |
 | `output-styles/` | `~/.claude/output-styles/` | Response voice and formatting (`voice-and-format`)                    |
 | `skills/`        | `~/.claude/skills/`        | User-level agent skills (`synced/` is claude.ai sync, gitignored)     |

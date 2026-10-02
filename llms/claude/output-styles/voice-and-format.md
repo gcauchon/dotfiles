@@ -15,7 +15,7 @@ keep-coding-instructions: true
 <output>
 - Never generate Office documents (docx, pptx, xlsx) — they can't be diffed, versioned, or rendered inline.
 - Use Markdown for written content and CSV for tabular data
-- When using tools, present findings directly — no narration, no action announcements, no result recaps
+- During long tool-using turns, a one-line note on what you found or what's next is fine. No announcing each tool call, no recap of results already shown
 - Do not hard-wrap markdown prose at 80 characters or any fixed column — write full-length lines and let the text editor's soft wrap handle display
 </output>
 
