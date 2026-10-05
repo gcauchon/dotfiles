@@ -11,11 +11,13 @@ This is a macOS dotfiles repository for bootstrapping a new Mac with development
 ```bash
 # Run setup scripts sequentially (order matters)
 ./01-defaults.sh    # macOS system preferences
-./02-homebrew.sh    # Homebrew + zsh symlinks + shell plugins (sheldon, fzf, zoxide, starship)
-./03-install.sh     # Terminal/dev tools (ghostty, tmux, neovim, mise, git tools)
-./04-symlinks.sh    # Create config symlinks
+./02-homebrew.sh    # Homebrew + zsh symlinks + `brew bundle` from the Brewfile
+./03-install.sh     # Non-brew steps: Claude installer, Touch ID for sudo (needs sudo, run it yourself)
+./04-symlinks.sh    # Create config symlinks (idempotent, `ln -sfn`)
 ./05-cleanup.sh     # Post-install manual steps reminder
 ```
+
+Packages live in the `Brewfile` (`brew bundle check`, `brew bundle cleanup`). Add new tools there, not as `brew install` lines in scripts.
 
 ## Architecture
 
@@ -27,6 +29,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 
 - `zsh/.zshrc` → `~/.zshrc`
 - `zsh/.zshenv` → `~/.zshenv`
+- `zsh/.zprofile` → `~/.zprofile` (`brew shellenv`, so it runs after macOS `path_helper` and reaches non-interactive login shells)
 
 **Config files** (created by `04-symlinks.sh`):
 
@@ -42,6 +45,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - `ghostty/config` → `~/.config/ghostty/config`
 - `mise/config.toml` → `~/.config/mise/config.toml`
 - `ssh/config` → `~/.ssh/config`
+- `docker/config.json` → `~/.docker/config.json` (uses `credsStore: osxkeychain`, keep it that way, or `docker login` writes tokens straight into this tracked file)
 - `llms/claude/CLAUDE.md` → `~/.claude/CLAUDE.md` (user-level preferences)
 - `llms/claude/settings.json` → `~/.claude/settings.json`
 - `llms/claude/rules/` → `~/.claude/rules/` (language directives)
@@ -67,7 +71,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 - Prompt: starship (`zsh/starship.toml`)
 - Version manager: mise (`mise/config.toml`) — Node.js 22.19.0, Ruby 3.4.6, Python 3.13.7, uv 0.8.17
 - Plugins: fzf, zoxide, zsh-syntax-highlighting, zsh-completions, zsh-autosuggestions
-- `.zshenv` sets `ERL_AFLAGS` for Erlang REPL shell history, `EDITOR`/`VISUAL` to nvim, and `BUILDKIT_PROGRESS=tty` for Docker
+- `.zshenv` sets `ERL_AFLAGS` for Erlang REPL shell history, `EDITOR`/`VISUAL` to nvim, `BUILDKIT_PROGRESS=tty` for Docker, and `RIPGREP_CONFIG_PATH`. Prompt-prone vars (`BUILDKIT_PROGRESS`, `GIT_TERMINAL_PROMPT`, `GIT_SSH_COMMAND`) are set only on a tty and explicitly unset otherwise, so Claude Code's Bash tool fails fast instead of hanging
 
 ### Terminal & Tmux
 
@@ -79,7 +83,7 @@ The repository uses symlinks from `~/.config/` and `~/` to files in this repo:
 
 - User: Guillaume Cauchon (`gcauchon@gmail.com`)
 - Commit signing via 1Password SSH agent (`gpg.format = ssh` → `op-ssh-sign`)
-- Default editor: nvim, diff pager: diff-so-fancy
+- Default editor: nvim, diff pager: delta
 - Default branch: `main`, pull with rebase
 - Key aliases: `a` (add all), `c` (signed commit), `ca`/`cane` (amend with/without message), `s` (status), `d`/`ds` (diff/staged), `bd`/`bdf` (safe/force branch delete), `cb` (switch --create), `ph` (push HEAD), `pf` (force-with-lease + force-if-includes)
 

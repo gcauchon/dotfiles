@@ -24,15 +24,17 @@ Resolving deltas: 100% (462/462), done.
 
 ```shell
 > ./01-defaults.sh    # macOS system preferences
-> ./02-homebrew.sh    # Homebrew + zsh symlinks + shell plugins
-> ./03-install.sh     # Terminal/dev tools installation
-> ./04-symlinks.sh    # Create config symlinks for all tools
+> ./02-homebrew.sh    # Homebrew + zsh symlinks + `brew bundle` (Brewfile)
+> ./03-install.sh     # Claude installer + Touch ID for sudo (asks for your password)
+> ./04-symlinks.sh    # Create config symlinks for all tools (safe to re-run)
 > ./05-cleanup.sh     # Post-install manual reminders
 ```
 
+Packages are declared in the `Brewfile`. Use `brew bundle check --file=Brewfile` to see what's missing and `brew bundle cleanup --file=Brewfile` to list installed packages that aren't declared (add `--force` to remove them).
+
 # What's Included?
 
-## Core Tools (02-homebrew.sh)
+## Core Tools (02-homebrew.sh, Brewfile)
 
 - `homebrew` - https://brew.sh
 - `zsh` - Built-in macOS zsh shell with symlinked config
@@ -41,18 +43,18 @@ Resolving deltas: 100% (462/462), done.
 - `zoxide` - Smarter cd command
 - `starship` - https://starship.rs - Cross-shell prompt
 
-## Development Tools (03-install.sh)
+## Development Tools (Brewfile)
 
 - `ghostty` - https://ghostty.org - Modern terminal emulator
 - `tmux` - https://github.com/tmux/tmux/wiki
 - `neovim` - https://neovim.io (with `lua`, `luarocks`, `fd`, `ripgrep`)
-- `git` - with `tig`, `diff-so-fancy`
+- `git` - with `tig`, `git-delta`
 - `mise` - https://mise.jdx.dev - Runtime version manager
 - `docker` & `colima` - https://github.com/abiosoft/colima
 - Additional CLI tools: `autoconf`, `curl`, `jq`, `ngrok`
 - `fonts` - `Fira Code` with `Nerd Font` patched glyphs
 
-## Applications (03-install.sh)
+## Applications (Brewfile)
 
 - Alfred - https://www.alfredapp.com
 - 1Password - https://1password.com (with CLI for SSH agent & commit signing)
@@ -60,7 +62,7 @@ Resolving deltas: 100% (462/462), done.
 - Visual Studio Code - https://code.visualstudio.com
 - Dash - https://kapeli.com/dash
 - TablePlus - https://tableplus.com
-- Utility apps: LanguageTool, Lunar, Pika
+- Utility apps: Lunar, Pika
 
 ## Config Symlinks (04-symlinks.sh)
 
@@ -71,6 +73,7 @@ All configuration files are symlinked from this repo:
 - Editor: neovim (full lua config), VS Code settings via extensions
 - Git: gitconfig, gitignore, tigrc
 - 1Password SSH agent config (for commit signing)
+- Docker config (`credsStore: osxkeychain` keeps registry tokens in the Keychain)
 - mise runtime versions
 - Claude Code settings & statusline
 
