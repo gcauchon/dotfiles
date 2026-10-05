@@ -30,9 +30,6 @@ setopt EXTENDED_HISTORY
 setopt INTERACTIVE_COMMENTS
 setopt EXTENDED_GLOB
 
-# Homebrew
-eval "$(brew shellenv)"
-
 # Sheldon, ZSH plugin manager
 eval "$(sheldon source)"
 
