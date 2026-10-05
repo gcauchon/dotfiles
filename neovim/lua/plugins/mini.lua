@@ -17,6 +17,7 @@ return {
       require('mini.extra').setup({})
 
       -- Setup other useful mini modules
+      require('mini.bufremove').setup({}) -- Delete buffers without closing windows
       require('mini.pairs').setup({})  -- Replaces nvim-autopairs
       require('mini.comment').setup({}) -- Commenting functionality
       require('mini.surround').setup({}) -- Surround text objects

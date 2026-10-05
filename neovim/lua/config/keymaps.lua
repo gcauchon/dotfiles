@@ -6,7 +6,6 @@ end
 
 -- Fast saving with <leader> and s
 map('n', '<leader>s', '<cmd>w<CR>', { desc = 'Save file' })
-map('i', '<leader>s', '<C-c><cmd>w<CR>', { desc = 'Save file' })
 
 -- Indentation
 map('v', '<', '<gv', { desc = 'Indent left and reselect' })
@@ -24,10 +23,8 @@ map({ 'n', 'v' }, 'm', 'd', { desc = 'Cut' })
 map({ 'n', 'v' }, 'M', 'D', { desc = 'Cut to end' })
 map('n', 'mm', 'dd', { desc = 'Cut line' })
 
--- Buffer navigation
-map('n', '>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
-map('n', '<', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
-map('n', '<leader>v', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
+-- Buffer navigation ([b / ]b are built in), delete without closing the window
+map('n', '<leader>v', function() require('mini.bufremove').delete() end, { desc = 'Delete buffer' })
 
 -- QuickFix (ie Search, Linter, etc...)
 map('', '<leader>q', '<cmd>copen<CR>', { desc = 'Open quickfix' })
@@ -36,14 +33,14 @@ map('', '<leader>Q', '<cmd>cclose<CR>', { desc = 'Close quickfix' })
 -- Undo/Redo
 map('n', 'U', '<cmd>redo<CR>', { desc = 'Redo' })
 
--- Clear search highlighting with <leader> and c
-map('n', '<leader>c', '<cmd>nohl<CR>', { desc = 'Clear search highlight' })
+-- Clear search highlighting
+map('n', '<Esc>', '<cmd>nohl<CR>', { desc = 'Clear search highlight' })
 
 -- Diagnostic navigation
 map('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, { desc = 'Go to previous diagnostic' })
 map('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, { desc = 'Go to next diagnostic' })
 map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
-map('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diagnostic list' })
+map('n', '<leader>E', vim.diagnostic.setloclist, { desc = 'Open diagnostic list' })
 
 -- Mason
 map('n', '<leader>m', '<cmd>Mason<CR>', { desc = 'Open Mason' })

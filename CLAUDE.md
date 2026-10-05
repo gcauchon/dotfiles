@@ -63,6 +63,7 @@ Because these are symlinks into the repo, Claude Code writes into tracked files:
 - 2-space indentation, no swapfiles, system clipboard
 - Claude Code integration: `claudecode.nvim` (`neovim/lua/plugins/claude-code.lua`) with `terminal.provider = 'none'`, so Claude runs in its own tmux pane and Neovim only hosts the MCP server. Run `/ide` once in the Claude pane to connect. Proposed edits open as vertical diffs in a new tab: `<leader>aa` accepts, `<leader>ad` denies (`:w` also accepts). `<leader>ab` adds the buffer, `<leader>as` sends the visual selection
 - Buffers changed on disk (by Claude) reload through a `checktime` autocmd on `FocusGained`/`BufEnter`/`CursorHold` in `config/autocmds.lua`; it relies on `focus-events on` in `zsh/tmux.conf`
+- Keep leader keys free of prefix collisions (a leaf like `<leader>f` next to `<leader>ff` stalls on `timeoutlen`): format is `<leader>F`, Grepper `<leader>G`, diagnostic list `<leader>E`. Buffer cycling is the built-in `[b`/`]b`, and `<leader>v` uses `mini.bufremove` to keep the window layout
 
 ### ZSH Configuration
 

@@ -60,7 +60,7 @@ return {
           lsp_map('n', '<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
           lsp_map('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
           lsp_map('n', 'gr', vim.lsp.buf.references, 'Find references')
-          lsp_map('n', '<leader>f', function()
+          lsp_map('n', '<leader>F', function()
             vim.lsp.buf.format { async = true }
           end, 'Format buffer')
         end,
