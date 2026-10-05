@@ -1,7 +1,5 @@
 {
-	"auths": {
-		"acrazimutlogscct.azurecr.io": {}
-	},
+	"auths": {},
 	"credsStore": "osxkeychain",
 	"currentContext": "colima",
 	"cliPluginsExtraDirs": [
