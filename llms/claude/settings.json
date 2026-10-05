@@ -70,6 +70,10 @@
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "workflowKeywordTriggerEnabled": false,
   "fallbackModel": [
     "sonnet",
     "haiku"

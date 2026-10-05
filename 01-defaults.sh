@@ -6,7 +6,8 @@
 #
 
 # Close any open System Preferences panes to prevent overriding changes
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
+osascript -e 'tell application "System Preferences" to quit' 2>/dev/null
 
 ###############################################################################
 # Finder                                                                      #
@@ -60,6 +61,9 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Disable automatic period substitution (double-space to period)
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable inline predictive text (Sonoma+), it gets in the way in editors and terminals
+defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled -bool false
 
 ###############################################################################
 # Keyboard                                                                    #

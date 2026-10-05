@@ -29,12 +29,14 @@ font-feature = +liga +calt
 
 # macOS-specific optimizations
 macos-titlebar-style = tabs
+# Left Option acts as Alt (nvim/tmux keybinds); right Option still types accented characters
+macos-option-as-alt = left
 
 # Performance
 resize-overlay = never
 
-# Shell integration
-shell-integration-features = cursor,sudo,title
+# Shell integration (ssh-* make remote hosts recognize xterm-ghostty)
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
 
 # Window management
 window-padding-x = 4
