@@ -5,9 +5,10 @@
 
 [core]
   autocrlf = input
-  excludesfile = /Users/gcauchon/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = nvim
   pager = delta
+  untrackedCache = true
 
 [interactive]
   diffFilter = delta --color-only
@@ -33,6 +34,13 @@
 
 [commit]
   gpgsign = true
+  verbose = true
+
+[help]
+  autocorrect = prompt
+
+[tag]
+  sort = version:refname
 
 [gpg]
   format = ssh
@@ -74,6 +82,7 @@
 
 [push]
   autoSetupRemote = true
+  followTags = true
 
 [fetch]
   prune = true
@@ -84,6 +93,7 @@
 
 [rerere]
   enabled = true
+  autoupdate = true
 
 [branch]
   sort = -committerdate
