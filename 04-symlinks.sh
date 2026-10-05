@@ -4,51 +4,55 @@ mkdir -p ~/.config
 
 # Sheldon ZSH plugin manager
 mkdir -p ~/.config/sheldon
-ln -s "$PWD"/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
+ln -sfn "$PWD"/zsh/sheldon.toml ~/.config/sheldon/plugins.toml
 
 # SSH
 mkdir -p ~/.ssh
-ln -s "$PWD"/ssh/config ~/.ssh/config
+ln -sfn "$PWD"/ssh/config ~/.ssh/config
 
 # 1Password SSH agent
 mkdir -p ~/.config/1Password/ssh
-ln -s "$PWD"/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
+ln -sfn "$PWD"/git/1password-agent.toml ~/.config/1Password/ssh/agent.toml
 
 # Starship prompt status line
-ln -s "$PWD"/zsh/starship.toml ~/.config/starship.toml
+ln -sfn "$PWD"/zsh/starship.toml ~/.config/starship.toml
 
 # Ripgrep
 mkdir -p ~/.config/ripgrep
-ln -s "$PWD"/zsh/ripgreprc ~/.config/ripgrep/ripgreprc
+ln -sfn "$PWD"/zsh/ripgreprc ~/.config/ripgrep/ripgreprc
 
 # Ghostty
 mkdir -p ~/.config/ghostty
-ln -s "$PWD"/ghostty/config ~/.config/ghostty/config
+ln -sfn "$PWD"/ghostty/config ~/.config/ghostty/config
 
 # Tmux
 mkdir -p ~/.config/tmux
-ln -s "$PWD"/zsh/tmux.conf ~/.config/tmux/tmux.conf
+ln -sfn "$PWD"/zsh/tmux.conf ~/.config/tmux/tmux.conf
 
 # EditorConfig (global 2-space defaults, honored by Neovim 0.9+, VS Code, JetBrains, etc.)
-ln -s "$PWD"/.editorconfig ~/.editorconfig
+ln -sfn "$PWD"/.editorconfig ~/.editorconfig
 
 # Neovim
-ln -s "$PWD"/neovim ~/.config/nvim
+ln -sfn "$PWD"/neovim ~/.config/nvim
 
 # git
-ln -s "$PWD"/git/.gitconfig ~
-ln -s "$PWD"/git/.gitignore_global ~
-ln -s "$PWD"/git/.tigrc ~
+ln -sfn "$PWD"/git/.gitconfig ~
+ln -sfn "$PWD"/git/.gitignore_global ~
+ln -sfn "$PWD"/git/.tigrc ~
 
 # Mise-en-place
 mkdir -p ~/.config/mise
-ln -s "$PWD"/mise/config.toml ~/.config/mise/config.toml
+ln -sfn "$PWD"/mise/config.toml ~/.config/mise/config.toml
+
+# Docker (credsStore keeps `docker login` tokens in the macOS Keychain, not in this tracked file)
+mkdir -p ~/.docker
+ln -sfn "$PWD"/docker/config.json ~/.docker/config.json
 
 # Claude
 mkdir -p ~/.claude
-ln -s "$PWD"/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -s "$PWD"/llms/claude/settings.json ~/.claude/settings.json
-ln -s "$PWD"/llms/claude/output-styles ~/.claude/output-styles
-ln -s "$PWD"/llms/claude/skills ~/.claude/skills
-ln -s "$PWD"/llms/claude/rules ~/.claude/rules
-ln -s "$PWD"/llms/claude/scripts ~/.claude/scripts
+ln -sfn "$PWD"/llms/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sfn "$PWD"/llms/claude/settings.json ~/.claude/settings.json
+ln -sfn "$PWD"/llms/claude/output-styles ~/.claude/output-styles
+ln -sfn "$PWD"/llms/claude/skills ~/.claude/skills
+ln -sfn "$PWD"/llms/claude/rules ~/.claude/rules
+ln -sfn "$PWD"/llms/claude/scripts ~/.claude/scripts
