@@ -8,7 +8,7 @@ curl -fsSL https://claude.ai/install.sh | sh
 
 # Touch ID for sudo. /etc/pam.d/sudo_local survives macOS updates (unlike editing /etc/pam.d/sudo).
 # pam_reattach lets Touch ID work inside tmux. Requires sudo, so run this script yourself.
-if [ ! -f /etc/pam.d/sudo_local ]; then
+if ! grep -qs 'pam_reattach.so' /etc/pam.d/sudo_local || ! grep -qs 'pam_tid.so' /etc/pam.d/sudo_local; then
   printf '%s\n' \
     'auth       optional       /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh' \
     'auth       sufficient     pam_tid.so' \
