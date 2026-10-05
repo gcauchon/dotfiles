@@ -84,7 +84,7 @@ Because these are symlinks into the repo, Claude Code writes into tracked files:
 ### Git Configuration
 
 - User: Guillaume Cauchon (`gcauchon@gmail.com`)
-- Commit signing via `gpg.format = ssh` — git calls `ssh-keygen -Y sign` against the keychain-loaded SSH agent, no `op-ssh-sign` program configured
+- Commit signing via `gpg.format = ssh` — git calls `ssh-keygen -Y sign` against the keychain-loaded SSH agent, no `op-ssh-sign` program configured. On WSL2, `zsh/.zshrc` republishes that agent at `~/.local/state/ssh/agent.sock` and exports `SSH_AUTH_SOCK` to it, because keychain's own socket path changes on every agent restart while tmux panes and Claude Code sessions keep the value they started with. Keep that block even with the Claude sandbox off, or signing fails with `Couldn't get agent socket?` in any long-lived session
 - Default editor: nvim, diff pager: diff-so-fancy
 - Default branch: `main`, pull with rebase
 - Key aliases: `a` (add all), `c` (signed commit), `ca`/`cane` (amend with/without message), `s` (status), `d`/`ds` (diff/staged), `bd`/`bdf` (safe/force branch delete), `ph` (push HEAD), `pf` (force-with-lease + force-if-includes)
