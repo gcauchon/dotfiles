@@ -1,15 +1,6 @@
 ---
 name: staged-commits
-description: >
-  Segment an unstructured working tree into a sequence of meaningful,
-  intent-based commits — one logical change per commit, not one per file
-  and not one giant mixed commit. Use this skill whenever the user wants
-  to commit a pile of changes cleanly, split work into sensible commits,
-  clean up their working tree before pushing, or turn a messy diff into
-  reviewable history — even if they don't say "segment" or "skill".
-  Triggers on "commit these changes", "split this into commits", "clean
-  up my commits", "make sensible commits", "group these changes", "commit
-  my work". Other skills should defer to this one for commit mechanics.
+description: Segment an unstructured working tree into a sequence of meaningful, intent-based commits, one logical change per commit, not one per file and not one giant mixed commit. Use whenever the user wants to commit a pile of changes cleanly, split work into sensible commits, clean up their working tree before pushing, or turn a messy diff into reviewable history, even if they don't say "segment" or "skill". Triggers on "commit these changes", "split this into commits", "clean up my commits", "make sensible commits", "group these changes", "commit my work". Other skills should defer to this one for commit mechanics.
 ---
 
 # Staged Commits

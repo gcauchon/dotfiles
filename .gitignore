@@ -2,3 +2,7 @@
 
 # claude.ai skill sync writes here through the ~/.claude/skills symlink; machine-local, not config
 llms/claude/skills/synced/
+llms/claude/skills/.trash/
+
+# local symlink to the umano-connect plugin checkout until the plugin ships the skill
+llms/claude/skills/pr-review-triage
